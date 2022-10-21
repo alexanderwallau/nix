@@ -35,6 +35,7 @@
       awallau.enable = true;
       root.enable = true;
     };
+    yubikey.enable = true;
   };
 
   # install packages system wide
