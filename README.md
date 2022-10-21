@@ -1,0 +1,2 @@
+# nix
+Nixlas OS
