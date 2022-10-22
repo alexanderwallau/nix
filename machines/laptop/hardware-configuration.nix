@@ -16,8 +16,8 @@
     # I want to find out, which Kernel breaks the system
     # please rebuild & reboot with different Kernels one by one
     # until you find the one that breaks the system
-    kernelPackages = pkgs.linuxPackages_latest;
-    # kernelPackages = pkgs.linuxPackages_6_0;
+    #kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_6_0;
     # kernelPackages = pkgs.linuxPackages_5_19;
     # kernelPackages = pkgs.linuxPackages_5_18;
     # kernelPackages = pkgs.linuxPackages_5_17;
