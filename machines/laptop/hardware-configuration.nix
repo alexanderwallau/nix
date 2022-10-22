@@ -18,8 +18,8 @@
     # until you find the one that breaks the system
     #kernelPackages = pkgs.linuxPackages_latest;
     #kernelPackages = pkgs.linuxPackages_6_0;
-    kernelPackages = pkgs.linuxPackages_5_19;
-    # kernelPackages = pkgs.linuxPackages_5_18;
+    # kernelPackages = pkgs.linuxPackages_5_19;
+     kernelPackages = pkgs.linuxPackages_5_18;
     # kernelPackages = pkgs.linuxPackages_5_17;
     # kernelPackages = pkgs.linuxPackages_5_16;
     # kernelPackages = pkgs.linuxPackages_5_15;
