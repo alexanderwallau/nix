@@ -2,17 +2,13 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nixos-hardware, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-
-      # import hardware specific configuration
-      # https://github.com/NixOS/nixos-hardware/blob/master/lenovo/thinkpad/x1/yoga/default.nix
-      nixos-hardware.nixosModules.lenovo-thinkpad-x1-yoga
     ];
 
   # top level option name

@@ -12,7 +12,7 @@
 
     # https://github.com/nixos/nixos-hardware
     # hardware specific configuration for NixOS
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
+    nixos-hardware.url = "github:MayNiklas/nixos-hardware/add-thinkpad-x1-yoga-gen7";
 
     # https://github.com/numtide/flake-utils
     # flake-utils provides a set of utility functions for creating multi-output flakes
