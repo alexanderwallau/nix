@@ -21,6 +21,9 @@
       unzip
       vlc
       zoom-us
+      element-web
+      todoist-electron
+      yakuake
     ];
 
   awallau.programs = {
