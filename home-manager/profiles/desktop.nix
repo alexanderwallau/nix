@@ -6,6 +6,7 @@
       _1password-gui
       dconf
       discord
+      element-web
       firefox
       gcc
       gparted
@@ -18,12 +19,11 @@
       spotify
       tdesktop
       thunderbird-bin
+      todoist-electron
       unzip
       vlc
-      zoom-us
-      element-web
-      todoist-electron
       yakuake
+      zoom-us
     ];
 
   awallau.programs = {
