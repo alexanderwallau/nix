@@ -6,7 +6,7 @@
       _1password-gui
       dconf
       discord
-      element-web
+      element-desktop
       firefox
       gcc
       gparted
