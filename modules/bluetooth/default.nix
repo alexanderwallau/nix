@@ -1,8 +1,6 @@
-
-IntelliJ IDEA
 { lib, pkgs, config, ... }:
 with lib;
-let cfg = config.awallau.bluetooth;
+let cfg = config.mayniklas.bluetooth;
 in
 {
 
