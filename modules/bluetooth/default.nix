@@ -1,10 +1,10 @@
 { lib, pkgs, config, ... }:
 with lib;
-let cfg = config.mayniklas.bluetooth;
+let cfg = config.awallau.bluetooth;
 in
 {
 
-  options.mayniklas.bluetooth = {
+  options.awallau.bluetooth = {
     enable = mkEnableOption "activate bluetooth";
   };
 
