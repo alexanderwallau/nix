@@ -43,6 +43,6 @@
     ];
 
   # Define hostname.
-  networking.hostName = "nixos";
+  networking.hostName = "X1-Yoga";
 }
 
