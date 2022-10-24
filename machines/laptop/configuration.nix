@@ -32,6 +32,8 @@
       root.enable = true;
     };
     yubikey.enable = true;
+    #Need Bluetooth
+    bluetooth.enable = true;
   };
 
   # install packages system wide
