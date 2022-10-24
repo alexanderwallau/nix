@@ -16,7 +16,7 @@ in
       openssh.authorizedKeys.keyFiles = [
         (pkgs.fetchurl {
           url = "https://github.com/alexanderwallau.keys";
-          hash = "sha256-PyMLUgMnj6LN6WqOzG6MVqTewAuwUrh3mc2EerunAuw";
+          hash = "sha256-pFc699BTaSaVOrTNSJ1G/1dl8uSkooi91vXmyBdb9og=";
         })
       ];
     };
