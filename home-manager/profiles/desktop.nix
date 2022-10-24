@@ -8,6 +8,7 @@
       discord
       element-desktop
       firefox
+      fuse3
       gcc
       gparted
       htop
