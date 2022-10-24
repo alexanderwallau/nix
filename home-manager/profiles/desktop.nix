@@ -12,9 +12,11 @@
       gparted
       htop
       iperf3
+      libwebcam
       nixpkgs-fmt
       nmap
       obs-studio
+      pipewire
       signal-desktop
       spotify
       tdesktop
