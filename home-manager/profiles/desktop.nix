@@ -10,6 +10,7 @@
       firefox
       fuse3
       gcc
+      glances
       gparted
       htop
       iperf3
@@ -20,11 +21,13 @@
       pipewire
       signal-desktop
       spotify
+      steam
       tdesktop
       thunderbird-bin
       todoist-electron
       unzip
       vlc
+      whatsapp-for-linux
       yakuake
       zoom-us
     ];
