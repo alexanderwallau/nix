@@ -14,6 +14,7 @@
       gparted
       htop
       iperf3
+      libreoffice
       libwebcam
       nixpkgs-fmt
       nmap
