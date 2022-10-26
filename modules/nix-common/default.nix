@@ -14,6 +14,10 @@ in
     nix = {
       # Enable nix flakes
       package = pkgs.nixFlakes;
+      # Enable nix commands
+      extraOptions = ''
+        experimental-features = nix-command flakes
+      '';
 
       # Set the $NIX_PATH entry for nixpkgs. This is necessary in
       # this setup with flakes, otherwise commands like `nix-shell
