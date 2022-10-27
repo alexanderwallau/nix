@@ -36,6 +36,7 @@
   awallau.programs = {
     git.enable = true;
     python.enable = true;
+    vim.enable = true;
     vscode.enable = true;
     zsh.enable = true;
   };
@@ -43,6 +44,7 @@
   # Imports
   imports = [
     ../modules/git
+    ../modules/nvim
     ../modules/python
     ../modules/vscode
     ../modules/zsh
