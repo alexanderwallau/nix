@@ -6,17 +6,19 @@
     # nixos repository
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    # https://github.com/numtide/flake-utils
+    # flake-utils provides a set of utility functions for creating multi-output flakes
+    flake-utils.url = "github:numtide/flake-utils";
+
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
     home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.inputs.flake-utils.follows = "flake-utils";
 
     # https://github.com/nixos/nixos-hardware
     # hardware specific configuration for NixOS
     nixos-hardware.url = "github:nixos/nixos-hardware";
-
-    # https://github.com/numtide/flake-utils
-    # flake-utils provides a set of utility functions for creating multi-output flakes
-    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = { self, ... }@inputs:
