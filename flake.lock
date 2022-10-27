@@ -36,16 +36,15 @@
     },
     "nixos-hardware": {
       "locked": {
-        "lastModified": 1666445724,
-        "narHash": "sha256-5FF3fKdUkvJ7PNZSCH+M7cIZepGuQEJewaflI9Nd7JY=",
-        "owner": "MayNiklas",
+        "lastModified": 1666851028,
+        "narHash": "sha256-e6DpqCMGzlpkhZDuS2fdDX1DsauFk8NARqQ1DDF42VY=",
+        "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "2c27afc7eda8f35327e9a8b7c6c45f4a9b1d602f",
+        "rev": "dfd91284332a4882c504b4807b1922e0fe386621",
         "type": "github"
       },
       "original": {
-        "owner": "MayNiklas",
-        "ref": "add-thinkpad-x1-yoga-gen7",
+        "owner": "nixos",
         "repo": "nixos-hardware",
         "type": "github"
       }

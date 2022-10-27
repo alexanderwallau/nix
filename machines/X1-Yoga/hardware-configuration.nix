@@ -9,7 +9,7 @@
       (modulesPath + "/installer/scan/not-detected.nix")
 
       # import hardware specific configuration
-      # https://github.com/NixOS/nixos-hardware/blob/master/lenovo/thinkpad/x1/yoga/default.nix
+      # https://github.com/NixOS/nixos-hardware/blob/master/lenovo/thinkpad/x1/yoga/7th-gen/default.nix
       nixos-hardware.nixosModules.lenovo-thinkpad-x1-yoga-7th-gen
     ];
 
