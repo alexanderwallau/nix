@@ -11,6 +11,7 @@ clone:
   depth: 1
 
 steps:
+
   - name: show flake show
     commands:
       - nix flake show
@@ -21,12 +22,12 @@ steps:
 
   - name: run flake checks
     commands:
-      - nix flake check # --show-trace
+      - nix flake check
 
 ---
 kind: pipeline
 type: exec
-name: build amd64 nixosConfigurations
+name: build amd64 hosts
 
 platform:
   os: linux
@@ -36,14 +37,45 @@ clone:
   depth: 1
 
 steps:
-  - name: build X1-Yoga
-    commands:
-      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel'
-      - nix path-info --closure-size -h $(readlink -f result)
+
+- name: build X1-Yoga
+  commands:
+  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
+  - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
 
 trigger:
   branch:
-    - main
+  - main
   event:
-    - push
-    - pull_request
+  - cron
+  - push
+  - pull_request
+
+---
+kind: pipeline
+type: exec
+name: nix flake update - amd64
+
+platform:
+  os: linux
+  arch: amd64
+
+clone:
+  depth: 1
+
+steps:
+
+- name: nix flake update
+  commands:
+  - nix flake update
+
+- name: build X1-Yoga
+  commands:
+  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
+  - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
+
+trigger:
+  branch:
+  - main
+  event:
+  - cron

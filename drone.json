@@ -1,0 +1,13 @@
+{
+    "hosts": [
+        {
+            "arch": "amd64",
+            "machines": [
+                {
+                    "name": "X1-Yoga"
+                }
+            ]
+        }
+    ],
+    "packages": []
+}
