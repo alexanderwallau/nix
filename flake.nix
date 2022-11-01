@@ -14,7 +14,6 @@
     # manage a user environment using Nix
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.inputs.flake-utils.follows = "flake-utils";
 
     # https://github.com/nixos/nixos-hardware
     # hardware specific configuration for NixOS
