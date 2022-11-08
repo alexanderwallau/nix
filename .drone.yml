@@ -11,7 +11,6 @@ clone:
   depth: 1
 
 steps:
-
   - name: show flake show
     commands:
       - nix flake show
@@ -37,19 +36,18 @@ clone:
   depth: 1
 
 steps:
-
-- name: build X1-Yoga
-  commands:
-  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
-  - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
+  - name: build X1-Yoga
+    commands:
+      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
+      - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
 
 trigger:
   branch:
-  - main
+    - main
   event:
-  - cron
-  - push
-  - pull_request
+    - cron
+    - push
+    - pull_request
 
 ---
 kind: pipeline
@@ -64,18 +62,24 @@ clone:
   depth: 1
 
 steps:
+  - name: build X1-Yoga (current)
+    commands:
+      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link X1-Yoga-current
 
-- name: nix flake update
-  commands:
-  - nix flake update
+  - name: nix flake update
+    commands:
+      - nix flake update
 
-- name: build X1-Yoga
-  commands:
-  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
-  - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
+  - name: build X1-Yoga (updated)
+    commands:
+      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link X1-Yoga-updated
+
+  - name: compare outputs
+    commands:
+      - nix store diff-closures $(readlink -f X1-Yoga-current) $(readlink -f X1-Yoga-updated)
 
 trigger:
   branch:
-  - main
+    - main
   event:
-  - cron
+    - cron
