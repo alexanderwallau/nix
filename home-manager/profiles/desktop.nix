@@ -28,7 +28,7 @@
       todoist-electron
       unzip
       vlc
-      whatsapp-for-linux
+      wireguard-tools
       yakuake
       zoom-us
     ];
