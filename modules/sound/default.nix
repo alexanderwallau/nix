@@ -1,10 +1,10 @@
 { lib, pkgs, config, ... }:
 with lib;
-let cfg = config.mayniklas.sound;
+let cfg = config.awallau.sound;
 in
 {
 
-  options.mayniklas.sound = { enable = mkEnableOption "activate sound"; };
+  options.awallau.sound = { enable = mkEnableOption "activate sound"; };
 
   config = mkIf cfg.enable {
 
@@ -17,7 +17,7 @@ in
 
     environment.systemPackages = with pkgs; [ pavucontrol ];
 
-    users.extraUsers.${config.awallau.var.mainUser}.extraGroups = [ "audio" ];
+    users.extraUsers.awallau.extraGroups = [ "audio" ];
 
   };
 }

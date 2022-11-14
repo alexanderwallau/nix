@@ -34,6 +34,8 @@
     yubikey.enable = true;
     #Need Bluetooth
     bluetooth.enable = true;
+    # Sound maybe
+    sound.enable = true;
   };
 
   # install packages system wide
