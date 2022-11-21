@@ -37,11 +37,6 @@
     # Sound maybe
     sound.enable = true;
   };
-
-
-  nixpkgs.config.permittedInsecurePackages = [
-     "electron-15.5.2"
-    ];
   
   # install packages system wide
   environment.systemPackages = with pkgs;
