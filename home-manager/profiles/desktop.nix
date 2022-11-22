@@ -16,6 +16,7 @@
       iperf3
       libreoffice
       libwebcam
+      nerdfonts
       nixpkgs-fmt
       nmap
       obs-studio
