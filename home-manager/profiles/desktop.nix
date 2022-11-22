@@ -21,6 +21,7 @@
       nmap
       obs-studio
       pipewire
+      plasma5Packages.plasma-thunderbolt
       signal-desktop
       spotify
       steam
