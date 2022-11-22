@@ -22,15 +22,6 @@ steps:
   - name: run flake checks
     commands:
       - nix flake check
- 
-
-trigger:
-  branch:
-  - main
-  event:
-  - cron
-  - push
-  - pull_request
 
 --
 kind: pipeline
