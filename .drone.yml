@@ -22,6 +22,7 @@ steps:
   - name: run flake checks
     commands:
       - nix flake check
+<<<<<<< HEAD
 trigger:
   branch:
     - main
@@ -29,6 +30,9 @@ trigger:
     - cron
     - push
     - pull_request
+=======
+
+>>>>>>> 57d7027ba9f8bc9bd0e8e781edb17b90e83eafc8
 --
 kind: pipeline
 type: exec
