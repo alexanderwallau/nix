@@ -11,6 +11,7 @@ clone:
   depth: 1
 
 steps:
+
   - name: show flake show
     commands:
       - nix flake show
@@ -22,18 +23,8 @@ steps:
   - name: run flake checks
     commands:
       - nix flake check
-<<<<<<< HEAD
-trigger:
-  branch:
-    - main
-  event:
-    - cron
-    - push
-    - pull_request
-=======
 
->>>>>>> 57d7027ba9f8bc9bd0e8e781edb17b90e83eafc8
---
+---
 kind: pipeline
 type: exec
 name: build amd64 hosts
@@ -46,27 +37,28 @@ clone:
   depth: 1
 
 steps:
-  - name: build X1-Yoga
-    commands:
-      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
-      - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
 
-  - name: upload to binary cache via s3
-    commands:
-      - nix run 'github:mayniklas/nixos'#s3uploader
-    environment:
-      AWS_ACCESS_KEY_ID:
-        from_secret: aws_key
-      AWS_SECRET_ACCESS_KEY:
-        from_secret: aws_secret
+- name: build X1-Yoga
+  commands:
+  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
+  - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
+
+- name: upload to binary cache via s3
+  commands:
+  - nix run 'github:mayniklas/nixos'#s3uploader
+  environment:
+    AWS_ACCESS_KEY_ID:
+      from_secret: aws_key
+    AWS_SECRET_ACCESS_KEY:
+      from_secret: aws_secret
+
 trigger:
   branch:
-    - main
+  - main
   event:
-    - cron
-    - push
-    - pull_request
-
+  - cron
+  - push
+  - pull_request
 
 ---
 kind: pipeline
