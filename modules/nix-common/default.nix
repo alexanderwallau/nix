@@ -31,6 +31,18 @@ in
       # Save space by hardlinking store files
       settings.auto-optimise-store = true;
 
+       binaryCachePublicKeys =[
+         "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" ];
+      binaryCaches = [
+     "https://cache.nixos.org"
+     "https://cache.lounge.rocks?priority=100"
+     "https://s3.lounge.rocks/nix-cache?priority=50"
+      ];
+      trustedBinaryCaches = [
+     "https://cache.nixos.org"
+     "https://cache.lounge.rocks"
+     "https://s3.lounge.rocks/nix-cache/"
+      ];
       # Clean up old generations after 30 days
       gc = {
         automatic = true;
