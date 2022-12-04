@@ -19,9 +19,11 @@
       nerdfonts
       nixpkgs-fmt
       nmap
+      networkmanager-openvpn
       obs-studio
       pipewire
       plasma5Packages.plasma-thunderbolt
+      protonvpn-gui
       signal-desktop
       spotify
       steam
@@ -31,6 +33,7 @@
       todoist-electron
       unzip
       vlc
+      wireguard-go
       wireguard-tools
       yakuake
       zoom-us
