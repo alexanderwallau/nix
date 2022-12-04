@@ -16,11 +16,14 @@
       iperf3
       libreoffice
       libwebcam
+      neofetch
       nerdfonts
       nixpkgs-fmt
       nmap
+      ntfs3g
       networkmanager-openvpn
       obs-studio
+      pciutils
       pipewire
       plasma5Packages.plasma-thunderbolt
       protonvpn-gui
