@@ -14,6 +14,7 @@
       gparted
       htop
       iperf3
+      julia
       libreoffice
       libwebcam
       neofetch
