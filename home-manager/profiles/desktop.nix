@@ -4,6 +4,8 @@
   home.packages =
     with pkgs; [
       _1password-gui
+      amdvlk
+      bolt
       dconf
       discord
       element-desktop
@@ -17,7 +19,8 @@
       julia
       libreoffice
       libwebcam
-      linuxKernel.packages.linux_zen.amdgpu-pro
+      inuxKernel.packages.linux_latest_libre.amdgpu-pro
+      linuxKernel.packages.linux_xanmod.amdgpu-pro
       neofetch
       nerdfonts
       nixpkgs-fmt
@@ -29,6 +32,7 @@
       pipewire
       plasma5Packages.plasma-thunderbolt
       protonvpn-gui
+      rgp
       signal-desktop
       spotify
       steam
