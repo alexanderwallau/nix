@@ -17,6 +17,7 @@
       julia
       libreoffice
       libwebcam
+      linuxKernel.packages.linux_zen.amdgpu-pro
       neofetch
       nerdfonts
       nixpkgs-fmt
