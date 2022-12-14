@@ -12,9 +12,11 @@
       firefox
       fuse3
       gcc
+      gimp
       glances
       gparted
       htop
+      inkscape
       iperf3
       julia
       libreoffice
