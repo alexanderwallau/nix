@@ -4,7 +4,10 @@ let cfg = config.awallau.nix-common;
 in
 {
 
-  options.awallau.nix-common = { enable = mkEnableOption "activate nix-common"; };
+  options.awallau.nix-common = { 
+    enable = mkEnableOption "activate nix-common";
+    disable-cache = mkEnableOption "not use binary-cache";
+ };
 
   config = mkIf cfg.enable {
 

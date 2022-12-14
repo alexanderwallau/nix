@@ -23,6 +23,8 @@
     # set up general nix stuff
     nix-common.enable = true;
     # set up language and timezone
+    nix.disable-cache = false;
+    
     locales.enable = true;
     # set up ssh server
     openssh.enable = true;
