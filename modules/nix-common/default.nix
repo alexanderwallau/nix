@@ -27,23 +27,23 @@ in
       # and root e.g. `nix-channel --remove nixos`. `nix-channel
       # --list` should be empty for all users afterwards
       nixPath = [ "nixpkgs=${nixpkgs}" ];
-
-      # Save space by hardlinking store files
-      settings.auto-optimise-store = true;
-
-      binaryCachePublicKeys =[
-         "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" ];
-      binaryCaches = [
+      # binary cache -> build by DroneCI
+      binaryCachePublicKeys = mkIf (cfg.disable-cache != true)
+        [ "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" ];
+      binaryCaches = mkIf (cfg.disable-cache != true) [
         "https://cache.nixos.org"
         "https://cache.lounge.rocks?priority=100"
         "https://s3.lounge.rocks/nix-cache?priority=50"
       ];
-      trustedBinaryCaches = [
-        "https://s3.lounge.rocks/nix-cache/"
+      trustedBinaryCaches = mkIf (cfg.disable-cache != true) [
         "https://cache.nixos.org"
         "https://cache.lounge.rocks"
-     
+        "https://s3.lounge.rocks/nix-cache/"
       ];
+      # Save space by hardlinking store files
+      settings.auto-optimise-store = true;
+
+      
       # Clean up old generations after 30 days
       gc = {
         automatic = true;
