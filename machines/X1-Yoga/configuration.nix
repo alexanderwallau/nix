@@ -22,7 +22,7 @@
     kde.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
-    # set up language and timezone
+    # set up language and timezone    
     locales.enable = true;
     # set up ssh server
     openssh.enable = true;
@@ -32,12 +32,12 @@
       root.enable = true;
     };
     yubikey.enable = false;
-    #Need Bluetooth
+    # Need Bluetooth
     bluetooth.enable = true;
     # Sound maybe
     sound.enable = true;
   };
-  
+
   # install packages system wide
   environment.systemPackages = with pkgs;
     [

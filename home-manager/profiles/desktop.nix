@@ -4,19 +4,25 @@
   home.packages =
     with pkgs; [
       _1password-gui
+      amdvlk
+      bolt
       dconf
       discord
       element-desktop
       firefox
       fuse3
       gcc
+      gimp
       glances
       gparted
       htop
+      inkscape
       iperf3
       julia
       libreoffice
       libwebcam
+      linuxKernel.packages.linux_latest_libre.amdgpu-pro
+      linuxKernel.packages.linux_xanmod.amdgpu-pro
       neofetch
       nerdfonts
       nixpkgs-fmt
@@ -28,6 +34,7 @@
       pipewire
       plasma5Packages.plasma-thunderbolt
       protonvpn-gui
+      rgp
       signal-desktop
       spotify
       steam

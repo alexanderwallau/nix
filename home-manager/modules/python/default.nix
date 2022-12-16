@@ -5,11 +5,15 @@ let
 
   my-python-packages = python-packages:
     with python-packages; [
-      ipykernel
-      matplotlib
-      numpy
-      requests
-      scipy
+       ipykernel
+       matplotlib
+       numpy
+       requests
+       scipy
+       tensorflow-build
+       tensorboard
+       jinja2
+
     ];
 
   python-with-packages = pkgs.python3.withPackages my-python-packages;
@@ -24,3 +28,5 @@ in
   };
 
 }
+
+     
