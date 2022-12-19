@@ -46,6 +46,7 @@
       wireguard-go
       wireguard-tools
       yakuake
+      yubioath-flutter
       zoom-us
     ];
 
