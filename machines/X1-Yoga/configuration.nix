@@ -11,12 +11,6 @@
       ./hardware-configuration.nix
     ];
 
-  virtualisation.oci-containers.containers.shelly-plug-s-prometeus = {
-    autoStart = true;
-    ports = [ "80:80" ];
-    image = "nginx";
-  };
-
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
