@@ -5,14 +5,14 @@ let
 
   my-python-packages = python-packages:
     with python-packages; [
-       ipykernel
-       matplotlib
-       numpy
-       requests
-       scipy
-       tensorflow-build
-       tensorboard
-       jinja2
+      ipykernel
+      matplotlib
+      numpy
+      requests
+      scipy
+      tensorflow-build
+      tensorboard
+      jinja2
 
     ];
 

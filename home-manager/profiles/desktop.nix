@@ -39,6 +39,7 @@
       spotify
       steam
       tdesktop
+      texlive.combined.scheme-full
       thunderbird-bin
       todoist-electron
       unzip
