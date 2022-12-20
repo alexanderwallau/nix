@@ -1,3 +1,4 @@
+[![Build Status](https://drone.lounge.rocks/api/badges/alexanderwallau/nix/status.svg)](https://drone.lounge.rocks/alexanderwallau/nix)
 # nix
 
 Nixlas OS
