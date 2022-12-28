@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, alexanderwallau-keys, ... }:
 with lib;
 let cfg = config.awallau.user.awallau;
 in
@@ -9,12 +9,7 @@ in
   config = mkIf cfg.enable {
 
     users.users.root = {
-      openssh.authorizedKeys.keyFiles = [
-        (pkgs.fetchurl {
-          url = "https://github.com/alexanderwallau.keys";
-          hash = "sha256-fXruGCxlgPrR3lwuP07tE+bY3kn0gjpDim58UkTWg7E=";
-        })
-      ];
+      openssh.authorizedKeys.keyFiles = [ alexanderwallau-keys ];
     };
     nix.settings.allowed-users = [ "root" ];
   };
