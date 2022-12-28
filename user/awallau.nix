@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, alexanderwallau-keys, ... }:
 with lib;
 let cfg = config.awallau.user.awallau;
 in
@@ -13,12 +13,7 @@ in
       home = "/home/awallau";
       extraGroups = [ "wheel" ];
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keyFiles = [
-        (pkgs.fetchurl {
-          url = "https://github.com/alexanderwallau.keys";
-          hash = "sha256-pFc699BTaSaVOrTNSJ1G/1dl8uSkooi91vXmyBdb9og=";
-        })
-      ];
+      openssh.authorizedKeys.keyFiles = [ alexanderwallau-keys ];
     };
     users.extraUsers.awallau.extraGroups = mkIf config.virtualisation.docker.enable [ "docker" ];
     nix.settings.allowed-users = [ "awallau" ];

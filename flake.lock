@@ -1,5 +1,17 @@
 {
   "nodes": {
+    "alexanderwallau-keys": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-bNc+52p9foYILK0S4BGYPwnTMXzCv2QU8ThT5NWBZzo=",
+        "type": "file",
+        "url": "https://github.com/alexanderwallau.keys"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/alexanderwallau.keys"
+      }
+    },
     "flake-utils": {
       "locked": {
         "lastModified": 1667395993,
@@ -69,6 +81,7 @@
     },
     "root": {
       "inputs": {
+        "alexanderwallau-keys": "alexanderwallau-keys",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",

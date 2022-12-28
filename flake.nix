@@ -2,6 +2,10 @@
   description = "A very basic flake";
 
   inputs = {
+    # we are using the alexanderwallau-keys flake to get the ssh keys from github
+    alexanderwallau-keys.url = "https://github.com/alexanderwallau.keys";
+    alexanderwallau-keys.flake = false;
+
     # https://github.com/nixos/nixpkgs
     # nixos repository
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
