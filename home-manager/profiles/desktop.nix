@@ -29,6 +29,7 @@
       nmap
       ntfs3g
       networkmanager-openvpn
+      obsidian
       obs-studio
       pciutils
       pipewire
@@ -36,6 +37,7 @@
       protonvpn-gui
       rgp
       signal-desktop
+      spicetify-cli
       spotify
       steam
       tdesktop
