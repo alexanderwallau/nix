@@ -23,6 +23,7 @@
       libwebcam
       linuxKernel.packages.linux_latest_libre.amdgpu-pro
       linuxKernel.packages.linux_xanmod.amdgpu-pro
+      minecraft
       neofetch
       nerdfonts
       nixpkgs-fmt
