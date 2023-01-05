@@ -74,3 +74,7 @@ sudo nix-collect-garbage -d
 # use auto formatter on flake.nix
 nix fmt flake.nix
 ```
+## TODO
+- Split desktop module into common and X1-Yoga specific packages
+- Enable Thundebolt subsystem for E-GPU RX 6500T
+- Propperly pair Bluetooth with dual-bootet Win10
