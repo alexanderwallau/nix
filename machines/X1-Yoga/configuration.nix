@@ -31,7 +31,7 @@
       awallau.enable = true;
       root.enable = true;
     };
-    yubikey.enable = false;
+    yubikey.enable = true;
     # Need Bluetooth
     bluetooth.enable = true;
     # Sound maybe
