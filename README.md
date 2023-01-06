@@ -1,4 +1,5 @@
 [![Build Status](https://drone.lounge.rocks/api/badges/alexanderwallau/nix/status.svg)](https://drone.lounge.rocks/alexanderwallau/nix)
+
 # nix
 
 Nixlas OS
@@ -39,7 +40,7 @@ nix flake show
 nix flake info
 
 # build / check config without applying
-nix build -v '.#nixosConfigurations.laptop.config.system.build.toplevel' 
+nix build -v '.#nixosConfigurations.laptop.config.system.build.toplevel'
 
 # switch to new config
 nixos-rebuild --use-remote-sudo switch --flake .
@@ -54,10 +55,10 @@ nix run .#rick-roll
 nix run 'github:mayniklas/nixos#vs-fix'
 
 # run flake app
-nix run nixpkgs#python39 -- --version  
+nix run nixpkgs#python39 -- --version
 
 # run nix-shell with nodejs-14
-nix-shell -p nodejs-16_x 
+nix-shell -p nodejs-16_x
 
 # run app in nix-shell
 nix-shell -p nodejs-16_x --run "node -v"
@@ -74,7 +75,18 @@ sudo nix-collect-garbage -d
 # use auto formatter on flake.nix
 nix fmt flake.nix
 ```
+
 ## TODO
+
 - Split desktop module into common and X1-Yoga specific packages
 - Enable Thundebolt subsystem for E-GPU RX 6500T
 - Propperly pair Bluetooth with dual-bootet Win10
+- NFC
+- FaceID via Howdy (which needs a nix module written)
+- Wireguard
+- Zsh/nix(neo)vim Dotfiles
+- Command Line Utilities
+- Minio
+- Docker Registry with DNS record
+- Aarch64 Runner for Gitlab
+- Make X220 great again
