@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }:
 with lib;
-let cfg = config.pinpox.defaults.fonts;
+let cfg = config.awallau.defaults.fonts;
 in
 {
 
