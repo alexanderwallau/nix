@@ -26,19 +26,21 @@
       minecraft
       neofetch
       nerdfonts
+      nextcloud
       nixpkgs-fmt
       nmap
       ntfs3g
       networkmanager-openvpn
       obsidian
       obs-studio
+      okular
       pciutils
       pipewire
       plasma5Packages.plasma-thunderbolt
       protonvpn-gui
+      qemu
       rgp
       signal-desktop
-      spicetify-cli
       spotify
       steam
       tdesktop
@@ -49,6 +51,7 @@
       vlc
       wireguard-go
       wireguard-tools
+      xournal
       yakuake
       yubioath-flutter
       zoom-us
