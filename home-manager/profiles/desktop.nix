@@ -26,7 +26,7 @@
       minecraft
       neofetch
       nerdfonts
-      nextcloud
+      nextcloud-client
       nixpkgs-fmt
       nmap
       ntfs3g
