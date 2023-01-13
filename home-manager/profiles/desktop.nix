@@ -60,6 +60,7 @@
     vim.enable = true;
     vscode.enable = true;
     zsh.enable = true;
+    
   };
 
   # Imports
@@ -70,7 +71,7 @@
     ../modules/vscode
     ../modules/zsh
   ];
-
+  fonts.fontconfig.enable = true; 
   services.gnome-keyring = { enable = true; };
 
   # Include man-pages
