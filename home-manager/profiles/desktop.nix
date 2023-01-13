@@ -42,7 +42,6 @@
       rgp
       signal-desktop
       spotify
-      steam
       tdesktop
       texlive.combined.scheme-full
       thunderbird-bin

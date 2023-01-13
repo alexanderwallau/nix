@@ -90,3 +90,4 @@ nix fmt flake.nix
 - Docker Registry with DNS record
 - Aarch64 Runner for Gitlab
 - Make X220 great again
+- Steam
