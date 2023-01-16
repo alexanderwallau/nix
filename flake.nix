@@ -24,14 +24,22 @@
     nixos-hardware.url = "github:nixos/nixos-hardware";
   };
 
-  outputs = { self, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
+    let
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    in
     with inputs;
     {
 
       # Expose overlay to flake outputs, to allow using it from other flakes.
       # Flake inputs are passed to the overlay so that the packages defined in
       # it can use the sources pinned in flake.lock
-      overlays.default = final: prev: (import ./pkgs inputs) final prev;
+      overlays.default = final: prev: (import ./overlays inputs) final prev;
+
+      packages = forAllSystems (system:
+        import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }
+      );
 
       # Output all modules in ./modules to flake. Modules should be in
       # individual subdirectories and contain a default.nix file
