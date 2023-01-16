@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, flake-self, ... }:
 with lib;
 let cfg = config.awallau.home-manager;
 in
@@ -33,6 +33,7 @@ in
     home-manager.users."${cfg.username}" = {
 
       imports = [
+        { nixpkgs.overlays = [ flake-self.overlays.default ]; }
         ./profiles/${cfg.profile}.nix
       ];
     };

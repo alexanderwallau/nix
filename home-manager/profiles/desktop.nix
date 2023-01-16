@@ -3,6 +3,9 @@
   # Install these packages for my user
   home.packages =
     with pkgs; [
+      # my packages
+      awallau.musescore
+      # packages from nixpkgs
       _1password-gui
       amdvlk
       bolt
@@ -62,7 +65,7 @@
     vim.enable = true;
     vscode.enable = true;
     zsh.enable = true;
-    
+
   };
 
   # Imports
@@ -73,7 +76,7 @@
     ../modules/vscode
     ../modules/zsh
   ];
-  fonts.fontconfig.enable = true; 
+  fonts.fontconfig.enable = true;
   services.gnome-keyring = { enable = true; };
 
   # Include man-pages

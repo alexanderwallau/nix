@@ -1,4 +1,4 @@
-{ lib, pkgs, config, nixpkgs, ... }:
+{ lib, pkgs, config, nixpkgs, flake-self, ... }:
 with lib;
 let cfg = config.awallau.nix-common;
 in
@@ -64,6 +64,7 @@ in
     nixpkgs = {
       # Allow unfree licenced packages
       config.allowUnfree = true;
+      overlays = [ flake-self.overlays.default ];
     };
 
     # Before changing this value read the documentation for this option

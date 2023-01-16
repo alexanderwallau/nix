@@ -28,32 +28,37 @@
     with inputs;
     {
 
+      # Expose overlay to flake outputs, to allow using it from other flakes.
+      # Flake inputs are passed to the overlay so that the packages defined in
+      # it can use the sources pinned in flake.lock
+      overlays.default = final: prev: (import ./pkgs inputs) final prev;
 
       # Output all modules in ./modules to flake. Modules should be in
       # individual subdirectories and contain a default.nix file
-      nixosModules = builtins.listToAttrs
-        (map
-          (x: {
-            name = x;
-            value = import (./modules + "/${x}");
-          })
-          (builtins.attrNames (builtins.readDir ./modules)))
+      nixosModules =
+        builtins.listToAttrs
+          (map
+            (x: {
+              name = x;
+              value = import (./modules + "/${x}");
+            })
+            (builtins.attrNames (builtins.readDir ./modules)))
 
-      //
-      {
-        user = { config, pkgs, lib, ... }: {
-          imports = [ ./user ];
+        //
+        {
+          user = { config, pkgs, lib, ... }: {
+            imports = [ ./user ];
+          };
+        }
+        //
+        {
+          home-manager = { config, pkgs, lib, ... }: {
+            imports = [
+              ./home-manager
+              home-manager.nixosModules.home-manager
+            ];
+          };
         };
-      }
-      //
-      {
-        home-manager = { config, pkgs, lib, ... }: {
-          imports = [
-            ./home-manager
-            home-manager.nixosModules.home-manager
-          ];
-        };
-      };
 
       # Each subdirectory in ./machines is a host. Add them all to
       # nixosConfiguratons. Host configurations need a file called
