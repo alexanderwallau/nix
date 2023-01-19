@@ -22,6 +22,7 @@
       inkscape
       iperf3
       julia
+      libnfc
       libreoffice
       libwebcam
       linuxKernel.packages.linux_latest_libre.amdgpu-pro
