@@ -36,7 +36,6 @@
       networkmanager-openvpn
       obsidian
       obs-studio
-      okular
       pciutils
       pipewire
       plasma5Packages.plasma-thunderbolt

@@ -21,7 +21,6 @@ in
         excludePackages = with pkgs.libsForQt5; [
           elisa
           gwenview
-          okular
           oxygen
           khelpcenter
           # konsole # we should not remove konsole before we have a replacement
