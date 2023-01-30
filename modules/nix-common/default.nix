@@ -25,10 +25,13 @@ in
 
       settings = {
         # use custom binary cache
-        trusted-public-keys = mkIf (cfg.disable-cache != true)
-          [ "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" ];
+        trusted-public-keys = mkIf (cfg.disable-cache != true) [
+           "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" 
+           "alexanderwallau.cachix.org-1:vi7QC6uUBbRi69tJmp/Ylta1f3BliiW2ABV89EFRiX0="
+           ];
         substituters = mkIf (cfg.disable-cache != true) [
           "https://cache.nixos.org"
+          "https://alexanderwallau.cachix.org?priority=75"
           "https://cache.lounge.rocks?priority=100"
         ];
         trusted-substituters = mkIf (cfg.disable-cache != true) [

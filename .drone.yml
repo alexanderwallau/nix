@@ -43,14 +43,14 @@ steps:
   - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
   - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
 
-- name: upload to binary cache via s3
+- name: Push X1-Yoga to cachix
   commands:
-  - nix run 'github:mayniklas/nixos'#s3uploader
+  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
   environment:
-    AWS_ACCESS_KEY_ID:
-      from_secret: aws_key
-    AWS_SECRET_ACCESS_KEY:
-      from_secret: aws_secret
+    CACHIX_AUTH_TOKEN:
+      from_secret: CACHIX_AUTH_TOKEN
+
+
 
 trigger:
   branch:
