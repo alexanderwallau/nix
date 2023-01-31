@@ -33,7 +33,7 @@ in
     home-manager.users."${cfg.username}" = {
 
       imports = [
-        { nixpkgs.overlays = [ flake-self.overlays.default ]; }
+        { nixpkgs.overlays = [ flake-self.overlays.default flake-self.overlays.unstable ]; }
         ./profiles/${cfg.profile}.nix
       ];
     };

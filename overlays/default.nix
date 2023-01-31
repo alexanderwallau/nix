@@ -7,4 +7,9 @@ in
 self: super: {
   # use own flake packages as overlay for nixpkgs
   awallau.musescore = self.musescore;
+
+  # packages to get from nixpkgs-unstable
+  obsidian = self.unstable.obsidian;
+  todoist-electron = self.unstable.todoist-electron;
+  yubioath-flutter = self.unstable.yubioath-flutter;
 }

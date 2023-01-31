@@ -2,13 +2,10 @@
   description = "A very basic flake";
 
   inputs = {
-    # we are using the alexanderwallau-keys flake to get the ssh keys from github
-    alexanderwallau-keys.url = "https://github.com/alexanderwallau.keys";
-    alexanderwallau-keys.flake = false;
-
     # https://github.com/nixos/nixpkgs
     # nixos repository
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # https://github.com/numtide/flake-utils
     # flake-utils provides a set of utility functions for creating multi-output flakes
@@ -16,12 +13,16 @@
 
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-22.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # https://github.com/nixos/nixos-hardware
     # hardware specific configuration for NixOS
     nixos-hardware.url = "github:nixos/nixos-hardware";
+
+    # we are using the alexanderwallau-keys flake to get the ssh keys from github
+    alexanderwallau-keys.url = "https://github.com/alexanderwallau.keys";
+    alexanderwallau-keys.flake = false;
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
@@ -35,7 +36,18 @@
       # Expose overlay to flake outputs, to allow using it from other flakes.
       # Flake inputs are passed to the overlay so that the packages defined in
       # it can use the sources pinned in flake.lock
-      overlays.default = final: prev: (import ./overlays inputs) final prev;
+      overlays = {
+        default = final: prev: (import ./overlays inputs) final prev;
+
+
+        unstable = final: prev: {
+          unstable = import nixpkgs-unstable {
+            system = "x86_64-linux";
+            config.allowUnfree = true;
+          };
+        };
+
+      };
 
       packages = forAllSystems (system:
         import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }

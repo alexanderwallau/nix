@@ -5,6 +5,7 @@
     with pkgs; [
       # my packages
       awallau.musescore
+
       # packages from nixpkgs
       _1password-gui
       amdvlk
@@ -28,13 +29,13 @@
       minecraft
       neofetch
       nerdfonts
+      networkmanager-openvpn
       nextcloud-client
       nixpkgs-fmt
       nmap
       ntfs3g
-      networkmanager-openvpn
-      obsidian
       obs-studio
+      obsidian
       pciutils
       pipewire
       plasma5Packages.plasma-thunderbolt
@@ -87,7 +88,9 @@
   programs.home-manager.enable = true;
 
   # Allow "unfree" licenced packages
-  nixpkgs.config = { allowUnfree = true; };
+  nixpkgs.config = {
+    allowUnfree = true;
+  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage

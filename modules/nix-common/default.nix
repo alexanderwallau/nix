@@ -26,9 +26,9 @@ in
       settings = {
         # use custom binary cache
         trusted-public-keys = mkIf (cfg.disable-cache != true) [
-           "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" 
-           "alexanderwallau.cachix.org-1:vi7QC6uUBbRi69tJmp/Ylta1f3BliiW2ABV89EFRiX0="
-           ];
+          "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY="
+          "alexanderwallau.cachix.org-1:vi7QC6uUBbRi69tJmp/Ylta1f3BliiW2ABV89EFRiX0="
+        ];
         substituters = mkIf (cfg.disable-cache != true) [
           "https://cache.nixos.org"
           "https://alexanderwallau.cachix.org?priority=75"
@@ -67,7 +67,7 @@ in
     nixpkgs = {
       # Allow unfree licenced packages
       config.allowUnfree = true;
-      overlays = [ flake-self.overlays.default ];
+      overlays = [ flake-self.overlays.default flake-self.overlays.unstable ];
     };
 
     # Before changing this value read the documentation for this option
