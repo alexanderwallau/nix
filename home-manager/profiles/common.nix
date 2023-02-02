@@ -3,40 +3,28 @@
   # Install these packages for my user
   home.packages =
     with pkgs; [
-      # my packages
-      awallau.musescore
 
       # packages from nixpkgs
-      _1password-gui
-      amdvlk
-      bolt
-      dconf
-      discord
-      element-desktop
-      firefox
-      gimp
-      inkscape
-      libnfc
-      libreoffice
-      libwebcam
-      minecraft
-      nerdfonts
-      nextcloud-client
-      obs-studio
-      obsidian
-      plasma5Packages.plasma-thunderbolt
-      protonvpn-gui
-      signal-desktop
-      spotify
-      tdesktop
-      texlive.combined.scheme-full
-      thunderbird-bin
-      todoist-electron
-      vlc
-      xournal
-      yakuake
-      yubioath-flutter
-      zoom-us
+      fuse3
+      gcc
+      glances
+      gparted
+      htop
+      iperf3
+      julia
+      neofetch
+      networkmanager-openvpn
+      nixpkgs-fmt
+      nmap
+      ntfs3g
+      pciutils
+      pipewire
+      qemu
+      rgp
+      unzip
+      wireguard-go
+      wireguard-tools
+
     ];
 
   awallau.programs = {
