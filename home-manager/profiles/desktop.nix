@@ -56,22 +56,6 @@
     ../modules/vscode
     ../modules/zsh
   ];
-  fonts.fontconfig.enable = true;
-  services.gnome-keyring = { enable = true; };
-
-  # Include man-pages
-  manual.manpages.enable = true;
-
-  # tells you the package that provides a command
-  programs.command-not-found.enable = true;
-
-  # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
-
-  # Allow "unfree" licenced packages
-  nixpkgs.config = {
-    allowUnfree = true;
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
