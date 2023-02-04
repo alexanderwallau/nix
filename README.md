@@ -82,7 +82,6 @@ nix fmt flake.nix
 - Enable Thundebolt subsystem for E-GPU RX 6500T
 - Propperly pair Bluetooth with dual-bootet Win10
 - NFC
-- FaceID via Howdy (which needs a nix module written)
 - Wireguard
 - Zsh/nix(neo)vim Dotfiles
 - Command Line Utilities

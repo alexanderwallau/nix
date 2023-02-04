@@ -42,6 +42,7 @@
   environment.systemPackages = with pkgs;
     [
       bash-completion
+      fprintd
       wget
       git
     ];
