@@ -21,6 +21,7 @@
       pipewire
       qemu
       rgp
+      thefuck
       unzip
       wireguard-go
       wireguard-tools
