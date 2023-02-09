@@ -10,6 +10,7 @@
       _1password-gui
       amdvlk
       bolt
+      cups
       dconf
       discord
       element-desktop
