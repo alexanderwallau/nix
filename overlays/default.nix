@@ -12,4 +12,5 @@ self: super: {
   obsidian = self.unstable.obsidian;
   todoist-electron = self.unstable.todoist-electron;
   yubioath-flutter = self.unstable.yubioath-flutter;
+  spotify = self.unstable.spotify;
 }
