@@ -4,7 +4,7 @@
   home.packages =
     with pkgs; [
       # my packages
-      awallau.musescore
+      #awallau.musescore
 
       # packages from nixpkgs
       _1password-gui
@@ -28,6 +28,7 @@
       libreoffice
       libwebcam
       minecraft
+      musescore
       neofetch
       nerdfonts
       networkmanager-openvpn
