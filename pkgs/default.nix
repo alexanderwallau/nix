@@ -1,3 +1,4 @@
 { pkgs ? import <nixpkgs> { } }: {
-  musescore = pkgs.libsForQt5.callPackage ./musescore { };
+  # left for future reference
+ 
 }

@@ -6,9 +6,8 @@ let
 in
 self: super: {
   # use own flake packages as overlay for nixpkgs
-  # Hastily diasabled because dont know the elegant Procedure and what foundation for overrides to leave
-  #awallau.musescore = self.musescore;
 
+ 
   # packages to get from nixpkgs-unstable
   obsidian = self.unstable.obsidian;
   todoist-electron = self.unstable.todoist-electron;
