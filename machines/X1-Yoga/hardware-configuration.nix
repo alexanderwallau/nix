@@ -60,12 +60,24 @@
   swapDevices =
     [{ device = "/dev/disk/by-uuid/20172ba9-67cb-4d35-97bb-466611233f1a"; }];
 
+
+  # I'm unsure if we need this on KDE
+  services.hardware.bolt.enable = true;
+
+  # The names of the video drivers the configuration supports.
+  # They will be tried in order until one that supports your card is found.
+  # I have no idea if this is correct for the planned setup, but it's worth a try
+  services.xserver.videoDrivers = [
+    "radeon"
+    "i810"
+  ];
+
   # enable all the firmware with a license allowing redistribution
   hardware.enableRedistributableFirmware = true;
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-  
+
   # Fingerprint service options
   services.fprintd.enable = true;
   services.fprintd.tod.enable = true;
