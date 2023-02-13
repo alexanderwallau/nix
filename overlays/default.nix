@@ -9,9 +9,11 @@ self: super: {
 
  
   # packages to get from nixpkgs-unstable
-  obsidian = self.unstable.obsidian;
-  todoist-electron = self.unstable.todoist-electron;
-  yubioath-flutter = self.unstable.yubioath-flutter;
-  spotify = self.unstable.spotify;
   musescore = self.unstable.musescore;
+  obsidian = self.unstable.obsidian;
+  spotify = self.unstable.spotify;
+  todoist-electron = self.unstable.todoist-electron;
+  vscode = self.unstable.vscode;
+  yubioath-flutter = self.unstable.yubioath-flutter;
+  
 }
