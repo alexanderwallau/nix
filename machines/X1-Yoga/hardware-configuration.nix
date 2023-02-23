@@ -81,7 +81,21 @@
   # enable all the firmware with a license allowing redistribution
   hardware.enableRedistributableFirmware = true;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  #powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  services.power-profiles-daemon.enable = lib.mkForce false;
+  services.tlp = {
+    enable = true;
+    settings = {
+      CPU_SCALING_GOVERNOR_ON_BAT="powersave";
+      CPU_SCALING_GOVERNOR_ON_AC="performance";
+
+      # 100 being the maximum, limit the speed of my CPU to reduce
+      # heat and increase battery usage:
+      #CPU_MAX_PERF_ON_AC=100;
+      #CPU_MAX_PERF_ON_BAT=60;
+    };
+  };
+
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   # Fingerprint service options
