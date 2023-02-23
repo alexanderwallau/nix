@@ -23,6 +23,19 @@
     # we are using the alexanderwallau-keys flake to get the ssh keys from github
     alexanderwallau-keys.url = "https://github.com/alexanderwallau.keys";
     alexanderwallau-keys.flake = false;
+
+    # adblocking list
+    # input here, so it will get updated by
+    # nix flake --update-input adblockStevenBlack
+    adblockStevenBlack.url = "github:StevenBlack/hosts";
+    adblockStevenBlack.flake = false;
+
+    # adblocking converter for Unbound DNS servers running on NixOS 
+    adblock-unbound.url = "github:MayNiklas/nixos-adblock-unbound";
+    adblock-unbound.inputs.nixpkgs.follows = "nixpkgs";
+    adblock-unbound.inputs.flake-utils.follows = "flake-utils";
+    adblock-unbound.inputs.adblockStevenBlack.follows = "adblockStevenBlack";
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
