@@ -21,6 +21,7 @@
       glances
       gparted
       htop
+      hueadm
       inkscape
       iperf3
       julia
