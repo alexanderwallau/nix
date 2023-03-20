@@ -20,7 +20,6 @@
       gimp
       glances
       gparted
-      htop
       hueadm
       inkscape
       iperf3
@@ -64,6 +63,7 @@
 
   awallau.programs = {
     git.enable = true;
+    htop.enable = true;
     python.enable = false;
     vim.enable = true;
     vscode.enable = true;
@@ -78,6 +78,7 @@
     ../modules/python
     ../modules/vscode
     ../modules/zsh
+    ../modules/htop
   ];
   fonts.fontconfig.enable = true;
   services.gnome-keyring = { enable = true; };
