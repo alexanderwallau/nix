@@ -23,6 +23,8 @@
       hueadm
       inkscape
       iperf3
+      jetbrains.clion
+      jetbrains.pycharm-professional
       julia
       libnfc
       libreoffice

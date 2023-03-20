@@ -9,6 +9,8 @@ self: super: {
 
  
   # packages to get from nixpkgs-unstable
+  jetbrains.clion = self.unstable.jetbrains.clion;
+  jetbrains.pycharm-professional = self.unstable.jetbrains.pycharm.professional;
   musescore = self.unstable.musescore;
   obsidian = self.unstable.obsidian;
   spotify = self.unstable.spotify;
