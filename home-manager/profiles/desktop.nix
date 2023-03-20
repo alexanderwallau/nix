@@ -28,6 +28,7 @@
       libnfc
       libreoffice
       libwebcam
+      llvmPackages_15.libcxxClang
       minecraft
       musescore
       neofetch
