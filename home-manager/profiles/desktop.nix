@@ -28,6 +28,7 @@
       julia
       libnfc
       libreoffice
+      libsForQt514.kio
       libwebcam
       llvmPackages_15.libcxxClang
       minecraft
