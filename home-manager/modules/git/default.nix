@@ -11,7 +11,6 @@ in
       git = {
         enable = true;
         # Gitignore ist long so import that
-        ignores = import ./gitig_global.nix;
         lfs.enable = true;
         extraConfig = { pull.rebase = false; };
         userEmail = "alexander.wallau@gmx.net";
