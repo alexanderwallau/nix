@@ -10,7 +10,9 @@ in
     programs = {
       git = {
         enable = true;
-        ignores = [ "tags" "*.swp" ];
+        # Gitignore ist long so import that
+        ignores = import ./gitig_global.nix;
+        lfs.enable = true;
         extraConfig = { pull.rebase = false; };
         userEmail = "alexander.wallau@gmx.net";
         userName = "alexanderwallau";
@@ -38,7 +40,7 @@ in
           fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f";
           dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
           uncommit = reset - -soft HEAD^;
-          +       };
+          };
           };
           };
           home.packages = [ pkgs.pre-commit ];
