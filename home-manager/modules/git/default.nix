@@ -39,7 +39,7 @@ in
           fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f";
           fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f";
           dm = "!git branch --merged | grep -v '\\*' | xargs -n 1 git branch -d";
-          uncommit = reset - -soft HEAD^;
+          uncommit = reset - -soft HEAD;
           };
           };
           };
