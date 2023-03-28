@@ -20,7 +20,7 @@ in
           #Inspired by https://github.com/jayharris/dotfiles-windows/blob/master/home/.gitconfig
           aliases = "!git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ / | grep -v ^'alias '";
           # View abbreviated SHA, description, and history graph of the latest 20 commits
-          l = log - -pretty = oneline -n 20 --graph --abbrev-commit;
+          l = log - -pretty -oneline -n 20 --graph --abbrev-commit;
           s = status;
           d = !"git diff-index --quiet HEAD -- || clear; git --no-pager diff --patch-with-stat";
           di = !"d() { git diff --patch-with-stat HEAD~$1; }; git diff-index --quiet HEAD -- || clear; d";
