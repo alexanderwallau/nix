@@ -23,14 +23,10 @@
       hueadm
       inkscape
       iperf3
-      jetbrains.clion
-      jetbrains.pycharm-professional
       julia
       libnfc
       libreoffice
-      libsForQt514.kio
       libwebcam
-      llvmPackages_15.libcxxClang
       minecraft
       musescore
       neofetch
