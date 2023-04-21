@@ -51,15 +51,6 @@
       # it can use the sources pinned in flake.lock
       overlays = {
         default = final: prev: (import ./overlays inputs) final prev;
-
-
-        unstable = final: prev: {
-          unstable = import nixpkgs-unstable {
-            system = "x86_64-linux";
-            config.allowUnfree = true;
-          };
-        };
-
       };
 
       packages = forAllSystems (system:
