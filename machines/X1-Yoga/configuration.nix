@@ -49,6 +49,12 @@
       git
     ];
 
+  nixpkgs.config.permittedInsecurePackages = [
+                "electron-21.4.0"
+              ];
+    
+
+
   # Define hostname.
   networking.hostName = "X1-Yoga";
 }
