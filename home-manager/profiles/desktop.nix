@@ -49,7 +49,7 @@
       tdesktop
       texlive.combined.scheme-full
       thunderbird-bin
-      todoist-electron
+#      todoist-electron
       unzip
       vlc
       wireguard-go
