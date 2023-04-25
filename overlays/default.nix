@@ -7,7 +7,7 @@ in
 self: super: {
   # use own flake packages as overlay for nixpkgs
 
- 
+
   # packages to get from nixpkgs-unstable
   #jetbrains.clion = self.unstable.jetbrains.clion;
   jetbrains.pycharm-professional = self.unstable.jetbrains.pycharm-professional;
@@ -17,5 +17,5 @@ self: super: {
   todoist-electron = self.unstable.todoist-electron;
   vscode = self.unstable.vscode;
   yubioath-flutter = self.unstable.yubioath-flutter;
-  
+
 }
