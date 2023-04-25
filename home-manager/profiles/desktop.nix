@@ -49,7 +49,20 @@
       tdesktop
       texlive.combined.scheme-full
       thunderbird-bin
-#      todoist-electron
+      # this overrides the postFixup function of the package to use a newer electron version
+      (todoist-electron.overrideAttrs
+        (finalAttrs: previousAttrs: {
+          postFixup =
+            let
+              pname = previousAttrs.pname;
+            in
+            ''
+              makeWrapper ${pkgs.unstable.electron_22}/bin/electron $out/bin/${pname} \
+                --add-flags $out/share/${pname}/resources/app.asar \
+                --prefix LD_LIBRARY_PATH : "${lib.makeLibraryPath [ stdenv.cc.cc libsecret ]}" \
+                --add-flags "\''${NIXOS_OZONE_WL:+\''${WAYLAND_DISPLAY:+--ozone-platform-hint=auto --enable-features=WaylandWindowDecorations}}"
+            '';
+        }))
       unzip
       vlc
       wireguard-go
