@@ -10,6 +10,7 @@
       _1password-gui
       amdvlk
       bolt
+      cifs-utils
       cups
       dconf
       discord
