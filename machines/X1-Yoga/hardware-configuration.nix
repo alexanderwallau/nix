@@ -18,7 +18,10 @@
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" ];
     initrd.kernelModules = [ "dm-snapshot" ];
     kernelModules = [ "kvm-intel" ];
-    extraModulePackages = [ ];
+    kernelPackages = pkgs.unstable.linuxPackages;
+    extraModulePackages = with config.boot.kernelPackages; [
+      ipu6-drivers
+    ];
     supportedFilesystems = [ "ntfs" ];
 
     loader = {
@@ -85,8 +88,8 @@
   services.tlp = {
     enable = true;
     settings = {
-      CPU_SCALING_GOVERNOR_ON_BAT="powersave";
-      CPU_SCALING_GOVERNOR_ON_AC="performance";
+      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+      CPU_SCALING_GOVERNOR_ON_AC = "performance";
 
       # 100 being the maximum, limit the speed of my CPU to reduce
       # heat and increase battery usage:
