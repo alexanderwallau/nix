@@ -11,10 +11,10 @@ in
       enable = true;
       configFile = {
 
-        nvim_lua_config = {
-          target = "nvim/lua/config";
-          source = ./lua/config;
-        };
+        # nvim_lua_config = {
+        #   target = "nvim/lua/config";
+        #   source = ./lua/config;
+        # };
 
       };
     };
