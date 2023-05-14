@@ -25,7 +25,7 @@ in
           khelpcenter
           # konsole # we should not remove konsole before we have a replacement
           plasma-browser-integration
-          print-manager
+          #print-manager
         ];
       };
     };
