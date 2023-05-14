@@ -24,6 +24,7 @@
       hueadm
       inkscape
       iperf3
+      ipu6ep-camera-bin
       julia
       libnfc
       libreoffice

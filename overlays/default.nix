@@ -9,6 +9,7 @@ self: super: {
 
 
   # packages to get from nixpkgs-unstable
+  ipu6ep-camera-bin = self.unstable.ipu6ep-camera-bin;
   #jetbrains.clion = self.unstable.jetbrains.clion;
   jetbrains.pycharm-professional = self.unstable.jetbrains.pycharm-professional;
   musescore = self.unstable.musescore;
