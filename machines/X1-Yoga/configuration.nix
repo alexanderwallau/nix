@@ -15,7 +15,7 @@
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
     # enables the docker module
-    docker.enable = false;
+    docker.enable = true;
     # enable home-manager profile
     home-manager.enable = true;
     # enable kde & xserver
