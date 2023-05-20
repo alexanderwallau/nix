@@ -12,6 +12,7 @@ self: super: {
   ipu6ep-camera-bin = self.unstable.ipu6ep-camera-bin;
   #jetbrains.clion = self.unstable.jetbrains.clion;
   jetbrains.pycharm-professional = self.unstable.jetbrains.pycharm-professional;
+  logseq = self.unstable.logseq;
   musescore = self.unstable.musescore;
   obsidian = self.unstable.obsidian;
   spotify = self.unstable.spotify;

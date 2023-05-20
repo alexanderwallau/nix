@@ -29,6 +29,8 @@
       libnfc
       libreoffice
       libwebcam
+      # logseq
+      (pkgs.callPackage ../../pkgs/logseq{ })
       minecraft
       musescore
       neofetch
