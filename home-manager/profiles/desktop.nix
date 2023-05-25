@@ -14,6 +14,8 @@
       cups
       dconf
       discord
+      dnsutils
+      dogdns
       element-desktop
       firefox
       fuse3
@@ -21,6 +23,7 @@
       gimp
       glances
       gparted
+      gping
       hueadm
       inkscape
       iperf3
