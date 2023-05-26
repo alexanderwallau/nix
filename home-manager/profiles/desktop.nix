@@ -11,6 +11,7 @@
       amdvlk
       bolt
       cifs-utils
+      cmake
       cups
       dconf
       discord
@@ -28,6 +29,8 @@
       inkscape
       iperf3
       ipu6ep-camera-bin
+      jetbrains.pycharm-professional
+      jetbrains.clion
       julia
       libnfc
       libreoffice
