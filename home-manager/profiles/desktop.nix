@@ -30,7 +30,7 @@
       iperf3
       ipu6ep-camera-bin
       jetbrains.pycharm-professional
-      jetbrains.clion
+      #jetbrains.clion
       julia
       libnfc
       libreoffice
