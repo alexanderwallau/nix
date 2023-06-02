@@ -4,7 +4,7 @@
   inputs = {
     # https://github.com/nixos/nixpkgs
     # nixos repository
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # https://github.com/numtide/flake-utils
@@ -13,7 +13,7 @@
 
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
-    home-manager.url = "github:nix-community/home-manager/release-22.11";
+    home-manager.url = "github:nix-community/home-manager/release-23.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # https://github.com/nixos/nixos-hardware
@@ -40,7 +40,7 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      supportedSystems = [ "x86_64-linux" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     with inputs;
