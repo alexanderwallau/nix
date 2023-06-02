@@ -32,8 +32,6 @@
 
     # adblocking converter for Unbound DNS servers running on NixOS 
     adblock-unbound.url = "github:MayNiklas/nixos-adblock-unbound";
-    adblock-unbound.inputs.nixpkgs.follows = "nixpkgs";
-    adblock-unbound.inputs.flake-utils.follows = "flake-utils";
     adblock-unbound.inputs.adblockStevenBlack.follows = "adblockStevenBlack";
 
   };
