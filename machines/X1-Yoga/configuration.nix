@@ -38,6 +38,8 @@
     bluetooth.enable = true;
     # Sound maybe
     sound.enable = true;
+    # zsh as default shell for all users
+    zsh.enable = true;
   };
 
   # install packages system wide

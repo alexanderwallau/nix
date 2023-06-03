@@ -12,6 +12,7 @@ in
       isNormalUser = true;
       home = "/home/awallau";
       extraGroups = [ "wheel" ];
+      shell = pkgs.zsh;
       openssh.authorizedKeys.keyFiles = [ alexanderwallau-keys ];
     };
     users.extraUsers.awallau.extraGroups = mkIf config.virtualisation.docker.enable [ "docker" ];
