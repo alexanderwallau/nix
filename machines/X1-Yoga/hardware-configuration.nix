@@ -18,7 +18,7 @@
     initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usbhid" ];
     initrd.kernelModules = [ "dm-snapshot" ];
     kernelModules = [ "kvm-intel" ];
-    kernelPackages = pkgs.linuxPackages;
+    kernelPackages = pkgs.unstable.linuxPackages;
     extraModulePackages = with config.boot.kernelPackages; [
       ipu6-drivers
     ];
