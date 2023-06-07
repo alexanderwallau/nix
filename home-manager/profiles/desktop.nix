@@ -18,6 +18,7 @@
       dnsutils
       dogdns
       element-desktop
+      exa
       firefox
       fuse3
       gcc
@@ -62,6 +63,7 @@
       # todoist-electron
       (pkgs.callPackage ../../pkgs/todoist-electron { })
       unzip
+      virtmanager
       vlc
       wireguard-go
       wireguard-tools
