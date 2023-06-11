@@ -79,13 +79,11 @@ nix fmt flake.nix
 ## TODO
 
 - Split desktop module into common and X1-Yoga specific packages
-- Enable Thundebolt subsystem for E-GPU RX 6500T
 - Propperly pair Bluetooth with dual-bootet Win10
 - NFC
 - Wireguard
 - Zsh/nix(neo)vim Dotfiles
 - Command Line Utilities
-- Minio
 - Docker Registry with DNS record
 - Aarch64 Runner for Gitlab
 - Make X220 great again
