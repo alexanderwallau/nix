@@ -15,7 +15,7 @@ in
       shell = pkgs.zsh;
       openssh.authorizedKeys.keyFiles = [ alexanderwallau-keys ];
     };
-    users.extraUsers.awallau.extraGroups = mkIf config.virtualisation.docker.enable [ "docker" ];
+    users.extraUsers.awallau.extraGroups = mkIf config.virtualisation.docker.enable [ "docker" "libvirtd" ];
     nix.settings.allowed-users = [ "awallau" ];
   };
 

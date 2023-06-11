@@ -49,7 +49,10 @@
       fprintd
       wget
       git
+      virt-manager 
     ];
+    # Virtualisation
+    virtualisation.libvirtd.enable = true;
     #Printing 
     services.printing.enable = true;
     services.avahi.enable = true;
