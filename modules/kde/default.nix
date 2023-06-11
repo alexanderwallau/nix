@@ -27,7 +27,7 @@ in
           khelpcenter
           # konsole # we should not remove konsole before we have a replacement
           plasma-browser-integration
-          #print-manager
+          print-manager
     ];
     # see https://nixos.wiki/wiki/KDE#GTK_themes_are_not_applied_in_Wayland_applications
     programs.dconf.enable = true;
