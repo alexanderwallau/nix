@@ -9,7 +9,7 @@ in
   config = mkIf cfg.enable {
 
     # Enable the OpenSSH daemon.
-    services.openssh = {
+    services.openssh.settings = {
       enable = true;
       passwordAuthentication = false;
       startWhenNeeded = true;
