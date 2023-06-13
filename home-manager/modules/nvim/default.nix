@@ -26,6 +26,7 @@ in
       withPython3 = true;
       plugins = with pkgs.vimPlugins; [
         ansible-vim
+        nvchad
         vim-better-whitespace
         vim-nix
       ];
