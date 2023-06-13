@@ -11,11 +11,11 @@ in
     users.users.awallau = {
       isNormalUser = true;
       home = "/home/awallau";
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "libvirtd"];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keyFiles = [ alexanderwallau-keys ];
     };
-    users.extraUsers.awallau.extraGroups = mkIf config.virtualisation.docker.enable [ "docker" "libvirtd" ];
+    users.extraUsers.awallau.extraGroups = mkIf config.virtualisation.docker.enable [ "docker" ];
     nix.settings.allowed-users = [ "awallau" ];
   };
 
