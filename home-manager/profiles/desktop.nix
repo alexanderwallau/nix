@@ -22,7 +22,9 @@
       firefox
       fuse3
       gcc
+      gdu
       gimp
+      gitui
       glances
       gparted
       gping
@@ -54,6 +56,7 @@
       plasma5Packages.plasma-thunderbolt
       protonvpn-gui
       qemu
+      qrencode
       rgp
       signal-desktop
       spotify
@@ -70,6 +73,7 @@
       xournal
       yakuake
       yubioath-flutter
+      zip
       zoom-us
     ];
 
