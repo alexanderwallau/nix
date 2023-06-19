@@ -37,6 +37,7 @@ in
           nvim-web-devicons
           nvterm
           telescope-nvim
+          telescope-media-files-nvim
           which-key-nvim
         ];
         description = ''
