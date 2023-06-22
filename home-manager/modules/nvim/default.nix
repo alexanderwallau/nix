@@ -44,6 +44,7 @@ in
         nixpkgs-fmt
         tree-sitter
         yaml-language-server
+        hologram
       ];
 
       plugins = with pkgs.vimPlugins;[

@@ -36,6 +36,8 @@ in
           nvim-treesitter
           nvim-web-devicons
           nvterm
+          plenary-nvim
+          popup-nvim
           telescope-nvim
           telescope-media-files-nvim
           which-key-nvim
