@@ -6,6 +6,8 @@ let
   my-python-packages = python-packages:
     with python-packages; [
       ipykernel
+      jupyter
+      ipython
       matplotlib
       numpy
       requests

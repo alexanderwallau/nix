@@ -80,7 +80,7 @@
   awallau.programs = {
     git.enable = true;
     htop.enable = true;
-    python.enable = false;
+    python.enable = true;
     vim.enable = true;
     vscode.enable = true;
     zsh.enable = true;
