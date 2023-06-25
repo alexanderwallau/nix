@@ -38,6 +38,7 @@
       libnfc
       libreoffice
       libwebcam
+      libsForQt5.kio-gdrive
       # logseq
       (pkgs.callPackage ../../pkgs/logseq{ })
       minecraft
@@ -51,6 +52,7 @@
       ntfs3g
       obs-studio
       obsidian
+      owncloud-client
       pciutils
       pipewire
       plasma5Packages.plasma-thunderbolt
@@ -98,6 +100,7 @@
   ];
   fonts.fontconfig.enable = true;
   services.gnome-keyring = { enable = true; };
+  
 
   # Include man-pages
   manual.manpages.enable = true;
