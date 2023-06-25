@@ -21,6 +21,7 @@
     kernelPackages = pkgs.unstable.linuxPackages;
     extraModulePackages = with config.boot.kernelPackages; [
       ipu6-drivers
+      #ivsc-driver
     ];
     supportedFilesystems = [ "ntfs" ];
 
@@ -103,6 +104,12 @@
   services.fprintd.enable = true;
   services.fprintd.tod.enable = true;
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
+
+  #Webcam 
+  hardware.ipu6 = {
+    enable = true;
+    platform = "ipu6ep";
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
