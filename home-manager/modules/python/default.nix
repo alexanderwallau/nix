@@ -13,12 +13,12 @@ let
       requests
       scipy
       tensorflow-build
-      tensorboard
+      #tensorboard
       jinja2
 
     ];
 
-  python-with-packages = pkgs.python3.withPackages my-python-packages;
+  python-with-packages = pkgs.python312.withPackages my-python-packages;
 
 in
 {
