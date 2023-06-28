@@ -12,7 +12,7 @@ let
       numpy
       requests
       scipy
-      tensorflow-build
+      #tensorflow-build
       #tensorboard
       jinja2
 
