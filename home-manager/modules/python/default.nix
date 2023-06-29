@@ -18,7 +18,7 @@ let
 
     ];
 
-  python-with-packages = pkgs.python312.withPackages my-python-packages;
+  python-with-packages = pkgs.python311.withPackages my-python-packages;
 
 in
 {
