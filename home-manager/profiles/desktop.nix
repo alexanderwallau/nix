@@ -77,6 +77,7 @@
       yubioath-flutter
       zip
       zoom-us
+      zotero
     ];
 
   awallau.programs = {
