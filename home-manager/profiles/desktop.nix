@@ -39,8 +39,6 @@
       libreoffice
       libwebcam
       libsForQt5.kio-gdrive
-      # logseq
-      (pkgs.callPackage ../../pkgs/logseq{ })
       minecraft
       musescore
       neofetch
