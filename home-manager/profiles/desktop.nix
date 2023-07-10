@@ -28,7 +28,7 @@
       glances
       gparted
       gping
-      hueadm
+      hue-cli
       inkscape
       iperf3
       ipu6ep-camera-bin
