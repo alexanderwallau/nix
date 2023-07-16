@@ -1,6 +1,6 @@
 { stdenv
 , writeShellScriptBin
-
+, nixos-rebuild
 , jq
 , curl
 , ...
@@ -12,6 +12,7 @@ let
         result=$(${curl}/bin/curl -s https://drone.lounge.rocks/api/repos/alexanderwallau/nix/builds | ${jq}/bin/jq -r '.[0].status')
 
         if [ "$result" = "success" ]; then
+            ${nixos-rebuild}/bin/nixos-rebuild --use-remote-sudo switch --flake .
             return 0
 
         elif [ "$result" = "failure" ]; then
