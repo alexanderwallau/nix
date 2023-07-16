@@ -13,6 +13,7 @@ in
       extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
         brettm12345.nixfmt-vscode
+        github.copilot
         ms-python.python
         ms-vscode-remote.remote-ssh
       ];
