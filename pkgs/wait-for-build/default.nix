@@ -23,6 +23,10 @@ let
             echo "🏃 Build still running"
             return 1
 
+        elif [ "$result" = "pending" ]; then
+            echo "🕒 Build pending"
+            return 1
+
         else
             echo "🤷‍♂️ Build status unknown"
             return 0
