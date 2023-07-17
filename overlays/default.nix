@@ -6,6 +6,7 @@ let
 in
 self: super: {
   # use own flake packages as overlay for nixpkgs
+  todoist-electron = super.pkgs.callPackage ../pkgs/todoist-electron { };
   wait-for-build = super.pkgs.callPackage ../pkgs/wait-for-build { };
 
   # packages to get from nixpkgs-unstable
@@ -16,7 +17,6 @@ self: super: {
   musescore = self.unstable.musescore;
   obsidian = self.unstable.obsidian;
   spotify = self.unstable.spotify;
-  todoist-electron = self.unstable.todoist-electron;
   vscode = self.unstable.vscode;
   yubioath-flutter = self.unstable.yubioath-flutter;
 

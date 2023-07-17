@@ -63,8 +63,7 @@
       tdesktop
       texlive.combined.scheme-full
       thunderbird-bin
-      # todoist-electron
-      (pkgs.callPackage ../../pkgs/todoist-electron { })
+      todoist-electron
       unzip
       virtmanager
       vlc
@@ -100,7 +99,7 @@
   ];
   fonts.fontconfig.enable = true;
   services.gnome-keyring = { enable = true; };
-  
+
 
   # Include man-pages
   manual.manpages.enable = true;
