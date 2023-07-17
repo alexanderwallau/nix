@@ -68,7 +68,7 @@
       unzip
       virtmanager
       vlc
-      (pkgs.callPackage ../../pkgs/wait-for-build { })
+      wait-for-build
       wireguard-go
       wireguard-tools
       xournal

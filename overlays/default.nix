@@ -6,7 +6,7 @@ let
 in
 self: super: {
   # use own flake packages as overlay for nixpkgs
-
+  wait-for-build = super.pkgs.callPackage ../pkgs/wait-for-build { };
 
   # packages to get from nixpkgs-unstable
   ipu6ep-camera-bin = self.unstable.ipu6ep-camera-bin;
