@@ -24,7 +24,7 @@
     nix-common.enable = true;
     # set up language and timezone    
     locales.enable = true;
-    #logitsch special functions for MX Master 3S
+    #logitech special functions for MX Master 3S
     logiops.enable = true;
     # DNS server on localhost
     unbound.enable = true;
