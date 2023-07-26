@@ -51,18 +51,18 @@
       fprintd
       wget
       git
-      virt-manager 
+      virt-manager
     ];
-    # Virtualisation
-    virtualisation.libvirtd.enable = true;
-    #Printing 
-    services.printing.enable = true;
-    services.avahi.enable = true;
-    services.avahi.nssmdns = true;
-    # for a WiFi printer
-    services.avahi.openFirewall = true;
-    services.printing.drivers = [ pkgs.hplipWithPlugin ];
-    services.onedrive.enable = true;
+  # Virtualisation
+  virtualisation.libvirtd.enable = true;
+  #Printing 
+  services.printing.enable = true;
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  # for a WiFi printer
+  services.avahi.openFirewall = true;
+  services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  services.onedrive.enable = true;
 
   # Define hostname.
   networking.hostName = "X1-Yoga";

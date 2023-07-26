@@ -58,15 +58,15 @@ in
 
       shellAliases = rec {
 
-      ls = "${pkgs.exa}/bin/exa --group-directories-first --icons --color-scale";
-      l = "${ls} -lbF --git --icons";
-      ll = "${l} -G";
-      la =
-        "${ls} -lbhHigmuSa@ --time-style=long-iso --git --color-scale --icons";
-      lt = "${ls} --tree --level=2 --icons";
+        ls = "${pkgs.exa}/bin/exa --group-directories-first --icons --color-scale";
+        l = "${ls} -lbF --git --icons";
+        ll = "${l} -G";
+        la =
+          "${ls} -lbhHigmuSa@ --time-style=long-iso --git --color-scale --icons";
+        lt = "${ls} --tree --level=2 --icons";
 
-      # Git
-      gs = "${pkgs.git}/bin/git status";
+        # Git
+        gs = "${pkgs.git}/bin/git status";
 
         # nix
 

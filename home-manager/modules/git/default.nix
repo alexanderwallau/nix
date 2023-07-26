@@ -15,10 +15,10 @@ in
         extraConfig = { pull.rebase = false; };
         userEmail = "alexander.wallau@gmx.net";
         userName = "alexanderwallau";
-        
-          };
-          };
-          home.packages = [ pkgs.pre-commit ];
 
-        };
-      }
+      };
+    };
+    home.packages = [ pkgs.pre-commit ];
+
+  };
+}

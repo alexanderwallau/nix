@@ -11,7 +11,7 @@ in
     users.users.awallau = {
       isNormalUser = true;
       home = "/home/awallau";
-      extraGroups = [ "wheel" "libvirtd"];
+      extraGroups = [ "wheel" "libvirtd" ];
       shell = pkgs.zsh;
       openssh.authorizedKeys.keyFiles = [ alexanderwallau-keys ];
     };
