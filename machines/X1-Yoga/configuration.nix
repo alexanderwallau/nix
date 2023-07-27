@@ -25,7 +25,8 @@
     # set up language and timezone    
     locales.enable = true;
     #logitech special functions for MX Master 3S
-    logiops.enable = true;
+    #surrently broken
+    #logiops.enable = true;
     # DNS server on localhost
     unbound.enable = true;
     # set up ssh server
