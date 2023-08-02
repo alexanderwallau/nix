@@ -5,6 +5,9 @@
             "machines": [
                 {
                     "name": "X1-Yoga"
+                },
+                {
+                    "name": "Netcup-x86"
                 }
             ]
         }
