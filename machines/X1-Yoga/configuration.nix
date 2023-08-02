@@ -63,8 +63,10 @@
   # for a WiFi printer
   services.avahi.openFirewall = true;
   services.printing.drivers = [ pkgs.hplipWithPlugin ];
+  # Onedrive
   services.onedrive.enable = true;
-
+  # Steam
+  programs.steam.enable = true;
   # Define hostname.
   networking.hostName = "X1-Yoga";
 }
