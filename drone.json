@@ -10,6 +10,14 @@
                     "name": "Netcup-x86"
                 }
             ]
+        },
+        {
+            "arch": "arm64",
+            "machines": [
+                {
+                    "name": "phelps"
+                }
+            ]
         }
     ],
     "packages": []

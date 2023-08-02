@@ -11,7 +11,6 @@ clone:
   depth: 1
 
 steps:
-
   - name: show flake show
     commands:
       - nix flake show
@@ -37,38 +36,62 @@ clone:
   depth: 1
 
 steps:
+  - name: build X1-Yoga
+    commands:
+      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
+      - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
 
-- name: build X1-Yoga
-  commands:
-  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --out-link result-X1-Yoga
-  - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
+  - name: Push X1-Yoga to cachix
+    commands:
+      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
+    environment:
+      CACHIX_AUTH_TOKEN:
+        from_secret: CACHIX_AUTH_TOKEN
 
-- name: Push X1-Yoga to cachix
-  commands:
-  - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
-  environment:
-    CACHIX_AUTH_TOKEN:
-      from_secret: CACHIX_AUTH_TOKEN
+  - name: build Netcup-x86
+    commands:
+      - nix build '.#nixosConfigurations.Netcup-x86.config.system.build.toplevel' --out-link result-Netcup-x86
+      - nix path-info --closure-size -h $(readlink -f result-Netcup-x86)
 
-- name: build Netcup-x86
-  commands:
-  - nix build '.#nixosConfigurations.Netcup-x86.config.system.build.toplevel' --out-link result-Netcup-x86
-  - nix path-info --closure-size -h $(readlink -f result-Netcup-x86)
-
-- name: Push Netcup-x86 to cachix
-  commands:
-  - nix build '.#nixosConfigurations.Netcup-x86.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
-  environment:
-    CACHIX_AUTH_TOKEN:
-      from_secret: CACHIX_AUTH_TOKEN
+  - name: Push Netcup-x86 to cachix
+    commands:
+      - nix build '.#nixosConfigurations.Netcup-x86.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
+    environment:
+      CACHIX_AUTH_TOKEN:
+        from_secret: CACHIX_AUTH_TOKEN
 
 trigger:
   branch:
-  - main
+    - main
   event:
-  - cron
-  - push
-  - pull_request
+    - cron
+    - push
+    - pull_request
+
+---
+kind: pipeline
+type: exec
+name: build arm64 hosts
+
+platform:
+  os: linux
+  arch: arm64
+
+clone:
+  depth: 1
+
+steps:
+  - name: build phelps
+    commands:
+      - nix build '.#nixosConfigurations.phelps.config.system.build.toplevel' --out-link result-phelps
+      - nix path-info --closure-size -h $(readlink -f result-phelps)
+
+  - name: Push phelps to cachix
+    commands:
+      - nix build '.#nixosConfigurations.phelps.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
+    environment:
+      CACHIX_AUTH_TOKEN:
+        from_secret: CACHIX_AUTH_TOKEN
 
 ---
 kind: pipeline
