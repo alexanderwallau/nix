@@ -7,75 +7,26 @@
       #awallau.musescore
 
       # packages from nixpkgs
-      _1password-gui
-      amdvlk
-      bolt
       cifs-utils
       cmake
       cups
       dconf
-      discord
       dnsutils
       dogdns
-      element-desktop
       exa
-      firefox
       fuse3
       gcc
       gdu
-      gimp
       gitui
       glances
-      gparted
       gping
-      hue-cli
-      inkscape
-      iperf3
-      ipu6ep-camera-bin
-      jetbrains.pycharm-professional
-      #jetbrains.clion
       julia
-      libnfc
-      libreoffice
-      libwebcam
-      libsForQt5.kio-gdrive
-      minecraft
-      musescore
       neofetch
-      nerdfonts
-      networkmanager-openvpn
-      nextcloud-client
       nixpkgs-fmt
       nmap
-      ntfs3g
-      obs-studio
-      obsidian
-      owncloud-client
-      pciutils
-      pipewire
-      plasma5Packages.plasma-thunderbolt
-      protonvpn-gui
-      qemu
-      qrencode
       rgp
-      signal-desktop
-      spotify
-      tdesktop
-      texlive.combined.scheme-full
-      thunderbird-bin
-      todoist-electron
       unzip
-      virtmanager
-      vlc
-      wait-for-build
-      wireguard-go
-      wireguard-tools
-      xournal
-      yakuake
-      yubioath-flutter
       zip
-      zoom-us
-      zotero
     ];
 
   awallau.programs = {
@@ -83,7 +34,6 @@
     htop.enable = true;
     python.enable = true;
     vim.enable = true;
-    vscode.enable = true;
     zsh.enable = true;
 
   };
@@ -93,7 +43,6 @@
     ../modules/git
     ../modules/nvim
     ../modules/python
-    ../modules/vscode
     ../modules/zsh
     ../modules/htop
   ];
