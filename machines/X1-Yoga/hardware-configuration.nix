@@ -20,8 +20,8 @@
     kernelModules = [ "kvm-intel" ];
     #kernelPackages = pkgs.unstable.linuxPackages;
     extraModulePackages = with config.boot.kernelPackages; [
-      ipu6-drivers
-      #ivsc-driver
+      # intel-speed-select
+      ivsc-driver
     ];
     supportedFilesystems = [ "ntfs" ];
 
@@ -106,10 +106,10 @@
   services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
 
   #Webcam 
-  hardware.ipu6 = {
-    enable = true;
-    platform = "ipu6ep";
-  };
+#  hardware.ipu6 = {
+#    enable = true;
+#    platform = "ipu6ep";
+#  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
