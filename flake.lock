@@ -104,6 +104,29 @@
         "type": "github"
       }
     },
+    "lollypops": {
+      "inputs": {
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1689152190,
+        "narHash": "sha256-7pBmXpKMBztnS11r9Lrlq7ZdmMcYMZEgkoy4UIf4nPI=",
+        "owner": "pinpox",
+        "repo": "lollypops",
+        "rev": "ba0705508b215f4ba9cc2e6b7b9f956eefde13d3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pinpox",
+        "repo": "lollypops",
+        "type": "github"
+      }
+    },
     "nixos-hardware": {
       "locked": {
         "lastModified": 1690704397,
@@ -170,6 +193,7 @@
         "alexanderwallau-keys": "alexanderwallau-keys",
         "flake-utils": "flake-utils_2",
         "home-manager": "home-manager",
+        "lollypops": "lollypops",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-unstable": "nixpkgs-unstable"

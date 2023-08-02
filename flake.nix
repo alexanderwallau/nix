@@ -20,6 +20,13 @@
     # hardware specific configuration for NixOS
     nixos-hardware.url = "github:nixos/nixos-hardware";
 
+    # lollypops deployment tool
+    # https://github.com/pinpox/lollypops
+    lollypops.url = "github:pinpox/lollypops";
+    lollypops.inputs.flake-utils.follows = "flake-utils";
+    lollypops.inputs.nixpkgs.follows = "nixpkgs";
+
+
     # we are using the alexanderwallau-keys flake to get the ssh keys from github
     alexanderwallau-keys.url = "https://github.com/alexanderwallau.keys";
     alexanderwallau-keys.flake = false;
@@ -101,6 +108,7 @@
             modules = [
               (./machines + "/${x}/configuration.nix")
               # import our own modules to all hosts
+              lollypops.nixosModules.lollypops
               { imports = builtins.attrValues self.nixosModules; }
             ];
           };
@@ -148,6 +156,20 @@
 
         # Use nixpkgs-fmt for `nix fmt'
         formatter = pkgs.nixpkgs-fmt;
+
+        apps = {
+          # lollypops deployment tool
+          # https://github.com/pinpox/lollypops
+          #
+          # nix run '.#lollypops' -- --list-all
+          # nix run '.#lollypops' -- phelps
+          # nix run '.#lollypops' -- phelps X1-Yoga
+          # nix run '.#lollypops' -- phelps X1-Yoga -p
+          default = self.apps.${pkgs.system}.lollypops;
+          lollypops = lollypops.apps.${pkgs.system}.default {
+            configFlake = self;
+          };
+        };
 
       });
 }
