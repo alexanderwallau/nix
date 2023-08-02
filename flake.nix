@@ -106,6 +106,29 @@
           };
         })
         (builtins.attrNames (builtins.readDir ./machines)));
+
+      # nix build '.#netcup-x86-image'
+      netcup-x86-image =
+        let
+          system = "x86_64-linux";
+        in
+        import "${nixpkgs}/nixos/lib/make-disk-image.nix"
+          {
+            pkgs = nixpkgs.legacyPackages."${system}";
+            lib = nixpkgs.lib;
+
+            config = (nixpkgs.lib.nixosSystem {
+              inherit system;
+              specialArgs = { flake-self = self; } // inputs;
+              modules = [
+                ./machines/Netcup-x86/configuration.nix
+                { imports = builtins.attrValues self.nixosModules; }
+              ];
+            }).config;
+            format = "qcow2";
+            name = "base-image";
+          };
+
     }
 
     //
