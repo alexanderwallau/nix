@@ -9,11 +9,13 @@ in
   config = mkIf cfg.enable {
 
     # Enable the OpenSSH daemon.
-    services.openssh.settings = {
+    services.openssh = {
       enable = true;
-      passwordAuthentication = false;
       startWhenNeeded = true;
-      kbdInteractiveAuthentication = false;
+      settings = {
+        PasswordAuthentication = false;
+        KbdInteractiveAuthentication = false;
+      };
     };
 
   };
