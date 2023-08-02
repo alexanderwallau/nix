@@ -9,7 +9,6 @@
       # packages from nixpkgs
       cifs-utils
       cmake
-      cups
       dconf
       dnsutils
       dogdns
@@ -20,7 +19,6 @@
       gitui
       glances
       gping
-      julia
       neofetch
       nixpkgs-fmt
       nmap
@@ -31,7 +29,6 @@
   awallau.programs = {
     git.enable = true;
     htop.enable = true;
-    python.enable = true;
     vim.enable = true;
     zsh.enable = true;
 
@@ -41,12 +38,10 @@
   imports = [
     ../modules/git
     ../modules/nvim
-    ../modules/python
     ../modules/zsh
     ../modules/htop
   ];
-  fonts.fontconfig.enable = true;
-  services.gnome-keyring = { enable = true; };
+
 
 
   # Include man-pages
