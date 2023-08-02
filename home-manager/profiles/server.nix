@@ -24,7 +24,6 @@
       neofetch
       nixpkgs-fmt
       nmap
-      rgp
       unzip
       zip
     ];
