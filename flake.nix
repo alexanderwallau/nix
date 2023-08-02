@@ -96,7 +96,7 @@
             # allows to only pass what is needed to each module.
             specialArgs = { flake-self = self; } // inputs;
 
-            system = import "./machines" + "/${x}/arch.nix";
+            system = import ./machines/${x}/arch.nix;
 
             modules = [
               (./machines + "/${x}/configuration.nix")
