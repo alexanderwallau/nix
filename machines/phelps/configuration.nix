@@ -14,6 +14,7 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
+    docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up general nix stuff
