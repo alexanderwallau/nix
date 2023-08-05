@@ -68,6 +68,8 @@
 
   # Steam
   programs.steam = { enable = true; };
+  #build arm64 packages
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Define hostname.
   networking.hostName = "X1-Yoga";
