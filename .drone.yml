@@ -93,6 +93,18 @@ steps:
       CACHIX_AUTH_TOKEN:
         from_secret: CACHIX_AUTH_TOKEN
 
+
+  - name: build kipchoge
+    commands:
+      - nix build '.#nixosConfigurations.kipchoge.config.system.build.toplevel' --out-link result-kipchoge
+      - nix path-info --closure-size -h $(readlink -f result-kipchoge)
+
+  - name: Push kipchoge to cachix
+    commands:
+      - nix build '.#nixosConfigurations.kipchoge.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
+    environment:
+      CACHIX_AUTH_TOKEN:
+        from_secret: CACHIX_AUTH_TOKEN
 ---
 kind: pipeline
 type: exec
