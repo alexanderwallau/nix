@@ -57,6 +57,7 @@
       protonvpn-gui
       qemu
       qrencode
+      restic
       rgp
       signal-desktop
       spotify
