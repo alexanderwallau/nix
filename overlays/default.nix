@@ -10,7 +10,7 @@ self: super: {
   wait-for-build = super.pkgs.callPackage ../pkgs/wait-for-build { };
 
   # packages to get from nixpkgs-unstable
-  element-desktop = self.unstable.element-desktop;
+  #element-desktop = self.unstable.element-desktop;
   ipu6ep-camera-bin = self.unstable.ipu6ep-camera-bin;
   jetbrains.clion = self.unstable.jetbrains.clion;
   jetbrains.pycharm-professional = self.unstable.jetbrains.pycharm-professional;
