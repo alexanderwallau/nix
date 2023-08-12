@@ -14,7 +14,7 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
-    docker.enable = true;
+    docker.enable = false;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up general nix stuff
@@ -24,7 +24,7 @@
     # minio for s3
     minio = {
       enable = true;
-      domain = "s3.alxanderwallau.de";
+      domain = "s3.alexanderwallau.de";
     };
     # set up ssh server
     openssh.enable = true;
