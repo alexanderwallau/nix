@@ -84,6 +84,9 @@ in
         performance = "echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
         powersave = "echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
 
+        # Ultra easy single core bench
+        qbench = "${pkgs.util-linux}/bin/factor 82364768726407498326494787264827418648729874012787126398621046198639874623984721986439";
+
 
       };
     };
