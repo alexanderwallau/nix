@@ -58,12 +58,14 @@ in
       };
     };
 
+
     services.nginx = {
       enable = true;
       recommendedOptimisation = true;
       recommendedTlsSettings = true;
       clientMaxBodySize = "128m";
       recommendedProxySettings = true;
+
 
       commonHttpConfig = ''
         server_names_hash_bucket_size 128;
@@ -77,6 +79,7 @@ in
         "${cfg.domain}" = {
           addSSL = true;
           enableACME = true;
+
           extraConfig = ''
             # To allow special characters in headers
             ignore_invalid_headers off;
@@ -108,6 +111,7 @@ in
         "minio.${cfg.domain}" = {
           addSSL = true;
           enableACME = true;
+
           extraConfig = ''
             # To allow special characters in headers
             ignore_invalid_headers off;

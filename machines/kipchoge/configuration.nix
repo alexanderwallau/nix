@@ -21,6 +21,11 @@
     nix-common.enable = true;
     # set up language and timezone    
     locales.enable = true;
+    # minio for s3
+    minio = {
+      enable = true;
+      domain = "s3.alxanderwallau.de";
+    };
     # set up ssh server
     openssh.enable = true;
     # enables users which got moved into a seperate file
@@ -40,6 +45,11 @@
       git
     ];
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
+
+  security.acme.acceptTerms = true;
+  security.acme.defaults.email = "mail@alexanderwallau.de";
+  # Need TCP Ports 80 & 443 open for minio
+  networking = { firewall = { allowedTCPPorts = [ 443 80 ]; }; };
   networking.hostName = "kipchoge";
 }
 
