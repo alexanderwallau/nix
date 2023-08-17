@@ -115,8 +115,8 @@
         })
         (builtins.attrNames (builtins.readDir ./machines)));
 
-      # nix build '.#netcup-x86-image'
-      netcup-x86-image =
+      # nix build '.#mayer'
+      mayer =
         let
           system = "x86_64-linux";
         in
@@ -165,6 +165,7 @@
           # nix run '.#lollypops' -- phelps
           # nix run '.#lollypops' -- phelps X1-Yoga
           # nix run '.#lollypops' -- phelps X1-Yoga -p
+          # nix run '.#mayer' -- phelps X1-Yoga -p 
           default = self.apps.${pkgs.system}.lollypops;
           lollypops = lollypops.apps.${pkgs.system}.default {
             configFlake = self;
