@@ -39,6 +39,6 @@
       git
     ];
 
-  networking.hostName = "Netcup-x86";
+  networking.hostName = "mayer;
 }
 
