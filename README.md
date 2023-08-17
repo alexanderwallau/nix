@@ -78,7 +78,6 @@ nix fmt flake.nix
 
 ## TODO
 
-- Split desktop module into common and X1-Yoga specific packages
 - Propperly pair Bluetooth with dual-bootet Win10
 - NFC
 - Wireguard
