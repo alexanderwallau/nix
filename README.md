@@ -81,7 +81,7 @@ nix fmt flake.nix
 - Propperly pair Bluetooth with dual-bootet Win10
 - NFC
 - Wireguard
-- Zsh/nix(neo)vim Dotfiles
+- Zsh Dotfiles
 - Command Line Utilities
 - Docker Registry with DNS record
 - Aarch64 Runner for Gitlab
