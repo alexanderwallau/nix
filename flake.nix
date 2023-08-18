@@ -129,7 +129,7 @@
               inherit system;
               specialArgs = { flake-self = self; } // inputs;
               modules = [
-                ./machines/Netcup-x86/configuration.nix
+                ./machines/mayer/configuration.nix
                 { imports = builtins.attrValues self.nixosModules; }
               ];
             }).config;
@@ -165,7 +165,7 @@
           # nix run '.#lollypops' -- phelps
           # nix run '.#lollypops' -- phelps X1-Yoga
           # nix run '.#lollypops' -- phelps X1-Yoga -p
-          # nix run '.#mayer' -- phelps X1-Yoga -p 
+          # nix run '.#lollypops' -- mayer X1-Yoga -p 
           default = self.apps.${pkgs.system}.lollypops;
           lollypops = lollypops.apps.${pkgs.system}.default {
             configFlake = self;

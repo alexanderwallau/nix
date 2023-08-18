@@ -39,6 +39,6 @@
       git
     ];
 
-  networking.hostName = "mayer;
+  networking.hostName = "mayer";
 }
 
