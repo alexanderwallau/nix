@@ -29,11 +29,11 @@ in
         # get github url of current repository
         gh() {
           echo $(${pkgs.git}/bin/git config --get remote.origin.url | sed -e 's/\(.*\)git@\(.*\):[0-9\/]*/https:\/\/\2\//g')
-
+        }
         ipinfo() {
           nix-shell -p ipfetch --run "ipfetch && exit"
         }
-        }
+        
       '';
 
       history = {
@@ -85,7 +85,7 @@ in
         powersave = "echo powersave | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
 
         # Ultra easy single core bench
-        qbench = "${pkgs.util-linux}/bin/factor 82364768726407498326494787264827418648729874012787126398621046198639874623984721986439";
+        qbench = "factor 82364768726407498326494787264827418648729874012787126398621046198639874623984721986439";
 
 
       };
