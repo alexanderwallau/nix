@@ -31,6 +31,7 @@
     htop.enable = true;
     vim.enable = true;
     zsh.enable = true;
+    python.enable = true;
 
   };
 
