@@ -41,6 +41,7 @@
     ../modules/nvim
     ../modules/zsh
     ../modules/htop
+    ../modules/python
   ];
 
 
