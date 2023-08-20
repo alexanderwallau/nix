@@ -160,12 +160,12 @@
         apps = {
           # lollypops deployment tool
           # https://github.com/pinpox/lollypops
-          #
+          #flake.nix
           # nix run '.#lollypops' -- --list-all
           # nix run '.#lollypops' -- phelps
           # nix run '.#lollypops' -- phelps X1-Yoga
           # nix run '.#lollypops' -- phelps X1-Yoga -p
-          # nix run '.#lollypops' -- mayer X1-Yoga -p 
+          # nix run '.#lollypops' -- mayerX1-Yoga -p 
           default = self.apps.${pkgs.system}.lollypops;
           lollypops = lollypops.apps.${pkgs.system}.default {
             configFlake = self;
