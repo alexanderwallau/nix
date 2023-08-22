@@ -50,12 +50,12 @@ steps:
 
   - name: build mayer
     commands:
-      - nix build '.#nixosConfigurations.mayer.config.system.build.toplevel' --out-link result-Netcup-x86
-      - nix path-info --closure-size -h $(readlink -f result-Netcup-x86)
+      - nix build '.#nixosConfigurations.mayer.config.system.build.toplevel' --out-link result-mayer
+      - nix path-info --closure-size -h $(readlink -f result-mayer)
 
-  - name: Push Netcup-x86 to cachix
+  - name: Push mayer to cachix
     commands:
-      - nix build '.#nixosConfigurations.Netcup-x86.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
+      - nix build '.#nixosConfigurations.mayer.config.system.build.toplevel' --json | jq -r '.[].outputs | to_entries[].value' | cachix push alexanderwallau
     environment:
       CACHIX_AUTH_TOKEN:
         from_secret: CACHIX_AUTH_TOKEN
