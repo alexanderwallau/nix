@@ -28,6 +28,7 @@
       glances
       gparted
       gping
+      hcloud
       hue-cli
       inkscape
       iperf3
