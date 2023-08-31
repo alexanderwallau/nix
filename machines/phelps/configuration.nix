@@ -39,6 +39,8 @@
       wget
       git
     ];
+  
+  networking = { firewall = { allowedTCPPorts = [ 443 80 ]; }; };
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
   networking.hostName = "phelps";
 }
