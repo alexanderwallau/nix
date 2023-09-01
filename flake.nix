@@ -157,6 +157,10 @@
         # Use nixpkgs-fmt for `nix fmt'
         formatter = pkgs.nixpkgs-fmt;
 
+        packages = {
+          woodpecker-pipeline = pkgs.callPackage ./pkgs/woodpecker-pipeline { inputs = inputs; flake-self = self; };
+        };
+
         apps = {
           # lollypops deployment tool
           # https://github.com/pinpox/lollypops
