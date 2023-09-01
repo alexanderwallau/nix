@@ -14,6 +14,8 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
+    #enable gitea
+    gitea.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up general nix stuff
@@ -38,7 +40,7 @@
       wget
       git
     ];
-
+      networking = {firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; }; };
   networking.hostName = "mayer";
 }
 
