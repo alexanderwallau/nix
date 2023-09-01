@@ -15,7 +15,7 @@ in
  
    services.gitea = {
     enable = true;
-    appName = "A personal git server";
+    appName = "Git";
     database.user = "git";
     # dump.enable = true;
     # dump.interval = "weekly";
@@ -105,6 +105,10 @@ in
 
   };
    services.nginx = {
+     enable = true;
+      recommendedOptimisation = true;
+      recommendedTlsSettings = true;
+      recommendedProxySettings = true;
     virtualHosts = {
       "git.alexanderwallau.de" = {
         forceSSL = true;
