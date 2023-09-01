@@ -1,4 +1,4 @@
-[![Build Status](https://drone.lounge.rocks/api/badges/alexanderwallau/nix/status.svg)](https://drone.lounge.rocks/alexanderwallau/nix)
+[![Build Status](https://build.lounge.rocks/api/badges/18/status.svg)](https://build.lounge.rocks/repos/18)
 
 # nix
 
@@ -83,6 +83,5 @@ nix fmt flake.nix
 - Wireguard
 - Zsh Dotfiles
 - Command Line Utilities
-- Docker Registry with DNS record
 - Aarch64 Runner for Gitlab
 - Make X220 great again
