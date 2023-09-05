@@ -26,7 +26,7 @@ in
       settings = {
         # use custom binary cache
         trusted-public-keys = mkIf (cfg.disable-cache != true) [
-          "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY="
+          "nix-cache:4FILs79Adxn/798F8qk2PC1U8HaTlaPqptwNJrXNA1g="
           "alexanderwallau.cachix.org-1:vi7QC6uUBbRi69tJmp/Ylta1f3BliiW2ABV89EFRiX0="
           "mayniklas.cachix.org-1:gti3flcBaUNMoDN2nWCOPzCi2P68B5JbA/4jhUqHAFU="
         ];
@@ -34,7 +34,7 @@ in
           "https://cache.nixos.org"
           "https://alexanderwallau.cachix.org?priority=75"
           "https://mayniklas.cachix.org?priority=75"
-          "https://cache.lounge.rocks?priority=100"
+          "https://cache.lounge.rocks/nix-cache?priority=100"
         ];
         trusted-substituters = mkIf (cfg.disable-cache != true) [
           "https://cache.nixos.org"
@@ -44,11 +44,11 @@ in
         auto-optimise-store = true;
       };
 
-      # Clean up old generations after 30 days
+      # Clean up old generations after 14 days
       gc = {
         automatic = true;
         dates = "weekly";
-        options = "--delete-older-than 30d";
+        options = "--delete-older-than 14d";
       };
 
       extraOptions = ''
