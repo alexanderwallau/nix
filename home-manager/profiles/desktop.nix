@@ -8,7 +8,6 @@
 
       # packages from nixpkgs
       _1password-gui
-      amdvlk
       bolt
       cifs-utils
       cmake
@@ -51,6 +50,7 @@
       obs-studio
       obsidian
       owncloud-client
+      p7zip
       pciutils
       pipewire
       plasma5Packages.plasma-thunderbolt
@@ -58,7 +58,6 @@
       qemu
       qrencode
       restic
-      rgp
       signal-desktop
       spotify
       tdesktop
@@ -75,7 +74,6 @@
       yakuake
       yubioath-flutter
       zip
-      zoom-us
       zotero
     ];
 
