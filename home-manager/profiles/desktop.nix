@@ -43,7 +43,6 @@
       minecraft
       musescore
       neofetch
-      nerdfonts
       networkmanager-openvpn
       nextcloud-client
       nixpkgs-fmt
