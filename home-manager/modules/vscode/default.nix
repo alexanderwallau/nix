@@ -10,10 +10,23 @@ in
     programs.vscode = {
       enable = true;
       package = pkgs.vscode;
+      userSettings = {
+        "nix" = {
+          "enableLanguageServer" = true;
+          "serverPath" = "${pkgs.nil}/bin/nil";
+          "serverSettings" = {
+            "nil" = {
+              "formatting" = {
+                "command" = [ "${pkgs.nixpkgs-fmt}/bin/nixpkgs-fmt" ];
+              };
+            };
+          };
+        };
+      };
+
       extensions = with pkgs.vscode-extensions; [
-        bbenoist.nix
-        brettm12345.nixfmt-vscode
         github.copilot
+        jnoortheen.nix-ide
         ms-python.python
         ms-vscode-remote.remote-ssh
       ];
