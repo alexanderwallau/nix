@@ -40,9 +40,9 @@
       wget
       git
     ];
-      security.acme.acceptTerms = true;
+  security.acme.acceptTerms = true;
   security.acme.defaults.email = "mail@alexanderwallau.de";
-      networking = {firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; }; };
+  networking = { firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; }; };
   networking.hostName = "mayer";
 }
 

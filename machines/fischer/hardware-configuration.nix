@@ -5,10 +5,11 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
-  boot ={
-     loader = {
+  boot = {
+    loader = {
       # install GRUB
       grub = {
         enable = true;
@@ -35,18 +36,19 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/cf97a08d-71d9-4eef-840f-e211fef07178";
+    {
+      device = "/dev/disk/by-uuid/cf97a08d-71d9-4eef-840f-e211fef07178";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
-    { device = "/dev/disk/by-uuid/1647-4A0C";
+    {
+      device = "/dev/disk/by-uuid/1647-4A0C";
       fsType = "vfat";
     };
 
   swapDevices =
-    [ { device = "/dev/disk/by-uuid/92c5541a-07f8-4ccd-bd0a-a6f11bf84e9b"; }
-    ];
+    [{ device = "/dev/disk/by-uuid/92c5541a-07f8-4ccd-bd0a-a6f11bf84e9b"; }];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
