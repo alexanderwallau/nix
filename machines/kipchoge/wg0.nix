@@ -20,15 +20,20 @@
       '';
 
       peers = [
+        # Thinkpad
+        {
+          publicKey = "Y6v8C//JacOi/EVb80JBtJ7Bv+6viDnfpnS0hmAHUDo=";
+          allowedIPs = [ "192.168.69.100/32" ];
+        }
         # iPhone
         {
           publicKey = "gzpPYd8REjXsTPRIHs3MF/OJV2nl4YU1p5E0UaDwKCU=";
-          allowedIPs = [ "192.168.69.100/32" ];
+          allowedIPs = [ "192.168.69.101/32" ];
         }
         # Nik
         {
           publicKey = "+qt2l/mWieG/oJ8GNUpH6pIbCzKaDGOAIgkAn0mi01Y=";
-          allowedIPs = [ "192.168.69.101/32" ];
+          allowedIPs = [ "192.168.69.102/32" ];
         }
       ];
 
