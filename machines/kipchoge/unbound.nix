@@ -9,6 +9,9 @@ let
     "nas.wallau" = "192.168.178.5";
     "status.alexanderwallau.de" = "192.168.69.1";
     "x1-yoga" = "192.168.69.100";
+
+    "kipchoge.aw" = "192.168.69.1";
+    "x1-yoga.aw" = "192.168.69.100";
   };
 
   dns-overwrites-config = builtins.toFile "dns-overwrites.conf" (''
