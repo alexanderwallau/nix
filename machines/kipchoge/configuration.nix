@@ -33,6 +33,14 @@
       enable = true;
       domain = "s3.alexanderwallau.de";
     };
+    monitoring = {
+      grafana = {
+        enable = true;
+        nginx = true;
+      };
+      prometheus.enable = true;
+    };
+    nginx.enable = true;
     # set up ssh server
     openssh.enable = true;
     # enables users which got moved into a seperate file
@@ -53,11 +61,6 @@
       git
     ];
   networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
-
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "mail@alexanderwallau.de";
-  # Need TCP Ports 80 & 443 open for minio
-  networking = { firewall = { allowedTCPPorts = [ 443 80 ]; }; };
   networking.hostName = "kipchoge";
 }
 

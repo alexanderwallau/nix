@@ -24,6 +24,7 @@ in
         "pass.telekom.de" = "109.237.176.33";
         "fritz.box" = "192.168.178.1";
         "nas.wallau" = "192.168.178.5";
+        "status.alexanderwallau.de" = "192.168.69.1";
       };
       description = ''
         Custom DNS A records
