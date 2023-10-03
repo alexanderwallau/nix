@@ -21,6 +21,7 @@
     home-manager.enable = true;
     # enable kde & xserver
     kde.enable = true;
+    metrics = { node = { enable = true; flake = true; }; };
     # set up general nix stuff
     nix-common.enable = true;
     # set up language and timezone    

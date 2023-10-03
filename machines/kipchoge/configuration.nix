@@ -33,6 +33,17 @@
       enable = true;
       domain = "s3.alexanderwallau.de";
     };
+    metrics = {
+      node = {
+        enable = true;
+        flake = true;
+        configure-prometheus = true;
+        targets = [
+          "192.168.69.1:9100"
+          "192.168.69.100:9100"
+        ];
+      };
+    };
     monitoring = {
       grafana = {
         enable = true;
