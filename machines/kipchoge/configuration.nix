@@ -49,6 +49,18 @@
           "192.168.178.4:9100"
         ];
       };
+      blackbox = {
+        enable = true;
+        configure-prometheus = true;
+        blackboxPingTargets = [
+          "192.168.178.1"
+        ];
+        targets = [
+          "https://cache.lounge.rocks/nix-cache/nix-cache-info"
+          "https://build.lounge.rocks"
+          "https://git.alexanderwallau.de"
+        ];
+      };
     };
     monitoring = {
       grafana = {

@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./exporter/blackbox.nix
     ./exporter/node.nix
 
     ./grafana.nix
