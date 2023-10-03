@@ -49,6 +49,8 @@ in
 
       plugins = with pkgs.vimPlugins;[
         ansible-vim
+        mason-nvim
+        mason-lspconfig-nvim
         vim-better-whitespace
         vim-nix
       ] ++ lib.optionals (config.programs.neovim.nvchad.enable) [
