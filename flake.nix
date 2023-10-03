@@ -103,39 +103,14 @@
             # allows to only pass what is needed to each module.
             specialArgs = { flake-self = self; } // inputs;
 
-            system = import ./machines/${x}/arch.nix;
-
-            modules = [
-              (./machines + "/${x}/configuration.nix")
-              # import our own modules to all hosts
+            modules = builtins.attrValues self.nixosModules ++ [
               lollypops.nixosModules.lollypops
-              { imports = builtins.attrValues self.nixosModules; }
+              (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
             ];
+
           };
         })
         (builtins.attrNames (builtins.readDir ./machines)));
-
-      # nix build '.#mayer'
-      mayer =
-        let
-          system = "x86_64-linux";
-        in
-        import "${nixpkgs}/nixos/lib/make-disk-image.nix"
-          {
-            pkgs = nixpkgs.legacyPackages."${system}";
-            lib = nixpkgs.lib;
-
-            config = (nixpkgs.lib.nixosSystem {
-              inherit system;
-              specialArgs = { flake-self = self; } // inputs;
-              modules = [
-                ./machines/mayer/configuration.nix
-                { imports = builtins.attrValues self.nixosModules; }
-              ];
-            }).config;
-            format = "qcow2";
-            name = "base-image";
-          };
 
     }
 
