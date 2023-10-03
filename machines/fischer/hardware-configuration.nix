@@ -10,8 +10,7 @@
     ];
 
   services.xserver = {
-    layout = "de";
-    xkbOptions = "eurosign:e";
+    layout = "us";
   };
 
   # Set your time zone.
@@ -35,7 +34,7 @@
   };
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "de";
+    keyMap = "us";
   };
 
   boot = {
