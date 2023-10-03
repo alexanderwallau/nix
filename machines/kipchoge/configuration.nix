@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, ... }:
-{ config, pkgs, shelly-exporter, ... }:
+{ config, pkgs, lib, shelly-exporter, ... }:
 
 {
   imports =
@@ -12,6 +12,7 @@
       ./hardware-configuration.nix
       ./wg0.nix
       ./wg1.nix
+      ./unbound.nix
 
       shelly-exporter.nixosModules.default
     ];
