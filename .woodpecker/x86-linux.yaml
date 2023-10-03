@@ -33,6 +33,23 @@
     },
     {
       "commands": [
+        "nix build '.#nixosConfigurations.fischer.config.system.build.toplevel' -o 'result-fischer'"
+      ],
+      "image": "bash",
+      "name": "Build fischer"
+    },
+    {
+      "commands": [
+        "attic push lounge-rocks:nix-cache 'result-fischer'"
+      ],
+      "image": "bash",
+      "name": "Push fischer to Attic",
+      "secrets": [
+        "attic_key"
+      ]
+    },
+    {
+      "commands": [
         "nix build '.#nixosConfigurations.mayer.config.system.build.toplevel' -o 'result-mayer'"
       ],
       "image": "bash",
