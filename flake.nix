@@ -41,6 +41,11 @@
     adblock-unbound.url = "github:MayNiklas/nixos-adblock-unbound";
     adblock-unbound.inputs.adblockStevenBlack.follows = "adblockStevenBlack";
 
+    inputs.shelly-exporter = {
+      url = "github:MayNiklas/shelly-exporter";
+      inputs = { nixpkgs.follows = "nixpkgs"; };
+    };
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

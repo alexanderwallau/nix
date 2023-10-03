@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, ... }:
-{ config, pkgs, ... }:
+{ config, pkgs, shelly-exporter, ... }:
 
 {
   imports =
@@ -11,6 +11,8 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./wg0.nix
+
+      shelly-exporter.nixosModules.default
     ];
 
   lollypops.deployment.ssh = {
@@ -62,6 +64,25 @@
     };
     # zsh as default shell for all users
     zsh.enable = true;
+  };
+
+  services.shelly-exporter = {
+    enable = true;
+    port = "8080";
+    listen = "localhost";
+    user = "shelly-exporter";
+    group = "shelly-exporter";
+
+    configure-prometheus = true;
+
+    targets = [
+      "http://192.168.0.2"
+      "http://192.168.0.3"
+      "http://192.168.0.4"
+      "http://192.168.0.5"
+      "http://192.168.0.6"
+      "http://192.168.0.7"
+    ];
   };
 
   # install packages system wide
