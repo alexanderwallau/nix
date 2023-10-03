@@ -22,6 +22,9 @@ in
             };
           };
         };
+        "[nix]" = {
+          "editor.defaultFormatter" = "jnoortheen.nix-ide";
+        };
       };
 
       extensions = with pkgs.vscode-extensions; [
