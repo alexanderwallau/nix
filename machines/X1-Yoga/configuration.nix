@@ -34,6 +34,7 @@
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
+      root.mayniklas = true;
       root.enable = true;
     };
     yubikey.enable = true;
