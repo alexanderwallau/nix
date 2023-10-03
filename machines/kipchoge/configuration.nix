@@ -10,7 +10,13 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./wg0.nix
     ];
+
+  lollypops.deployment.ssh = {
+    user = "root";
+    host = "s3.alexanderwallau.de";
+  };
 
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
@@ -33,7 +39,7 @@
     user = {
       awallau.enable = true;
       root.enable = true;
-            root.mayniklas = true;
+      root.mayniklas = true;
     };
     # zsh as default shell for all users
     zsh.enable = true;
