@@ -75,6 +75,10 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Define hostname.
-  networking.hostName = "X1-Yoga";
+  networking = {
+    hostName = "X1-Yoga";
+    # Monitoring
+    firewall.interfaces."Kipchoge".allowedTCPPorts = [ 9100 ];
+  };
 }
 
