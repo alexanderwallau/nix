@@ -11,6 +11,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./wg0.nix
+      ./wg1.nix
 
       shelly-exporter.nixosModules.default
     ];
@@ -76,12 +77,10 @@
     configure-prometheus = true;
 
     targets = [
-      "http://192.168.0.2"
-      "http://192.168.0.3"
-      "http://192.168.0.4"
-      "http://192.168.0.5"
-      "http://192.168.0.6"
-      "http://192.168.0.7"
+      "http://192.168.178.70"
+      "http://192.168.178.71"
+      "http://192.168.178.75"
+      "http://192.168.178.76"
     ];
   };
 
