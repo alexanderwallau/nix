@@ -22,8 +22,6 @@
     #kde.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
-    # set up language and timezone    
-    locales.enable = true;
     #logitech special functions for MX Master 3S
     #surrently broken
     #logiops.enable = true;
