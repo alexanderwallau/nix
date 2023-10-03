@@ -50,14 +50,7 @@ in
       text = ''
         # HELP flake_registry_last_modified Last modification date of flake input in unixtime
         # TYPE flake_input_last_modified gauge
-        ${concatStringsSep "\n" (map (i:
-          ''
-            flake_input_last_modified{input="${i}",${
-              concatStringsSep "," (mapAttrsToList (n: v: ''${n}="${v}"'')
-                (filterAttrs (n: v: (builtins.typeOf v) == "string")
-                  self.inputs."${i}"))
-            }} ${toString self.inputs."${i}".lastModified}'')
-          (attrNames self.inputs))}
+        flake_input_last_modified{input="nixpkgs",_type="flake", lastModifiedDate="${toString self.inputs.nixpkgs.lastModified}", narHash="${self.inputs.nixpkgs.narHash}", outPath="${self.inputs.nixpkgs.outPath}", rev="${self.inputs.nixpkgs.rev}", shortRev="${self.inputs.nixpkgs.shortRev}"} ${toString self.inputs.nixpkgs.lastModified}
       '';
     };
 

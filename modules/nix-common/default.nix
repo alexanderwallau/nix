@@ -80,6 +80,10 @@ in
       ];
     };
 
+    # Let 'nixos-version --json' know the Git revision of this flake.
+    system.configurationRevision = nixpkgs.lib.mkIf (flake-self ? rev) flake-self.rev;
+    nix.registry.nixpkgs.flake = nixpkgs;
+
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
     system.stateVersion = "22.05"; # Did you read the comment?
