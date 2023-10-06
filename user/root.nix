@@ -6,6 +6,8 @@ in
 
   options.awallau.user.root = {
     enable = mkEnableOption "activate user root";
+    # Option for now present because some obscure reference ist still in the  configuration lel
+    mayniklas = mkEnableOption "activate user mayniklas";
   };
 
   config = mkIf cfg.enable {
