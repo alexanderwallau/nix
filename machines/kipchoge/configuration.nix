@@ -17,11 +17,6 @@
       shelly-exporter.nixosModules.default
     ];
 
-  lollypops.deployment.ssh = {
-    user = "root";
-    host = "s3.alexanderwallau.de";
-  };
-
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
@@ -77,7 +72,6 @@
     user = {
       awallau.enable = true;
       root.enable = true;
-      root.mayniklas = true;
     };
     # zsh as default shell for all users
     zsh.enable = true;

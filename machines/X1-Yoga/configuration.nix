@@ -37,7 +37,6 @@
     user = {
       awallau.enable = true;
       root.mayniklas = true;
-      root.enable = true;
     };
     yubikey.enable = true;
     # Need Bluetooth

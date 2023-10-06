@@ -29,7 +29,6 @@
     user = {
       awallau.enable = true;
       root.enable = true;
-      root.mayniklas = true;
     };
     # zsh as default shell for all users
     zsh.enable = true;
