@@ -40,6 +40,7 @@ in
           popup-nvim
           telescope-nvim
           telescope-media-files-nvim
+          vimtex
           which-key-nvim
         ];
         description = ''
