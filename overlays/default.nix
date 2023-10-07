@@ -16,6 +16,7 @@ self: super: {
   jetbrains.pycharm-professional = self.unstable.jetbrains.pycharm-professional;
   logseq = self.unstable.logseq;
   musescore = self.unstable.musescore;
+  plex = self.unstable.plex;
   obsidian = self.unstable.obsidian;
   spotify = self.unstable.spotify;
   vscode = self.unstable.vscode;
