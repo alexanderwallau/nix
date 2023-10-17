@@ -74,6 +74,7 @@
       yakuake
       yubioath-flutter
       zip
+      zoom-us
       zotero
     ];
 
