@@ -63,6 +63,13 @@ in
             forward-tls-upstream = "no";
           }
           {
+            name = "nas.wallau";
+            forward-addr = [
+              "192.168.178.45"
+            ];
+            forward-tls-upstream = "no";
+          }
+          {
             name = "google.*.";
             forward-addr = [
               "8.8.8.8@853#dns.google"
