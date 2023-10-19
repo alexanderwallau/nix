@@ -28,10 +28,23 @@ in
       };
 
       extensions = with pkgs.vscode-extensions; [
+        adpyke.codesnap
+        dracula-theme.theme-dracula
+        eamodio.gitlens
+        file-icons.file-icons
         github.copilot
         jnoortheen.nix-ide
+        mechatroner.rainbow-csv
         ms-python.python
+        ms-toolsai.jupyter
+        ms-vscode.cmake-tools
+        ms-vscode.cpptools
+        ms-vscode.powershell
         ms-vscode-remote.remote-ssh
+        ms-vsliveshare.vsliveshare
+        oderwat.indent-rainbow
+        ritwickdey.liveserver
+        valentjn.vscode-ltex
       ];
     };
 
