@@ -10,6 +10,7 @@ let
       ipython
       matplotlib
       numpy
+      pandas
       requests
       scipy
       #tensorflow-build
