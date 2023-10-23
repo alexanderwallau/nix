@@ -1,20 +1,16 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-  cfg = config.mayniklas.programs.waybar;
+  cfg = config.awallau.programs.waybar;
 in
 {
-  options.mayniklas.programs.waybar.enable = mkEnableOption "enable waybar";
+  options.awallau.programs.waybar.enable = mkEnableOption "enable waybar";
   config = mkIf cfg.enable {
 
     # Applets, shown in tray
     services = {
       # Networking
       network-manager-applet.enable = true;
-      # Bluetooth
-      blueman-applet.enable = true;
-      # Pulseaudio
-      pasystray.enable = true;
       # Battery Warning
       cbatticon.enable = true;
     };
