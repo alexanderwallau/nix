@@ -11,13 +11,6 @@
     ./hardware-configuration.nix
   ];
 
-  home-manager.users."${config.awallau.home-manager.username}" = {
-    awallau.programs = {
-      sway.enable = true;
-      swaylock.enable = true;
-    };
-  };
-
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
@@ -47,7 +40,7 @@
     # Sound maybe
     sound.enable = true;
     # zsh as default shell for all users
-    wayland.enable = true;
+    sway.enable = true;
     zsh.enable = true;
   };
 
