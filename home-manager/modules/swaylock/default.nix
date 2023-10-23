@@ -4,7 +4,7 @@ let
   cfg = config.awallau.programs.swaylock;
 in
 {
-  options.mayniklas.programs.swaylock.enable = mkEnableOption "enable swaylock";
+  options.awallau.programs.swaylock.enable = mkEnableOption "enable swaylock";
   config = mkIf cfg.enable {
 
     # TODO:

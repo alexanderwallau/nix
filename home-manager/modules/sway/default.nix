@@ -31,7 +31,7 @@ in
       mako
       start-sway
       wev # find out how a key is called
-      wlay
+      unstable.wlay
       wl-clipboard
       wlr-randr
       xdg-utils # for opening default programs when clicking links

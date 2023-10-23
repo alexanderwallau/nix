@@ -90,6 +90,7 @@
 
   # Imports
   imports = [
+    ../colorscheme.nix
     ../modules/git
     ../modules/nvim
     ../modules/python

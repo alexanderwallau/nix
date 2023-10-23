@@ -1,10 +1,10 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-  cfg = config.mayniklas.programs.waybar;
+  cfg = config.awallau.programs.waybar;
 in
 {
-  options.mayniklas.programs.waybar.enable = mkEnableOption "enable waybar";
+  options.awallau.programs.waybar.enable = mkEnableOption "enable waybar";
   config = mkIf cfg.enable {
 
     # Applets, shown in tray
