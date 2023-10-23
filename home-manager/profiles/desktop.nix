@@ -96,6 +96,9 @@
     ../modules/vscode
     ../modules/zsh
     ../modules/htop
+    ../modules/sway
+    ../modules/swaylock
+    ../modules/waybar
   ];
   fonts.fontconfig.enable = true;
   services.gnome-keyring = { enable = true; };
