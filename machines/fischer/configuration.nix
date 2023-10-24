@@ -3,12 +3,13 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, ... }:
-{ config, pkgs, ... }:
+{ config, pkgs,nixos-hardware, ... }:
 
 {
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
+    nixos-hardware.nixosModules.lenovo-thinkpad-x220
   ];
 
   # top level option name
@@ -54,22 +55,21 @@
       virt-manager
     ];
   # Virtualisation
-  #virtualisation.libvirtd.enable = true;
-  #Printing 
-  #services.printing.enable = true;
-  #services.avahi.enable = true;
-  #services.avahi.nssmdns = true;
-  # for a WiFi printer
-  #services.avahi.openFirewall = true;
-  #services.printing.drivers = [ pkgs.hplipWithPlugin ];
-  # Onedrive
-  #services.onedrive.enable = true;
+  virtualisation.libvirtd.enable = true;
+  # fingerprint login
+  services.fprintd.enable = true;
+
+  # automatic screen orientation
+  hardware.sensor.iio.enable = true;
 
   # Steam
   #build arm64 packages
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Define hostname.
-  networking.hostName = "fischer";
+  networking= {
+    hostName = "fischer";
+    networkmanager.enable = true;
+  };
 }
 
