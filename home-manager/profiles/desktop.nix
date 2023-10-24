@@ -79,6 +79,7 @@
     ];
 
   awallau.programs = {
+    foot.enable = true;
     git.enable = true;
     htop.enable = true;
     python.enable = true;
@@ -91,6 +92,7 @@
   # Imports
   imports = [
     ../colorscheme.nix
+    ../modules/foot
     ../modules/git
     ../modules/nvim
     ../modules/python
