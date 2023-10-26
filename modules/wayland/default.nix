@@ -39,7 +39,7 @@ in
       rtkit.enable = true;
     };
 
-     users.extraUsers.awallau.extraGroups = [ "video" "audio" ];
+    users.extraUsers.awallau.extraGroups = [ "video" "audio" ];
 
     hardware = {
       # fixes'ÈGL_EXT_platform_base not supported'
