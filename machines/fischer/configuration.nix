@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, ... }:
-{ config, pkgs,nixos-hardware, ... }:
+{ config, pkgs, nixos-hardware, ... }:
 
 {
   imports = [
@@ -16,7 +16,7 @@
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
     # enables the docker module
-    #docker.enable = true;
+    docker.enable = true;
     # enable home-manager profile
     home-manager.enable = true;
     # enable kde & xserver
@@ -27,7 +27,7 @@
     #surrently broken
     #logiops.enable = true;
     # DNS server on localhost
-    #unbound.enable = true;
+    unbound.enable = true;
     # set up ssh server
     openssh.enable = true;
     # enables users which got moved into a seperate file
@@ -35,9 +35,9 @@
       awallau.enable = true;
       root.enable = true;
     };
-    #yubikey.enable = true;
+    yubikey.enable = true;
     # Need Bluetooth
-    #bluetooth.enable = true;
+    bluetooth.enable = true;
     # Sound maybe
     sound.enable = true;
     # zsh as default shell for all users
@@ -54,20 +54,23 @@
       git
       virt-manager
     ];
+
+  environment.loginShellInit = ''
+    [[ "$(tty)" == /dev/tty1 ]] && sway
+    [[ "$(tty)" == /dev/tty? ]] && /run/current-system/sw/bin/lock this 
+  '';
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   # fingerprint login
   services.fprintd.enable = true;
+  security.pam.services.login.fprintAuth = true;
 
   # automatic screen orientation
   hardware.sensor.iio.enable = true;
-
-  # Steam
-  #build arm64 packages
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  services.illum.enable = true;
 
   # Define hostname.
-  networking= {
+  networking = {
     hostName = "fischer";
     networkmanager.enable = true;
   };
