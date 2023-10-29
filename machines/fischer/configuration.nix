@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, ... }:
-{ config, pkgs, nixos-hardware, ... }:
+{ config, pkgs,nixos-hardware, ... }:
 
 {
   imports = [
@@ -54,23 +54,23 @@
       git
       virt-manager
     ];
-
+  # sway on tty1 login
   environment.loginShellInit = ''
     [[ "$(tty)" == /dev/tty1 ]] && sway
-    [[ "$(tty)" == /dev/tty? ]] && /run/current-system/sw/bin/lock this 
   '';
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   # fingerprint login
   services.fprintd.enable = true;
   security.pam.services.login.fprintAuth = true;
+    sound.mediaKeys.enable = true;
 
   # automatic screen orientation
   hardware.sensor.iio.enable = true;
-  services.illum.enable = true;
+    services.illum.enable = true;
 
   # Define hostname.
-  networking = {
+  networking= {
     hostName = "fischer";
     networkmanager.enable = true;
   };
