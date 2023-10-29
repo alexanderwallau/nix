@@ -23,6 +23,8 @@
     nix-common.enable = true;
     # set up language and timezone    
     locales.enable = true;
+    # set up paperless
+    paperless.enable = true;
     # set up ssh server
     openssh.enable = true;
     # enables users which got moved into a seperate file
