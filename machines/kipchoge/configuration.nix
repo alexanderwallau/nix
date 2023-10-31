@@ -24,7 +24,7 @@
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # speedtesting to main cloud router
-    librespeed ={
+    librespeedtest = {
       enable = true;
       port = "8800";
     };
