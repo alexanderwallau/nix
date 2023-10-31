@@ -11,6 +11,7 @@ let
       matplotlib
       numpy
       pandas
+      plotly
       requests
       scipy
       #tensorflow-build
