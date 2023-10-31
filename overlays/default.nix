@@ -22,6 +22,5 @@ self: super: {
   todoist-electron = self.unstable.todoist-electron;
   vscode = self.unstable.vscode;
   yubioath-flutter = self.unstable.yubioath-flutter;
-  zotero = self.unstable.zotero;
 
 }
