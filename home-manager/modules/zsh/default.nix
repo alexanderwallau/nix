@@ -79,6 +79,10 @@ in
         # list syslinks into nix-store
         nix-list = "${pkgs.nix}/bin/nix-store --gc --print-roots";
 
+        # flake checks
+        nfc = "${pkgs.nix}/bin/nix flake check";
+        nfcs = "${pkgs.nix}/bin/nix flake check --show-trace";
+
         # Other
         lsblk = "${pkgs.util-linux}/bin/lsblk -o name,mountpoint,label,size,type,uuid";
         performance = "echo performance | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor";
