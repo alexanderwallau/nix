@@ -50,7 +50,7 @@ in
 
         input = {
           "type:keyboard" = {
-            xkb_layout = "de";
+            xkb_layout = "us";
             xkb_numlock = "enabled";
           };
           "type:touchpad" = {
