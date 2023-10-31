@@ -33,6 +33,7 @@ in
     systemd.services.docker-librespeedtest = {
       preStop = "${pkgs.docker}/bin/docker kill librespeedtest";
     };
-
+    # Change with option, to int not an availible method
+    networking.firewall = { allowedTCPPorts = [ 8800]; };
   };
 }
