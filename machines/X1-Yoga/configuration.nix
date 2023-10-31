@@ -33,6 +33,8 @@
     unbound.enable = true;
     # set up ssh server
     openssh.enable = true;
+    # priniting
+    printing.enable = true;
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
@@ -58,13 +60,6 @@
     ];
   # Virtualisation
   virtualisation.libvirtd.enable = true;
-  #Printing 
-  services.printing.enable = true;
-  services.avahi.enable = true;
-  services.avahi.nssmdns = true;
-  # for a WiFi printer
-  services.avahi.openFirewall = true;
-  services.printing.drivers = [ pkgs.hplipWithPlugin ];
   # Onedrive
   services.onedrive.enable = true;
 
