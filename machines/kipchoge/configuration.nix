@@ -23,8 +23,11 @@
     docker.enable = false;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
-    # set up general nix stuff
-    nix-common.enable = true;
+    # speedtesting to main cloud router
+    librespeed ={
+      enable = true;
+      port = "8800";
+    };
     # set up language and timezone    
     locales.enable = true;
     # minio for s3
@@ -67,6 +70,8 @@
       prometheus.enable = true;
     };
     nginx.enable = true;
+        # set up general nix stuff
+    nix-common.enable = true;
     # set up ssh server
     openssh.enable = true;
     # enables users which got moved into a seperate file
