@@ -63,7 +63,7 @@
       tdesktop
       texlive.combined.scheme-full
       thunderbird-bin
-      todoist-electron
+      #todoist-electron
       unzip
       virtmanager
       vlc
