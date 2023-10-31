@@ -48,7 +48,7 @@
   networking = {
     # dhcpcd.IPv6rs = true;
     interfaces."ens3" = {
-      ipv6.addresses = [{ address = " 2a0a:4cc0:1:73::"; prefixLength = 64; }];
+      ipv6.addresses = [{ address = "2a0a:4cc0:1:73::"; prefixLength = 64; }];
     };
     firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; };
   };
