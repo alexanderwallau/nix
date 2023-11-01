@@ -21,7 +21,6 @@ in {
       enable = true;
       recommendedOptimisation = true;
       recommendedTlsSettings = true;
-      recommendedProxySettings = true;
       virtualHosts."archive.alexanderwallau.de" = {
         enableACME = true;
         forceSSL = true;
@@ -29,8 +28,6 @@ in {
           proxyPass = "http://127.0.0.1:28981/";
           extraConfig = ''
             client_max_body_size 256M;
-            allow 192.168.69.0/24;
-            deny all;
           '';
         };
       };
