@@ -52,6 +52,9 @@
     };
     firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; };
   };
-  networking.hostName = "mayer";
+  networking = {
+    enableIPv6 = true;
+    hostName = "mayer";
+  };
 }
 
