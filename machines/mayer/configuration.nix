@@ -17,6 +17,8 @@
   awallau = {
     #enable gitea
     gitea.enable = true;
+    # enable hedgedoc
+    hedgedoc.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up general nix stuff
