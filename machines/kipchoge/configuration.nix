@@ -69,6 +69,7 @@
       };
       prometheus.enable = true;
     };
+    netbox.enable = true;
     nginx.enable = true;
         # set up general nix stuff
     nix-common.enable = true;

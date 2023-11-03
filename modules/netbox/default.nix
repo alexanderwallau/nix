@@ -8,7 +8,7 @@ in
     enable = mkEnableOption "activate netbox";
     hostname = mkOption {
       type = types.str;
-      default = "netbox.your-domain.com";
+      default = "netbox.alexanderwallau.de";
       description = ''
         netbox url
       '';
@@ -21,7 +21,7 @@ in
       enable = true;
       dataDir = "/var/lib/netbox";
       listenAddress = "127.0.0.1";
-      port = 8001;
+      port = 8801;
       secretKeyFile = "/var/src/secrets/netbox/key";
     };
 
@@ -32,7 +32,7 @@ in
         locations = {
           "/static/" = { alias = "/var/lib/netbox/static/"; };
           "/" = {
-            proxyPass = "http://127.0.0.1:8001";
+            proxyPass = "http://127.0.0.1:8801";
             extraConfig = ''
               proxy_set_header X-Forwarded-Host $http_host;
               proxy_set_header X-Real-IP $remote_addr;
