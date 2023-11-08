@@ -41,7 +41,7 @@
     "alexanderwallau-keys": {
       "flake": false,
       "locked": {
-        "narHash": "sha256-bNc+52p9foYILK0S4BGYPwnTMXzCv2QU8ThT5NWBZzo=",
+        "narHash": "sha256-lysOfB4oIZyjQ5ziYJJCAr7UwcTxRXZEPPq+P5lgAgw=",
         "type": "file",
         "url": "https://github.com/alexanderwallau.keys"
       },
