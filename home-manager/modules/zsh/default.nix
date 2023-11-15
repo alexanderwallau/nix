@@ -82,6 +82,9 @@ in
         # flake checks
         nfc = "${pkgs.nix}/bin/nix flake check";
         nfcs = "${pkgs.nix}/bin/nix flake check --show-trace";
+        
+        # nix shells overeasy
+        ns = "nix-shell -p ";
 
         # Other
         lsblk = "${pkgs.util-linux}/bin/lsblk -o name,mountpoint,label,size,type,uuid";
