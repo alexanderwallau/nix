@@ -4,8 +4,7 @@
   inputs = {
     # https://github.com/nixos/nixpkgs
     # nixos repository
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # https://github.com/numtide/flake-utils
     # flake-utils provides a set of utility functions for creating multi-output flakes
@@ -13,8 +12,11 @@
 
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
-    home-manager.url = "github:nix-community/home-manager/release-23.05";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
 
     # https://github.com/nixos/nixos-hardware
     # hardware specific configuration for NixOS
@@ -22,28 +24,43 @@
 
     # lollypops deployment tool
     # https://github.com/pinpox/lollypops
-    lollypops.url = "github:pinpox/lollypops";
-    lollypops.inputs.flake-utils.follows = "flake-utils";
-    lollypops.inputs.nixpkgs.follows = "nixpkgs";
-
+    lollypops = {
+      url = "github:pinpox/lollypops";
+      inputs = {
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
     # we are using the alexanderwallau-keys flake to get the ssh keys from github
     alexanderwallau-keys.url = "https://github.com/alexanderwallau.keys";
     alexanderwallau-keys.flake = false;
 
-    # adblocking list
-    # input here, so it will get updated by
-    # nix flake --update-input adblockStevenBlack
-    adblockStevenBlack.url = "github:StevenBlack/hosts";
-    adblockStevenBlack.flake = false;
+    # Adblocking lists for Unbound DNS servers running on NixOS
+    # https://github.com/MayNiklas/nixos-adblock-unbound
+    adblock-unbound = {
+      url = "github:MayNiklas/nixos-adblock-unbound";
+      inputs = {
+        adblockStevenBlack.follows = "adblockStevenBlack";
+        flake-utils.follows = "flake-utils";
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
 
-    # adblocking converter for Unbound DNS servers running on NixOS 
-    adblock-unbound.url = "github:MayNiklas/nixos-adblock-unbound";
-    adblock-unbound.inputs.adblockStevenBlack.follows = "adblockStevenBlack";
+    # Adblocking lists for DNS servers
+    # input here, so it will get updated by nix flake update
+    adblockStevenBlack = {
+      url = "github:StevenBlack/hosts";
+      flake = false;
+    };
+
 
     shelly-exporter = {
       url = "github:MayNiklas/shelly-exporter";
       inputs = { nixpkgs.follows = "nixpkgs"; };
+    };
+    vscode-server = {
+      url = "github:msteen/nixos-vscode-server";
     };
 
   };
