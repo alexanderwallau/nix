@@ -13,6 +13,7 @@ in
         cpu_count_from_one = 1;
         show_cpu_usage = true;
         show_program_path = true;
+        show_cpu_temperature = 1;
         fields = with config.lib.htop.fields; [
           PID
           USER
