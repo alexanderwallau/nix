@@ -82,7 +82,7 @@
     git.enable = true;
     htop.enable = true;
     python.enable = true;
-    vim.enable = true;
+    #vim.enable = true;
     vscode.enable = true;
     zsh.enable = true;
 
@@ -93,7 +93,7 @@
     ../colorscheme.nix
     ../modules/foot
     ../modules/git
-    ../modules/nvim
+    #../modules/nvim
     ../modules/python
     ../modules/vscode
     ../modules/zsh
