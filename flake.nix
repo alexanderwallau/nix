@@ -63,6 +63,11 @@
       url = "github:msteen/nixos-vscode-server";
     };
 
+    eza = {
+      url = "github:eza-community/eza";
+      inputs = { nixpkgs.follows = "nixpkgs"; };
+    };
+
   };
 
   outputs = { self, nixpkgs, ... }@inputs:

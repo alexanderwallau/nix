@@ -1,4 +1,4 @@
-{ config, pkgs, lib, flake-self, nixpkgs-unstable, ... }:
+{ config, pkgs, lib, flake-self,  ... }:
 with lib;
 let cfg = config.awallau.home-manager;
 in
@@ -36,12 +36,6 @@ in
         {
           nixpkgs.overlays = [
             flake-self.overlays.default
-            (final: prev: {
-              unstable = import nixpkgs-unstable {
-                system = "${pkgs.system}";
-                config.allowUnfree = true;
-              };
-            })
           ];
         }
         ./profiles/${cfg.profile}.nix

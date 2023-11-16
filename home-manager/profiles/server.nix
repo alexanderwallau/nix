@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, eza, ... }: {
 
   # Install these packages for my user
   home.packages =
@@ -12,7 +12,7 @@
       dconf
       dnsutils
       dogdns
-      exa
+      eza
       fuse3
       gcc
       gdu

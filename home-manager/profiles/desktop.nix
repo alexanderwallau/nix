@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, eza, ... }: {
 
   # Install these packages for my user
   home.packages =
@@ -17,7 +17,7 @@
       dnsutils
       dogdns
       element-desktop
-      exa
+      eza
       firefox
       fuse3
       gcc

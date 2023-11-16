@@ -1,4 +1,4 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, eza, ... }:
 with lib;
 let
   cfg = config.awallau.programs.zsh;
@@ -58,7 +58,7 @@ in
 
       shellAliases = rec {
 
-        ls = "${pkgs.exa}/bin/exa --group-directories-first --icons --color-scale";
+        ls = "${pkgs.eza}/bin/eza --group-directories-first --icons --color-scale";
         l = "${ls} -lbF --git --icons";
         ll = "${l} -G";
         la =

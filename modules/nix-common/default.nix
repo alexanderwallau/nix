@@ -1,4 +1,4 @@
-{ lib, pkgs, config, nixpkgs, flake-self, nixpkgs-unstable, ... }:
+{ lib, pkgs, config, nixpkgs, flake-self,  ... }:
 with lib;
 let cfg = config.awallau.nix-common;
 in
@@ -69,15 +69,6 @@ in
     nixpkgs = {
       # Allow unfree licenced packages
       config.allowUnfree = true;
-      overlays = [
-        flake-self.overlays.default
-        (final: prev: {
-          unstable = import nixpkgs-unstable {
-            system = "${pkgs.system}";
-            config.allowUnfree = true;
-          };
-        })
-      ];
     };
 
     # Let 'nixos-version --json' know the Git revision of this flake.
