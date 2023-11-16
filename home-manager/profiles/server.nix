@@ -12,7 +12,7 @@
       dconf
       dnsutils
       dogdns
-      eza
+      exa
       fuse3
       gcc
       gdu
