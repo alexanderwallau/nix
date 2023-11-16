@@ -1,4 +1,4 @@
-{ config, pkgs, lib, eza, ... }: {
+{ config, pkgs, lib, ... }: {
 
   # Install these packages for my user
   home.packages =

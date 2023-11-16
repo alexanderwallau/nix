@@ -1,4 +1,4 @@
-{ config, pkgs, lib, eza, ... }: {
+{ config, pkgs, lib, ... }: {
 
   # Install these packages for my user
   home.packages =
@@ -65,7 +65,7 @@
       thunderbird-bin
       #todoist-electron
       unzip
-      virtmanager
+      virt-manager
       vlc
       wait-for-build
       wireguard-go
