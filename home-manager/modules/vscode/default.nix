@@ -45,6 +45,18 @@ in
         oderwat.indent-rainbow
         ritwickdey.liveserver
         valentjn.vscode-ltex
+        james-yu.latex-workshop
+        ms-toolsai.jupyter
+        ms-pyright.pyright
+        github.vscode-pull-request-github
+        gruntfuggly.todo-tree
+        mkhl.direnv
+                redhat.vscode-yaml
+        streetsidesoftware.code-spell-checker
+        tamasfe.even-better-toml
+        usernamehw.errorlens
+        vadimcn.vscode-lldb
+        yzhang.markdown-all-in-one
       ];
     };
 
