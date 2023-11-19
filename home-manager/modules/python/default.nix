@@ -17,7 +17,7 @@ let
       numpy
       pandas
       plotly
-      plotnine
+      # plotnine broken atm
       scikit-learn
       requests
       scipy
