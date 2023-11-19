@@ -59,12 +59,14 @@ in
 
       shellAliases = rec {
 
-        ls = "${pkgs.eza}/bin/eza --icons --group-directories-first --git -F --color always";
-        l = "${ls} -lbF --git --icons";
-        ll = "${l} -G";
-        la = "${pkgs.eza}/bin/eza --icons --group-directories-first --git -F --color always --sort=modified --all";
-        lt = "${pkgs.eza}/bin/eza --icons --group-directories-first --git -F --color always --sort=modified --tree -l --group";
 
+      # eza ls replacement
+      ls = "${pkgs.eza}/bin/eza --group-directories-first";
+      l = "${ls} -lbF --git --icons";
+      ll = "${l} -G";
+      la =
+        "${ls} -lbhHigmuSa@ --time-style=long-iso --git --color-scale --icons";
+      lt = "${ls} --tree --level=2 --icons";
         # Git
         gs = "${pkgs.git}/bin/git status";
         gpp = "${pkgs.git}/bin/git pull&& ${pkgs.git}/bin/git push";
