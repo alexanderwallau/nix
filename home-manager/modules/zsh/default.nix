@@ -14,6 +14,7 @@ in
       enableCompletion = true;
       autocd = true;
       dotDir = ".config/zsh";
+      syntaxHighlighting.enable = true;
 
       sessionVariables = { ZDOTDIR = "/home/awallau/.config/zsh"; };
 
@@ -58,15 +59,15 @@ in
 
       shellAliases = rec {
 
-        ls = "${pkgs.eza}/bin/eza --group-directories-first --icons --color-scale";
+        ls = "${pkgs.eza}/bin/eza --icons --group-directories-first --git -F --color always";
         l = "${ls} -lbF --git --icons";
         ll = "${l} -G";
-        la =
-          "${ls} -lbhHigmuSa@ --time-style=long-iso --git --color-scale --icons";
-        lt = "${ls} --tree --level=2 --icons";
+        la = "${pkgs.eza}/bin/eza --icons --group-directories-first --git -F --color always --sort=modified --all";
+        lt = "${pkgs.eza}/bin/eza --icons --group-directories-first --git -F --color always --sort=modified --tree -l --group";
 
         # Git
         gs = "${pkgs.git}/bin/git status";
+        gpp = "${pkgs.git}/bin/git pull&& ${pkgs.git}/bin/git push";
 
         # nix
 
@@ -82,7 +83,7 @@ in
         # flake checks
         nfc = "${pkgs.nix}/bin/nix flake check";
         nfcs = "${pkgs.nix}/bin/nix flake check --show-trace";
-        
+
         # nix shells overeasy
         ns = "nix-shell -p ";
 
@@ -93,6 +94,14 @@ in
 
         # Ultra easy single core bench
         qbench = "factor 82364768726407498326494787264827418648729874012787126398621046198639874623984721986439";
+
+        # List system services
+        services = "systemctl list-units --type service";
+
+        # Basic shell aliases
+        c = "cd";
+        b = "bat";
+        cls = "clear";
 
 
       };
