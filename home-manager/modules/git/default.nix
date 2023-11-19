@@ -15,6 +15,15 @@ in
         extraConfig = { pull.rebase = false; };
         userEmail = "alexander.wallau@gmx.net";
         userName = "alexanderwallau";
+        aliases = {
+        co = "checkout";
+        p = "pull";
+        ps = "push";
+        s = "status";
+         ignores = [ ".direnv/" ];
+      attributes = [ "*.pdf diff=pdf" ];
+      diff-so-fancy.enable = true;
+      };
 
       };
     };
