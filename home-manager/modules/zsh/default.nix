@@ -55,6 +55,11 @@ in
           file = "nix-shell.plugin.zsh";
           src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
         }
+        {
+        name = "zsh-colored-man-pages";
+        file = "colored-man-pages.plugin.zsh";
+        src = "${pkgs.zsh-colored-man-pages}/share/zsh-colored-man-pages";
+      }
       ];
 
       shellAliases = rec {
