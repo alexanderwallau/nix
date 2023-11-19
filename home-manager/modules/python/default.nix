@@ -7,16 +7,24 @@ let
     with python-packages; [
       ipykernel
       jupyter
+                jupyter-client
+          jupyterlab
       ipython
       matplotlib
+          seaborn
+          cufflinks
+          black
       numpy
       pandas
       plotly
+      plotnine
+      scikit-learn
       requests
       scipy
       #tensorflow-build
       #tensorboard
       jinja2
+      rpy2
 
     ];
 
