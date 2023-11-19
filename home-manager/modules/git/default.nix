@@ -20,11 +20,10 @@ in
         p = "pull";
         ps = "push";
         s = "status";
+        };
          ignores = [ ".direnv/" ];
       attributes = [ "*.pdf diff=pdf" ];
       diff-so-fancy.enable = true;
-      };
-
       };
     };
     home.packages = [ pkgs.pre-commit ];
