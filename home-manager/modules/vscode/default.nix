@@ -25,6 +25,27 @@ in
         "[nix]" = {
           "editor.defaultFormatter" = "jnoortheen.nix-ide";
         };
+        "[jsonc]" = {
+          "editor.defaultFormatter" = "vscode.json-language-features";
+        };
+        "editor.cursorBlinking" = "expand";
+        "editor.cursorSmoothCaretAnimation" = "on";
+        "editor.cursorSurroundingLinesStyle" = "all";
+        "editor.defaultColorDecorators" = true;
+         "editor.formatOnPaste" = true;
+        "editor.formatOnSave" = true;
+        "editor.formatOnType" = true;
+        "editor.linkedEditing" = true;
+        "editor.minimap.maxColumn" = 160;
+        "editor.mouseWheelZoom" = true;
+        "editor.renderWhitespace" = "all";
+        "editor.smoothScrolling" = true;
+        "files.autoGuessEncoding" = true;
+        "files.autoSave" = "afterDelay";
+                "nix.serverPath" = "${pkgs.nil}/bin/nil";
+        "prettier.printWidth" = 160;
+        "problems.showCurrentInStatus" = true;
+        "redhat.telemetry.enabled" = false;
       };
 
       extensions = with pkgs.vscode-extensions; [
