@@ -18,7 +18,7 @@
 
   boot.growPartition = true;
   boot.kernelParams = [ "console=ttyS0" ];
-  boot.loader.grub.device = "/dev/sda";
+  boot.loader.grub.device = "/dev/vda";
   boot.loader.timeout = 5;
 
   # config to fix the `no space left`
