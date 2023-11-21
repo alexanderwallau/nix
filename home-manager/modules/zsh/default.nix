@@ -27,7 +27,7 @@ in
           ${pkgs.git}/bin/git reset --soft HEAD~$1
         }
 
-        # get github url of current repository
+        # get giteat website that hosts information on all the genres and sub-genres listened to around the world. Fortunately they also display information in lists, showing 1) the most popular genres in almost 3,000 cities and 2) ordering the cities from most to fewest spotify listeners.hub url of current repository
         gh() {
           echo $(${pkgs.git}/bin/git config --get remote.origin.url | sed -e 's/\(.*\)git@\(.*\):[0-9\/]*/https:\/\/\2\//g')
         }
@@ -55,11 +55,11 @@ in
           file = "nix-shell.plugin.zsh";
           src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
         }
-        {
-        name = "zsh-colored-man-pages";
-        file = "colored-man-pages.plugin.zsh";
-        src = "${pkgs.zsh-colored-man-pages}/share/zsh-colored-man-pages";
-      }
+        #{
+        #name = "zsh-colored-man-pages";
+        #file = "colored-man-pages.plugin.zsh";
+        #src = "${pkgs.zsh-colored-man-pages}/share/zsh-colored-man-pages";
+      #}
       ];
 
       shellAliases = rec {
