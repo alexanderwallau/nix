@@ -9,7 +9,6 @@
   imports = [
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
-    nixos-hardware.nixosModules.lenovo-thinkpad-x220
   ];
 
   # top level option name
@@ -60,9 +59,6 @@
   '';
   # Virtualisation
   virtualisation.libvirtd.enable = true;
-  # fingerprint login
-  services.fprintd.enable = true;
-  security.pam.services.login.fprintAuth = true;
   sound.mediaKeys.enable = true;
 
   # automatic screen orientation
