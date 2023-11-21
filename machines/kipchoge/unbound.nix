@@ -12,6 +12,8 @@ let
 
     "kipchoge.aw" = "192.168.69.1";
     "x1-yoga.aw" = "192.168.69.100";
+    "mayer.aw" = "192.168.69.2";
+    "phelps.aw" = "192.168.69.3";
   };
 
   dns-overwrites-config = builtins.toFile "dns-overwrites.conf" (''
@@ -56,7 +58,7 @@ in
 
         forward-zone = [
           {
-            name = "fritz.box.";
+            name = "fritz.box";
             forward-addr = [
               "192.168.178.1"
             ];
@@ -68,6 +70,27 @@ in
               "192.168.178.45"
             ];
             forward-tls-upstream = "no";
+          }
+          {
+            name = "*.alexanderwallau.de";
+            forward-addr = [
+              "192.168.69.2"
+            ];
+            forward-tls-upstream = "yes";
+          }
+          {
+            name = "*.s3.alexanderwallau.de";
+            forward-addr = [
+              "192.168.69.1"
+            ];
+            forward-tls-upstream = "yes";
+          }
+          {
+            name = "netbox.alexanderwallau.de";
+            forward-addr = [
+              "192.168.69.1"
+            ];
+            forward-tls-upstream = "yes";
           }
           {
             name = "google.*.";
