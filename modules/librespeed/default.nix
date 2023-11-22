@@ -1,18 +1,17 @@
 { lib, pkgs, config, ... }:
 with lib;
-let cfg = config.awallau.librespeedtest;
+let cfg = config.awallau.librespeed;
 in
 {
 
-  options.awallau.librespeedtest = {
+  options.awallau.librespeed = {
     enable = mkEnableOption "activate librespeedtest";
-    port = mkOption {
-      type = types.str;
-      default = "8080";
-    };
     title = mkOption {
       type = types.str;
       default = "LibreSpeed";
+      description = ''
+        Documentation placeholder
+      '';
     };
   };
 
@@ -24,16 +23,19 @@ in
       environment = {
         TITLE = "${cfg.title}";
         ENABLE_ID_OBFUSCATION = "true";
-        WEBPORT = "${cfg.port}";
+        WEBPORT = "8800";
         MODE = "standalone";
       };
-      ports = [ "${cfg.port}:${cfg.port}/tcp" ];
+      ports = [ "8800:8800/tcp" ];
     };
 
     systemd.services.docker-librespeedtest = {
       preStop = "${pkgs.docker}/bin/docker kill librespeedtest";
     };
-    # Change with option, to int not an availible method
-    networking.firewall = { allowedTCPPorts = [ 8800]; };
+    networking.firewall.interfaces = {
+      "wg0".allowedTCPPorts = [ 8800 ];
+      "wg1".allowedTCPPorts = [ 8800 ];
+    };
   };
+
 }

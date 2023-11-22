@@ -24,14 +24,14 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
-    docker.enable = false;
+    docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # speedtesting to main cloud router
-    #librespeedtest = {
-    #  enable = true;
-    #  port = "8800";
-    #};
+    librespeed = {
+      enable = true;
+      title = "Connection Speed";
+    };
     # set up language and timezone    
     locales.enable = true;
     # minio for s3
@@ -79,6 +79,12 @@
     nix-common.enable = true;
     # set up ssh server
     openssh.enable = true;
+    podman.enable = true;
+    # uptime kuma
+    uptime-kuma = {
+      domain = "uptime.alexanderwallau.de";
+      enable = true;
+    };
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
