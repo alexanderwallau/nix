@@ -81,10 +81,10 @@
     openssh.enable = true;
     podman.enable = true;
     # uptime kuma
-    uptime-kuma = {
-      domain = "uptime.alexanderwallau.de";
-      enable = true;
-    };
+    #uptime-kuma = {
+    #  domain = "uptime.alexanderwallau.de";
+    #  enable = true;
+    #};
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
