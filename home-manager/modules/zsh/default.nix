@@ -1,4 +1,4 @@
-{ lib, pkgs, config, eza, ... }:
+{ lib, pkgs, config, ... }:
 with lib;
 let
   cfg = config.awallau.programs.zsh;
@@ -19,20 +19,45 @@ in
       sessionVariables = { ZDOTDIR = "/home/awallau/.config/zsh"; };
 
       initExtra = ''
-        bindkey "^[[1;5C" forward-word
-        bindkey "^[[1;5D" backward-word
+          bindkey "^[[1;5C" forward-word
+          bindkey "^[[1;5D" backward-word
 
-        # revert last n commits
-        grv() {
-          ${pkgs.git}/bin/git reset --soft HEAD~$1
-        }
+          # revert last n commits
+          grv() {
+            ${pkgs.git}/bin/git reset --soft HEAD~$1
+          }
 
-        # get giteat website that hosts information on all the genres and sub-genres listened to around the world. Fortunately they also display information in lists, showing 1) the most popular genres in almost 3,000 cities and 2) ordering the cities from most to fewest spotify listeners.hub url of current repository
-        gh() {
-          echo $(${pkgs.git}/bin/git config --get remote.origin.url | sed -e 's/\(.*\)git@\(.*\):[0-9\/]*/https:\/\/\2\//g')
-        }
-        ipinfo() {
-          nix-shell -p ipfetch --run "ipfetch && exit"
+          # get giteat website that hosts information on all the genres and sub-genres listened to around the world. Fortunately they also display information in lists, showing 1) the most popular genres in almost 3,000 cities and 2) ordering the cities from most to fewest spotify listeners.hub url of current repository
+          gh() {
+            echo $(${pkgs.git}/bin/git config --get remote.origin.url | sed -e 's/\(.*\)git@\(.*\):[0-9\/]*/https:\/\/\2\//g')
+          }
+          ipinfo() {
+            nix-shell -p ipfetch --run "ipfetch && exit"
+          }
+
+          # extract package
+        ex() {
+          if [[ -f $1 ]]; then
+          case $1 in
+            *.tar.bz2) tar xvjf $1;;
+            *.tar.gz) tar xvzf $1;;
+            *.tar.xz) tar xvJf $1;;
+            *.tar.lzma) tar --lzma xvf $1;;
+            *.bz2) bunzip $1;;
+            *.rar) unrar $1;;
+            *.gz) gunzip $1;;
+            *.tar) tar xvf $1;;
+            *.tbz2) tar xvjf $1;;
+            *.tgz) tar xvzf $1;;
+            *.zip) unzip $1;;
+            *.Z) uncompress $1;;
+            *.7z) 7z x $1;;
+            *.dmg) hdiutul mount $1;; # mount OS X disk images
+            *) echo "'$1' cannot be extracted via >ex<";;
+          esac
+          else
+           echo "'$1' is not a valid file"
+          fi
         }
         
       '';
@@ -59,19 +84,19 @@ in
         #name = "zsh-colored-man-pages";
         #file = "colored-man-pages.plugin.zsh";
         #src = "${pkgs.zsh-colored-man-pages}/share/zsh-colored-man-pages";
-      #}
+        #}
       ];
 
       shellAliases = rec {
 
 
-      # eza ls replacement
-      ls = "${pkgs.eza}/bin/eza --group-directories-first";
-      l = "${ls} -lbF --git --icons";
-      ll = "${l} -G";
-      la =
-        "${ls} -lbhHigmuSa@ --time-style=long-iso --git --color-scale --icons";
-      lt = "${ls} --tree --level=2 --icons";
+        # eza ls replacement
+        ls = "${pkgs.eza}/bin/eza --group-directories-first";
+        l = "${ls} -lbF --git --icons";
+        ll = "${l} -G";
+        la =
+          "${ls} -lbhHigmuSa@ --time-style=long-iso --git --color-scale --icons";
+        lt = "${ls} --tree --level=2 --icons";
         # Git
         gs = "${pkgs.git}/bin/git status";
         gpp = "${pkgs.git}/bin/git pull&& ${pkgs.git}/bin/git push";
