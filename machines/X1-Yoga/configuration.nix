@@ -60,6 +60,11 @@
     ];
   # Virtualisation
   virtualisation.libvirtd.enable = true;
+  virtualisation.vmware.host = {
+    enable = true;
+
+  };
+
   # Onedrive
   services.onedrive.enable = true;
 
