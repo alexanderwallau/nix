@@ -100,6 +100,7 @@
     ../modules/htop
     ../modules/sway
     ../modules/swaylock
+    ../modules/vs-fix
     ../modules/waybar
   ];
   fonts.fontconfig.enable = true;

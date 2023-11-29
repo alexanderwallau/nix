@@ -24,6 +24,8 @@
       nmap
       unzip
       zip
+
+      vs-fix
     ];
 
   awallau.programs = {
@@ -42,6 +44,7 @@
     ../modules/zsh
     ../modules/htop
     ../modules/python
+    ../modules/vs-fix
   ];
 
 
