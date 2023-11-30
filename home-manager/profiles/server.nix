@@ -2,6 +2,9 @@
 
   # Install these packages for my user
   home.packages =
+    let
+      vs-fix = pkgs.callPackage ../../pkgs/vs-fix { };
+    in
     with pkgs; [
       # my packages
       #awallau.musescore
@@ -44,7 +47,6 @@
     ../modules/zsh
     ../modules/htop
     ../modules/python
-    ../modules/vs-fix
   ];
 
 
