@@ -15,7 +15,7 @@ in
       package = pkgs.pulseaudioFull;
     };
 
-    environment.systemPackages = with pkgs; [ pavucontrol ];
+    environment.systemPackages = with pkgs; [ pavucontrol pulseeffects-legacy ];
 
     users.extraUsers.awallau.extraGroups = [ "audio" ];
 
