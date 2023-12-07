@@ -18,7 +18,7 @@
     #enable gitea
     gitea.enable = true;
     # enable hedgedoc
-   #hedgedoc.enable = true;
+    #hedgedoc.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up general nix stuff
@@ -45,15 +45,19 @@
       wget
       git
     ];
-  security.acme.acceptTerms = true;
-  security.acme.defaults.email = "mail@alexanderwallau.de";
+
+  security.acme = {
+    acceptTerms = true;
+    defaults.email = "mail@alexanderwallau.de";
+  };
+
   networking = {
     # dhcpcd.IPv6rs = true;
     interfaces.ens3 = {
       ipv6.addresses = [{ address = "2a0a:4cc0:1:73::1"; prefixLength = 64; }];
     };
     firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; };
-        dhcpcd.IPv6rs = true;
+    dhcpcd.IPv6rs = true;
     hostName = "mayer";
   };
   services.qemuGuest.enable = true;
