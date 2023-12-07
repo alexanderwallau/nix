@@ -1,37 +1,40 @@
-{ config, pkgs, lib, ... }:
+{ config, system-config, pkgs, lib, ... }:
 with lib;
 let cfg = config.awallau.hedgedoc;
 in {
-  options.awallau.hedgedoc.enable = mkEnableOption "activate hedgedoc";
+  options.awallau.hedgedoc = {
+    enable = mkEnableOption "activate hedgedoc";
+
+    domain = mkOption {
+      type = types.str;
+      default = "hed.ge.doc";
+      description = "Domain name for hedgedoc";
+    };
+  };
   config = mkIf cfg.enable {
     services = {
       hedgedoc = {
         enable = true;
         settings = {
-          domain = "md.alexanderwallau.de";
+          domain = "${cfg.domain}";
+          host = "127.0.0.1";
           port = 3400;
           protocolUseSSL = true;
           useSSL = false;
-#          minio = {
-#            accessKey = builtins.readFile /var/src/secret/hedgedoc/s3_access_key_id;
-#            endPoint = "s3.alexanderwallau.de";
-#            secretKey = builtins.readFile /var/src/secret/hedgedoc/s3_secret_access_key;
-#            };
-        s3bucket = "hedgedoc";
-        db = {
+          db = {
             dialect = "sqlite";
-            storage = "/var/lib/hedgedoc/db.hedgedoc.sqlite";
+            storage = "/var/lib/hedgedoc/db.sqlite";
           };
         };
       };
-      nginx.virtualHosts."md.alexanderwallau.de" = {
+      nginx.virtualHosts."${cfg.domain}" = {
         enableACME = true;
         forceSSL = true;
         locations."/" = {
-          proxyPass = "127.0.0.1:3400/";
+          proxyPass = "http://127.0.0.1:3400";
         };
+
       };
     };
-
   };
 }
