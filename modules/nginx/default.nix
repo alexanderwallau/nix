@@ -26,6 +26,10 @@ in
       recommendedTlsSettings = true;
       recommendedProxySettings = true;
 
+      # lets be more picky on our ciphers and protocols
+      sslCiphers = "EECDH+aRSA+AESGCM:EDH+aRSA:EECDH+aRSA:+AES256:+AES128:+SHA1:!CAMELLIA:!SEED:!3DES:!DES:!RC4:!eNULL";
+      sslProtocols = "TLSv1.3 TLSv1.2";
+
       # both lines can help if errors occur
       # especially with using longer paths
       clientMaxBodySize = "128m";
