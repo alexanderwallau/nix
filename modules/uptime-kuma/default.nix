@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, config, pkgs, ... }:
 with lib; let
   cfg = config.awallau.uptime-kuma;
 in
@@ -17,24 +17,30 @@ in
 
 
   config = mkIf cfg.enable {
-    services = {
-      uptime-kuma = {
-        enable = true;
-        settings = {
-          HOST = "$127.0.0.1";
-          PORT = "3001";
-        };
+    services.uptime-kuma = {
+      enable = true;
+      settings = {
+        HOST = "127.0.0.1";
+        PORT = "56473";
       };
-      nginx = {
-        enable = true;
-        recommendedOptimisation = true;
-        recommendedProxySettings = true;
-        recommendedTlsSettings = true;
-        virtualHosts."${cfg.domain}" = {
+    };
+
+
+
+    services.nginx = {
+      enable = true;
+      recommendedOptimisation = true;
+      recommendedTlsSettings = true;
+      recommendedProxySettings = true;
+
+      virtualHosts = {
+        "${cfg.domain}" = {
           forceSSL = true;
           enableACME = true;
+          kTLS = true;
           locations."/" = {
-            proxyPass = "127:0.0.1:3001";
+            proxyPass = "http://localhost:${config.services.uptime-kuma.settings.PORT}/";
+            proxyWebsockets = true;
           };
         };
       };
