@@ -17,9 +17,7 @@
       shelly-exporter.nixosModules.default
     ];
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "netbox-3.3.10"
-  ];
+
 
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
@@ -28,10 +26,10 @@
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # speedtesting to main cloud router
-    librespeed = {
-      enable = true;
-      title = "Connection Speed";
-    };
+    #librespeed = {
+    #  enable = true;
+    #  title = "Connection Speed";
+    #};
     # set up language and timezone    
     locales.enable = true;
     # minio for s3
@@ -73,19 +71,21 @@
       };
       prometheus.enable = true;
     };
-    #netbox.enable = true;
+    netbox = {
+      enable = true;
+      domain = "netbox.alexanderwallau.de";
+    };
     nginx.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
     # set up ssh server
     openssh.enable = true;
+    # enables users which got moved into a seperate file
     podman.enable = true;
-    # uptime kuma
     uptime-kuma = {
       domain = "uptime.alexanderwallau.de";
       enable = true;
     };
-    # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
       root.enable = true;

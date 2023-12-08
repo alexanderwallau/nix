@@ -23,7 +23,10 @@
       domain = "md.alexanderwallau.de";
     };
     # enable home-manager profile
-    home-manager = { enable = true; profile = "server"; };
+    home-manager = {
+      enable = true;
+      profile = "server";
+    };
     # set up general nix stuff
     nix-common.enable = true;
     # set up language and timezone    
@@ -32,10 +35,6 @@
     paperless.enable = true;
     # set up ssh server
     openssh.enable = true;
-    #uptime-kuma = {
-    #  domain = "uptime.alexanderwallau.de";
-    #  enable = true;
-    #};
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
