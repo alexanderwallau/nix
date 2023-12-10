@@ -29,6 +29,8 @@
     #librespeed = {
     #  enable = true;
     #  title = "Connection Speed";
+    #  domain = "speedtest.alexanderwallau.de";
+    #  port = "8965";
     #};
     # set up language and timezone    
     locales.enable = true;
@@ -61,8 +63,36 @@
           "https://cache.lounge.rocks/nix-cache/nix-cache-info"
           "https://build.lounge.rocks"
           "https://git.alexanderwallau.de"
+          "https://alexanderwallau.de"
+          "https://db.alexanderwallau.de"
+          "https://mail.alexanderwallau.de"
+          "https://s3.alexanderwallau.de"
+          "https://archive.alexanderwallau.de"
+          "https://books.alexanderwallau.de"
+          "https://git.alexanderwallau.de"
+          "https://links.alexanderwallau.de"
+          "https://md.alexanderwallau.de"
+          "https://minio.s3.alexanderwallau.de"
+          "https://netbox.alexanderwallau.de"
+          "https://pay.alexanderwallau.de"
+          "https://speedtest.alexanderwallau.de"
+          "https://status.alexanderwallau.de"
+          "https://uptime.alexanderwallau.de"
+
+
         ];
       };
+      nginx = {
+        enable = true;
+        configure-prometheus = true;
+      };
+
+      wireguard = {
+        enable = true;
+        configure-prometheus = true;
+        listenAddress = "192.168.69.1";
+      };
+
     };
     monitoring = {
       grafana = {
@@ -73,7 +103,7 @@
     };
     netbox = {
       enable = true;
-      domain = "netbox.alexanderwallau.de";
+      #domain = "netbox.alexanderwallau.de";
     };
     nginx.enable = true;
     # set up general nix stuff
