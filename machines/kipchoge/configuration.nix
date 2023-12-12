@@ -25,13 +25,6 @@
     docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
-    # speedtesting to main cloud router
-    #librespeed = {
-    #  enable = true;
-    #  title = "Connection Speed";
-    #  domain = "speedtest.alexanderwallau.de";
-    #  port = "8965";
-    #};
     # set up language and timezone    
     locales.enable = true;
     # minio for s3
