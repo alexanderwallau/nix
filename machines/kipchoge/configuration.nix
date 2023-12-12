@@ -94,10 +94,6 @@
       };
       prometheus.enable = true;
     };
-    #netbox = {
-    #  enable = true;
-    #  domain = "netbox.alexanderwallau.de";
-    #};
     nginx.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
