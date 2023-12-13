@@ -50,6 +50,9 @@ in
         enable = true;
         defaultUser = "${cfg.defaultUser}";
         passwordFile = "${cfg.passwordFile}";
+        baseUrl = "https://${cfg.domain}";
+        virtualHost = null;
+
         database = {
           host = "127.0.0.1";
           port = 5432;
@@ -57,8 +60,7 @@ in
           user = "freshrss";
           passFile = "${cfg.passwordFilePostgres}";
         };
-        baseUrl = "https://${cfg.domain}";
-        virtualHost = null;
+
       };
       #Thing needs a Database
       postgresql = {
