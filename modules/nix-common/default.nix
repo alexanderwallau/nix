@@ -1,4 +1,4 @@
-{ lib, pkgs, config, nixpkgs, flake-self,  ... }:
+{ lib, pkgs, config, nixpkgs, flake-self, ... }:
 with lib;
 let cfg = config.awallau.nix-common;
 in
@@ -44,11 +44,11 @@ in
         auto-optimise-store = true;
       };
 
-      # Clean up old generations after 14 days
+      # Clean up old generations after 3 days
       gc = {
         automatic = true;
         dates = "weekly";
-        options = "--delete-older-than 14d";
+        options = "--delete-older-than 3d";
       };
 
       extraOptions = ''
