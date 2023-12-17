@@ -1,0 +1,22 @@
+{
+  "labels": { "backend": "local" },
+  "platform": "linux/amd64",
+  "steps":
+    [
+      {
+        "commands": ["nix flake show"],
+        "image": "bash",
+        "name": "Show Flake ",
+      },
+      {
+        "commands": ["nix flake info"],
+        "image": "bash",
+        "name": "Show Flake Info",
+      },
+      {
+        "commands": [nix flake check --all-systems],
+        "image": "bash",
+        "name": "Check Flake",
+      },
+    ],
+}
