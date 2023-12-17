@@ -55,9 +55,9 @@
     [
       bash-completion
       fprintd
-      wget
       git
       virt-manager
+      wget
     ];
   # Virtualisation
   virtualisation.libvirtd.enable = true;
