@@ -50,6 +50,11 @@ in
         dates = "weekly";
         options = "--delete-older-than 3d";
       };
+      # clean journalctl
+      services.cron = {
+        enable = true;
+        systemCronJobs = [ "0 0 * * * journalctl --vacuum-time=7d 1>/dev/null" ];
+      };
 
       extraOptions = ''
         # this enables the technically experimental feature Flakes
