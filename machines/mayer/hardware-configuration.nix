@@ -15,12 +15,13 @@
     fsType = "ext4";
     autoResize = true;
   };
-
-  boot.growPartition = true;
-  boot.kernelParams = [ "console=ttyS0" ];
-  boot.loader.grub.device = "/dev/vda";
-  boot.loader.timeout = 5;
-
+  boot = {
+    growPartition = true;
+    kernelParams = [ "console=ttyS0" ];
+    loader.grub.device = "/dev/vda";
+    loader.timeout = 5;
+    tmp.useTmpfs = false;
+  };
   # config to fix the `no space left`
   # error during nix build
   fileSystems."/tmp" = {
@@ -28,7 +29,7 @@
     device = "tmpfs";
     options = [ "nosuid" "nodev" "relatime" "size=2G" ];
   };
-  boot.tmpOnTmpfs = false;
+
   services.logind.extraConfig = ''
     RuntimeDirectorySize=2G
   '';

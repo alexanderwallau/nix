@@ -15,7 +15,7 @@
       efiInstallAsRemovable = true;
       device = "nodev";
     };
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
     initrd.kernelModules = [ "nvme" "xhci_pci" "virtio_pci" "virtio_scsi" "usbhid" ];
   };
 
