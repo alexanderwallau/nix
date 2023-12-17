@@ -58,6 +58,7 @@
       qemu
       qrencode
       restic
+      rnote
       signal-desktop
       spotify
       tdesktop
