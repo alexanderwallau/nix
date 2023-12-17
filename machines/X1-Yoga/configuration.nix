@@ -12,6 +12,7 @@
       ./hardware-configuration.nix
     ];
 
+
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {

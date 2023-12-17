@@ -119,6 +119,9 @@
   # Allow "unfree" licenced packages
   nixpkgs.config = {
     allowUnfree = true;
+    permittedInsecurePackages = [
+      "electron-25.9.0"
+    ];
   };
 
   # This value determines the Home Manager release that your
