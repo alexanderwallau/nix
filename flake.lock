@@ -29,11 +29,11 @@
     "adblockStevenBlack": {
       "flake": false,
       "locked": {
-        "lastModified": 1702444896,
-        "narHash": "sha256-AGXJi9H7KfS4An/8BnRK0UANGp+jXwXaWYDmzKvydpc=",
+        "lastModified": 1702739496,
+        "narHash": "sha256-ZNDp7JUt0jYwSU8Dm34hFXth+YtfLQBXi9v9/xTmlFw=",
         "owner": "StevenBlack",
         "repo": "hosts",
-        "rev": "6017d067397eef9185a6a08b6b9e355b822a8cd1",
+        "rev": "3928d79c18cae654c8892c59bfdc5cd5429166bd",
         "type": "github"
       },
       "original": {
@@ -115,11 +115,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1702423270,
-        "narHash": "sha256-3ZA5E+b2XBP+c9qGhWpRApzPq/PZtIPgkeEDpTBV4g8=",
+        "lastModified": 1702735279,
+        "narHash": "sha256-SztEzDOE/6bDNnWWvnRbSHPVrgewLwdSei1sxoZFejM=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "d9297efd3a1c3ebb9027dc68f9da0ac002ae94db",
+        "rev": "e9b9ecef4295a835ab073814f100498716b05a96",
         "type": "github"
       },
       "original": {
