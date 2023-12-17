@@ -1,52 +1,46 @@
 {
-  "labels": {
-    "backend": "local"
-  },
+  "labels": { "backend": "local" },
   "platform": "linux/arm64",
-  "steps": [
-    {
-      "commands": [
-        "attic login lounge-rocks https://cache.lounge.rocks $ATTIC_KEY --set-default"
-      ],
-      "image": "bash",
-      "name": "Setup Attic",
-      "secrets": [
-        "attic_key"
-      ]
-    },
-    {
-      "commands": [
-        "nix build '.#nixosConfigurations.kipchoge.config.system.build.toplevel' -o 'result-kipchoge'"
-      ],
-      "image": "bash",
-      "name": "Build kipchoge"
-    },
-    {
-      "commands": [
-        "attic push lounge-rocks:nix-cache 'result-kipchoge'"
-      ],
-      "image": "bash",
-      "name": "Push kipchoge to Attic",
-      "secrets": [
-        "attic_key"
-      ]
-    },
-    {
-      "commands": [
-        "nix build '.#nixosConfigurations.phelps.config.system.build.toplevel' -o 'result-phelps'"
-      ],
-      "image": "bash",
-      "name": "Build phelps"
-    },
-    {
-      "commands": [
-        "attic push lounge-rocks:nix-cache 'result-phelps'"
-      ],
-      "image": "bash",
-      "name": "Push phelps to Attic",
-      "secrets": [
-        "attic_key"
-      ]
-    }
-  ]
+  "steps":
+    [
+      {
+        "commands":
+          [
+            "attic login lounge-rocks https://cache.lounge.rocks $ATTIC_KEY --set-default",
+          ],
+        "image": "bash",
+        "name": "Setup Attic",
+        "secrets": ["attic_key"],
+      },
+      {
+        "commands":
+          [
+            "nix build '.#nixosConfigurations.kipchoge.config.system.build.toplevel' -o 'result-kipchoge'",
+            "nix path-info --closure-size -h $(readlink -f 'result-kipchoge')",
+          ],
+        "image": "bash",
+        "name": "Build kipchoge",
+      },
+      {
+        "commands": ["attic push lounge-rocks:nix-cache 'result-kipchoge'"],
+        "image": "bash",
+        "name": "Push kipchoge to Attic",
+        "secrets": ["attic_key"],
+      },
+      {
+        "commands":
+          [
+            "nix build '.#nixosConfigurations.phelps.config.system.build.toplevel' -o 'result-phelps'",
+            "nix path-info --closure-size -h $(readlink -f 'result-phelps')",
+          ],
+        "image": "bash",
+        "name": "Build phelps",
+      },
+      {
+        "commands": ["attic push lounge-rocks:nix-cache 'result-phelps'"],
+        "image": "bash",
+        "name": "Push phelps to Attic",
+        "secrets": ["attic_key"],
+      },
+    ],
 }
