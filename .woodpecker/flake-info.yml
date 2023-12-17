@@ -14,7 +14,7 @@
         "name": "Show Flake Info",
       },
       {
-        "commands": [nix flake check --all-systems],
+        "commands": [nix flake check --all-systems --print-build-logs],
         "image": "bash",
         "name": "Check Flake",
       },
