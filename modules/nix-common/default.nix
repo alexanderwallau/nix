@@ -10,7 +10,6 @@ in
   };
 
   config = mkIf cfg.enable {
-
     nix = {
       package = pkgs.nixFlakes;
 
@@ -51,23 +50,7 @@ in
         options = "--delete-older-than 3d";
       };
       # clean journalctl
-      systemd.timers."clean-jornal" = {
-        wantedBy = [ "timers.target" ];
-        timerConfig = {
-          OnCalendar = "Sun 02:00:00";
-          Unit = "clean-journal.service";
-        };
-      };
 
-      systemd.services."clean-journal" = {
-        script = ''
-          journalctl --vacuum-time=7d 1>/dev/null"
-        '';
-        serviceConfig = {
-          Type = "oneshot";
-          User = "root";
-        };
-      };
 
 
       extraOptions = ''
@@ -89,6 +72,13 @@ in
       # Allow unfree licenced packages
       config.allowUnfree = true;
     };
+
+    #Clean Journalctl logs oder than 7 days or if Larger than 1GB
+    services.journald.extraConfig = ''
+      SystemMaxUse=1G
+      MaxRetentionSec=7day
+    '';
+
 
     # Let 'nixos-version --json' know the Git revision of this flake.
     system.configurationRevision = nixpkgs.lib.mkIf (flake-self ? rev) flake-self.rev;
