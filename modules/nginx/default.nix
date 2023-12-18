@@ -26,7 +26,6 @@ in
       recommendedTlsSettings = true;
       recommendedProxySettings = true;
       recommendedGzipSettings = true;
-      recommendedZstdSettings = true;
 
 
       # lets be more picky on our ciphers and protocols
