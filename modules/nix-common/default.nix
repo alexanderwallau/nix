@@ -51,10 +51,24 @@ in
         options = "--delete-older-than 3d";
       };
       # clean journalctl
-      services.cron = {
-        enable = true;
-        systemCronJobs = [ "0 0 * * * journalctl --vacuum-time=7d 1>/dev/null" ];
+      systemd.timers."clean-jornal" = {
+        wantedBy = [ "timers.target" ];
+        timerConfig = {
+          OnCalendar = "Sun 02:00:00";
+          Unit = "clean-journal.service";
+        };
       };
+
+      systemd.services."clean-journal" = {
+        script = ''
+          journalctl --vacuum-time=7d 1>/dev/null"
+        '';
+        serviceConfig = {
+          Type = "oneshot";
+          User = "root";
+        };
+      };
+
 
       extraOptions = ''
         # this enables the technically experimental feature Flakes
