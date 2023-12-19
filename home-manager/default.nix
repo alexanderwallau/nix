@@ -1,4 +1,4 @@
-{ config, pkgs, lib, flake-self,  ... }:
+{ config, pkgs, lib, flake-self, ... }:
 with lib;
 let cfg = config.awallau.home-manager;
 in
@@ -36,6 +36,7 @@ in
         {
           nixpkgs.overlays = [
             flake-self.overlays.default
+            flake-self.inputs.bonn-mensa.overlays.default
           ];
         }
         ./profiles/${cfg.profile}.nix
