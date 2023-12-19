@@ -7,6 +7,7 @@ let
     "pass.telekom.de" = "109.237.176.33";
     "fritz.box" = "192.168.178.1";
     "nas.wallau" = "192.168.178.5";
+    "iceportal.de" = "172.18.1.110";
     "status.alexanderwallau.de" = "192.168.69.1";
     "x1-yoga" = "192.168.69.100";
 
