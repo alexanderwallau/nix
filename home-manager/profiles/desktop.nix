@@ -9,6 +9,7 @@
       # packages from nixpkgs
       _1password-gui
       bolt
+      bonn-mensa
       cifs-utils
       cmake
       cups

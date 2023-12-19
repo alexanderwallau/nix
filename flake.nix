@@ -63,6 +63,10 @@
       url = "github:msteen/nixos-vscode-server";
     };
 
+    bonn-mensa = {
+      url = "github:alexanderwallau/bonn-mensa";
+      inputs = { nixpkgs.follows = "nixpkgs"; };
+    };
 
   };
 
