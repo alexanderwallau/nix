@@ -74,6 +74,9 @@
   #build arm64 packages
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
+  # Because Lenovo Thermal design choices
+  services.throttled.enable = true;
+
   # Define hostname.
   networking = {
     hostName = "X1-Yoga";
