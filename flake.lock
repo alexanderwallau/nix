@@ -54,6 +54,26 @@
         "url": "https://github.com/alexanderwallau.keys"
       }
     },
+    "bonn-mensa": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1703014111,
+        "narHash": "sha256-nN+Q/Ziz1eLuzyJhsEmpBjDJeMRP0d+hlsSGfyLKnK0=",
+        "owner": "alexanderwallau",
+        "repo": "bonn-mensa",
+        "rev": "f97c1991ec3c9400e730635a0cb0467c81f2cf0c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "alexanderwallau",
+        "repo": "bonn-mensa",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -201,6 +221,7 @@
         "adblock-unbound": "adblock-unbound",
         "adblockStevenBlack": "adblockStevenBlack",
         "alexanderwallau-keys": "alexanderwallau-keys",
+        "bonn-mensa": "bonn-mensa",
         "flake-utils": "flake-utils",
         "home-manager": "home-manager",
         "lollypops": "lollypops",
