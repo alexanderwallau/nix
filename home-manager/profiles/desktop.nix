@@ -80,6 +80,7 @@
     ];
 
   awallau.programs = {
+    direnv.enable = true;
     foot.enable = true;
     git.enable = true;
     htop.enable = true;
@@ -93,6 +94,7 @@
   # Imports
   imports = [
     ../colorscheme.nix
+    ../modules/direnv
     ../modules/foot
     ../modules/git
     #../modules/nvim
