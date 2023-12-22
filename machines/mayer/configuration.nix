@@ -10,11 +10,20 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./wg0.nix
     ];
   services.qemuGuest.enable = true;
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
+    # enable freshrss
+    freshrss = {
+      enable = true;
+      defaultUser = "awallau";
+      passwordFile = "/var/src/secret/freshrss";
+      passwordFilePostgres = "/var/src/secret/freshrss-postgres";
+      domain = "rss.alexanderwallau.de";
+    };
     #enable gitea
     gitea.enable = true;
     # enable hedgedoc
@@ -27,14 +36,23 @@
       enable = true;
       profile = "server";
     };
+    nginx.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
     # set up language and timezone    
     locales.enable = true;
     # set up paperless
     paperless.enable = true;
+    # set up postgresql
+    postgres.enable = true;
     # set up ssh server
     openssh.enable = true;
+    # recepies 
+    tandoor = {
+      enable = true;
+      domain = "rezepte.alexanderwallau.de";
+    };
+
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
@@ -51,11 +69,6 @@
       wget
       git
     ];
-
-  security.acme = {
-    acceptTerms = true;
-    defaults.email = "mail@alexanderwallau.de";
-  };
 
   networking = {
     enableIPv6 = true;

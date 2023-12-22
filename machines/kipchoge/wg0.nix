@@ -20,6 +20,11 @@
       '';
 
       peers = [
+        # Mayer
+        {
+          publicKey = "xa2Uz91bibsU6nBDkx+oi/O7OjILBi+S4V7jL2Tylxs=";
+          allowedIPs = [ "192.168.69.2/32" ];
+        }
         # Thinkpad
         {
           publicKey = "Y6v8C//JacOi/EVb80JBtJ7Bv+6viDnfpnS0hmAHUDo=";
