@@ -32,7 +32,7 @@ in
         "editor.cursorSmoothCaretAnimation" = "on";
         "editor.cursorSurroundingLinesStyle" = "all";
         "editor.defaultColorDecorators" = true;
-         "editor.formatOnPaste" = true;
+        "editor.formatOnPaste" = true;
         "editor.formatOnSave" = true;
         "editor.formatOnType" = true;
         "editor.linkedEditing" = true;
@@ -42,7 +42,7 @@ in
         "editor.smoothScrolling" = true;
         "files.autoGuessEncoding" = true;
         "files.autoSave" = "afterDelay";
-                "nix.serverPath" = "${pkgs.nil}/bin/nil";
+        "nix.serverPath" = "${pkgs.nil}/bin/nil";
         "prettier.printWidth" = 160;
         "problems.showCurrentInStatus" = true;
         "redhat.telemetry.enabled" = false;
@@ -57,6 +57,7 @@ in
         jnoortheen.nix-ide
         mechatroner.rainbow-csv
         ms-python.python
+        ms-python.black-formatter
         ms-toolsai.jupyter
         ms-vscode.cmake-tools
         ms-vscode.cpptools
@@ -72,7 +73,7 @@ in
         github.vscode-pull-request-github
         gruntfuggly.todo-tree
         mkhl.direnv
-                redhat.vscode-yaml
+        redhat.vscode-yaml
         streetsidesoftware.code-spell-checker
         tamasfe.even-better-toml
         usernamehw.errorlens
