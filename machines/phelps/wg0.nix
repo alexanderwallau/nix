@@ -4,7 +4,7 @@
     firewall.allowedUDPPorts = [ 52192 ];
     wireguard.interfaces.wg0 = {
 
-      ips = [ "192.168.69.2/24" ];
+      ips = [ "192.168.69.3/24" ];
       listenPort = 52192;
       mtu = 1412;
 

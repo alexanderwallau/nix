@@ -22,8 +22,13 @@
       peers = [
         # Mayer
         {
-          publicKey = "xa2Uz91bibsU6nBDkx+oi/O7OjILBi+S4V7jL2Tylxs=";
+          publicKey = "ZDf8HXChWL9lRIF1elc4VjSY07zRn0p+JGDeAtkp+lA=";
           allowedIPs = [ "192.168.69.2/32" ];
+        }
+        # Phelps
+        {
+          publicKey = "sqBSxPs6lxrPFIK6uNr+9VuOLiytvxl9ST8PFEnbRz0=";
+          allowedIPs = [ "192.168.69.3/32" ];
         }
         # Thinkpad
         {
@@ -34,11 +39,6 @@
         {
           publicKey = "gzpPYd8REjXsTPRIHs3MF/OJV2nl4YU1p5E0UaDwKCU=";
           allowedIPs = [ "192.168.69.101/32" ];
-        }
-        # Nik
-        {
-          publicKey = "+qt2l/mWieG/oJ8GNUpH6pIbCzKaDGOAIgkAn0mi01Y=";
-          allowedIPs = [ "192.168.69.102/32" ];
         }
       ];
 
