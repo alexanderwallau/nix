@@ -1,4 +1,4 @@
-{ lib, pkgs, config, nixpkgs, flake-self, vscode-server, ... }:
+{ lib, pkgs, config, nixpkgs, flake-self, ... }:
 with lib;
 let cfg = config.awallau.nix-common;
 in
@@ -78,11 +78,6 @@ in
       SystemMaxUse=1G
       MaxRetentionSec=7day
     '';
-    # Visual Studio Code Server support
-    services.vscode-server = {
-      enable = true;
-      installPath = "~/.vscode-server";
-    };
 
 
     # Let 'nixos-version --json' know the Git revision of this flake.
