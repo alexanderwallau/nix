@@ -80,8 +80,4 @@ nix fmt flake.nix
 
 - Propperly pair Bluetooth with dual-bootet Win10
 - NFC
-- Wireguard
-- Zsh Dotfiles
-- Command Line Utilities
-- Aarch64 Runner for Gitlab
 - Make X220 great again
