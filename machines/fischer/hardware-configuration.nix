@@ -8,7 +8,6 @@
     [
       (modulesPath + "/installer/scan/not-detected.nix")
       # import hardware specific configuration
-      # https://github.com/NixOS/nixos-hardware/blob/master/lenovo/thinkpad/x1/yoga/7th-gen/default.nix
       nixos-hardware.nixosModules.lenovo-thinkpad-x220
     ];
 
@@ -24,6 +23,7 @@
         efiSupport = true;
         useOSProber = true;
         default = "0";
+        theme = pkgs.sleek-grub-theme;
       };
       efi.canTouchEfiVariables = true;
     };
@@ -94,10 +94,13 @@
   # enable all the firmware with a license allowing redistribution
   hardware.enableRedistributableFirmware = true;
   # Fingerprint service options
-  services.fprintd.enable = true;
-  services.fprintd.tod.enable = true;
-  services.fprintd.tod.driver = pkgs.libfprint-2-tod1-goodix;
-
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = pkgs.libfprint-2-tod1-goodix;
+    };
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
