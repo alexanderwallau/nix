@@ -65,6 +65,7 @@
       tdesktop
       texlive.combined.scheme-full
       thunderbird-bin
+      tidal-dl
       #todoist-electron
       unzip
       virt-manager
