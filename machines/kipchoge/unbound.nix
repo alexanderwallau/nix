@@ -87,13 +87,6 @@ in
             forward-tls-upstream = "yes";
           }
           {
-            name = "netbox.alexanderwallau.de";
-            forward-addr = [
-              "192.168.69.1"
-            ];
-            forward-tls-upstream = "yes";
-          }
-          {
             name = "google.*.";
             forward-addr = [
               "8.8.8.8@853#dns.google"
