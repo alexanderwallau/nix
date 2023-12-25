@@ -42,7 +42,11 @@
       git
     ];
 
-  networking = { firewall = { allowedTCPPorts = [ 443 80 ]; }; };
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
-  networking.hostName = "phelps";
+  networking = {
+    firewall = {
+      allowedTCPPorts = [ 443 80 ];
+    };
+    nameservers = [ "192.168.69.1" ];
+    hostName = "phelps";
+  };
 }
