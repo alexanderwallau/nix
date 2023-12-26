@@ -13,9 +13,8 @@ in
   config = mkIf cfg.enable {
     services.postgresql = {
       enable = true;
-      package = pkgs.postgresql_15_jit;
+      package = pkgs.postgresql;
       enableJIT = true;
-
       enableTCPIP = true;
 
       settings = {
@@ -27,13 +26,44 @@ in
         track_counts = "on";
         autovacuum = "on";
       };
+      ensureDatabases = [ "tandoor" "freshrss" "hedgedoc" ];
 
-      authentication = ''
-        host all all 192.168.69.0/24 md5
-        host all all 192.168.178.0/24 md5
-      '';
+      ensureUsers = [
+        {
+          name = "freshrss";
+          ensureDBOwnership = true;
+          ensureClauses.login = true;
+        }
+        {
+          name = "tandoor";
+          ensureDBOwnership = true;
+          ensureClauses.login = true;
+        }
+        {
+          name = "hedgedoc";
+          ensureDBOwnership = true;
+          ensureClauses.login = true;
+        }
+      ];
+      #
+      #initialScript = pkgs.writeText "pg-init.sql" ''
+      #  ALTER DATABASE freshrss OWNER TO freshrss;
+      #  ALTER DATABASE tandoor OWNER TO tandoor;
+      #  ALTER DATABASE hedgedoc OWNER TO hedgedoc;
+      #'';
+      #identMap = ''
+      #  # ArbitraryMapName systemUser DBUser
+      #  superuser_map      root       postgres
+      #  superuser_map      postgres   postgres
+      #
+      #  # Let other names login as themselves
+      #  superuser_map      /^(.*)$    \1
+      #'';
     };
-    # When finally finished deploying wireguard, we can remove this
-    #networking.firewall.interfaces."wg0".allowedTCPPorts = [ 5432 ];
+    networking.firewall.interfaces."wg0".allowedTCPPorts = [ 5432 ];
   };
 }
+
+
+
+
