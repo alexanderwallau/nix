@@ -14,6 +14,7 @@ in
       description = "Domain for Dashy";
       example = "d.as.hy";
     };
+
     configFile = mkOption {
       type = types.str;
       default = "/etc/nixos/dashy.yml";
@@ -24,10 +25,6 @@ in
       type = types.str;
       default = 8081;
     };
-    settings = mkOption {
-      type = types.attrs;
-    };
-    extraOptions = mkOption { };
   };
 
   config = mkIf cfg.enable {
@@ -37,12 +34,11 @@ in
     virtualisation.oci-containers.containers = {
       dashy = {
         image = "lissy93/dashy";
-        inherit (cfg) extraOptions;
         environment = {
           TZ = "Europe/Berlin";
         };
         volumes = [
-          "${configFile}:/app/public/conf.yml"
+          "${cfg.configFile}:/app/public/conf.yml"
         ];
         ports = [ "${cfg.port}:80" ];
       };
