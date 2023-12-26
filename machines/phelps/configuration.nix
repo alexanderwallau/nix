@@ -16,13 +16,25 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
+    containers = {
+      dashy = {
+        enable = true;
+        configFile = "/var/lib/dashy/conf.yml";
+        domain = "fsdash.awll.de";
+        port = "3132";
+      };
+    };
     docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
-    # set up general nix stuff
-    nix-common.enable = true;
     # set up language and timezone    
     locales.enable = true;
+    # enable node exporter
+    metrics = { node = { enable = true; flake = true; }; };
+    # enable nginx
+    nginx.enable = true;
+    # set up general nix stuff
+    nix-common.enable = true;
     # set up ssh server
     openssh.enable = true;
     # enables users which got moved into a seperate file
