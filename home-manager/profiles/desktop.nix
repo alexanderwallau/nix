@@ -75,7 +75,7 @@
       wireguard-tools
       xournal
       yakuake
-      yubioath-flutter
+#      yubioath-flutter
       zip
       zoom-us
     ];
