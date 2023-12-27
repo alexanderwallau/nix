@@ -34,7 +34,7 @@
   awallau.programs = {
     git.enable = true;
     htop.enable = true;
-    #vim.enable = true;
+    vim.enable = true;
     zsh.enable = true;
     python.enable = true;
 
@@ -43,7 +43,7 @@
   # Imports
   imports = [
     ../modules/git
-    #../modules/nvim
+    ../modules/nvim
     ../modules/zsh
     ../modules/htop
     ../modules/python
