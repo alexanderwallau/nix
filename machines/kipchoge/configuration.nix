@@ -39,6 +39,8 @@
         configure-prometheus = true;
         targets = [
           "kipchoge:9100"
+          "mayer:9100"
+          "phelps:9100"
           "x1-yoga:9100"
 
           "192.168.178.3:9100"
