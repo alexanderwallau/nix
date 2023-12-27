@@ -42,6 +42,10 @@
       awallau.enable = true;
       root.enable = true;
     };
+    uptime-kuma = {
+      enable = true;
+      domain = "status.ubo.awll.de";
+    };
     # zsh as default shell for all users
     zsh.enable = true;
   };
