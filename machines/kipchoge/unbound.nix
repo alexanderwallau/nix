@@ -10,11 +10,12 @@ let
     "iceportal.de" = "172.18.1.110";
     "status.alexanderwallau.de" = "192.168.69.1";
     "x1-yoga" = "192.168.69.100";
+    "mayer" = "192.168.69.2";
+    "phelps" = "192.168.69.3";
 
     "kipchoge.aw" = "192.168.69.1";
     "x1-yoga.aw" = "192.168.69.100";
-    "mayer.aw" = "192.168.69.2";
-    "phelps.aw" = "192.168.69.3";
+
   };
 
   dns-overwrites-config = builtins.toFile "dns-overwrites.conf" (''
