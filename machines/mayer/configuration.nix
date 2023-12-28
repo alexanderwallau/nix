@@ -10,13 +10,24 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./static-sites.nix
       ./wg0.nix
     ];
+
   services.qemuGuest.enable = true;
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
     # enable freshrss
+    containers =
+      {
+        rss-bridge = {
+          enable = true;
+          domain = "rss-bridge.alexanderwallau.de";
+          port = "3134";
+        };
+      };
+    docker.enable = true;
     freshrss = {
       enable = true;
       defaultUser = "awallau";
@@ -36,6 +47,7 @@
       enable = true;
       profile = "server";
     };
+    metrics = { node = { enable = true; flake = true; }; };
     nginx.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
@@ -48,10 +60,10 @@
     # set up ssh server
     openssh.enable = true;
     # recepies 
-    tandoor = {
-      enable = true;
-      domain = "rezepte.alexanderwallau.de";
-    };
+    #tandoor = {
+    # enable = true;
+    #domain = "rezepte.alexanderwallau.de";
+    #};
 
     # enables users which got moved into a seperate file
     user = {
