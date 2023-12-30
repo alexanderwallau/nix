@@ -21,6 +21,7 @@ in
       # dump.interval = "weekly";
       lfs.enable = true;
       user = "git";
+      mailerPasswordFile = "/var/lib/gitea/gitea-mailer-password";
 
       settings = {
         server = {
@@ -29,6 +30,14 @@ in
           HTTP_ADDR = "127.0.0.1";
           HTTP_PORT = 3000;
           SSH_PORT = 22;
+        };
+        mailer = {
+          # TODO switch to mail.alexanderwallau.de
+          ENABLED = true;
+          FROM = "git@alexanderwallau.de";
+          USER = "git@alexanderwallau.de";
+          SMTP_ADDR = "mxe830.netcup.net";
+          PORT = 465;
         };
         service = {
           DISABLE_REGISTRATION = true;
