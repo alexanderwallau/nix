@@ -62,6 +62,13 @@
     vscode-server = {
       url = "github:msteen/nixos-vscode-server";
     };
+    plasma-manager = {
+      # KDE Plasma User Settings Generator
+      url = "github:pjones/plasma-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "nixpkgs";
+    };
+
 
     bonn-mensa = {
       url = "github:alexanderwallau/bonn-mensa";
