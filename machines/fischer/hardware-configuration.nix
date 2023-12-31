@@ -31,7 +31,7 @@
     initrd.luks.devices = {
       root = {
         # Get UUID from blkid /dev/nvme0n1p6
-        device = "/dev/disk/by-uuid/7733f525-719b-41b4-8a5a-6ce745421af8";
+        device = "/dev/disk/by-uuid/f84bd902-d03c-49ef-a82f-b12564d4f7d1";
         preLVM = true;
         allowDiscards = true;
       };
@@ -41,18 +41,18 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/cf97a08d-71d9-4eef-840f-e211fef07178";
+      device = "/dev/disk/by-uuid/3c8da8cb-162e-4c78-8afc-ea0bdc45dbb6";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/1647-4A0C";
+      device = "/dev/disk/by-uuid/1294-DAA3";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/92c5541a-07f8-4ccd-bd0a-a6f11bf84e9b"; }];
+    [{ device = "/dev/disk/by-uuid/8fad684d-f9cd-4ea0-b955-96594c25708d"; }];
 
 
   services.xserver = {
