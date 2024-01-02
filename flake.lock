@@ -216,6 +216,29 @@
         "type": "indirect"
       }
     },
+    "plasma-manager": {
+      "inputs": {
+        "home-manager": [
+          "nixpkgs"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1704068377,
+        "narHash": "sha256-uSajtw+9o0lWvmJ7obLHxjyZ/2vdbHL4Nn5IAgKoZLA=",
+        "owner": "pjones",
+        "repo": "plasma-manager",
+        "rev": "e9f464e016e3afa7b23f37b5e5e61216f964cbeb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "pjones",
+        "repo": "plasma-manager",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "adblock-unbound": "adblock-unbound",
@@ -227,6 +250,7 @@
         "lollypops": "lollypops",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
+        "plasma-manager": "plasma-manager",
         "shelly-exporter": "shelly-exporter",
         "vscode-server": "vscode-server"
       }
