@@ -28,12 +28,13 @@
       glances
       gparted
       gping
+      gthumb
       hcloud
       hue-cli
       inkscape
       iperf3
       ipu6ep-camera-bin
-      jetbrains.pycharm-professional
+      #jetbrains.pycharm-professional
       #jetbrains.clion
       julia
       libnfc
