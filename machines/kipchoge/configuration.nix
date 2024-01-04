@@ -22,6 +22,13 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
+    containers = {
+      librespeed = {
+        enable = true;
+        domain = "speedtest.alexanderwallau.de";
+        title = "I am Speed";
+      };
+    };
     docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
