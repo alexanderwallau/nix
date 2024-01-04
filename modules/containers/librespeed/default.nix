@@ -29,7 +29,7 @@ in
   config = mkIf cfg.enable {
     virtualisation.oci-containers.containers.librespeedtest = {
       autoStart = true;
-      image = "adolfintel/speedtest";
+      image = "ghcr.io/librespeed/speedtest";
       environment = {
         TITLE = "${cfg.title}";
         ENABLE_ID_OBFUSCATION = "true";
