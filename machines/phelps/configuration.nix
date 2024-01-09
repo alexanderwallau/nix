@@ -54,8 +54,10 @@
   environment.systemPackages = with pkgs;
     [
       bash-completion
-      wget
       git
+      openconnect
+      wget
+      vpn-slice
     ];
 
   networking = {
