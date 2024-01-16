@@ -8,7 +8,7 @@ in {
       enable = true;
       passwordFile = "/var/src/secret/paperless";
       dataDir = "/var/lib/paperless";
-      extraConfig = {
+      settings = {
         PAPERLESS_ADMIN_USER = "awallau";
         PAPERLESS_OCR_LANGUAGE = "deu+eng";
         PAPERLESS_OCR_USER_ARGS = builtins.toJSON {
