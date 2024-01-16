@@ -33,7 +33,7 @@
       hue-cli
       inkscape
       iperf3
-      ipu6ep-camera-bin
+      # ipu6ep-camera-bin
       #jetbrains.pycharm-professional
       #jetbrains.clion
       julia
