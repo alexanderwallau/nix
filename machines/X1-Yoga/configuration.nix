@@ -75,7 +75,7 @@
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   # Because Lenovo Thermal design choices
-  services.throttled.enable = true;
+  # services.throttled.enable = true;
 
   # Define hostname.
   networking = {
