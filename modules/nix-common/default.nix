@@ -79,6 +79,9 @@ in
       MaxRetentionSec=7day
     '';
 
+    # Fallback ntp service, this one being T-Online
+    timeServers = options.networking.timeServers.default ++ [ "194.25.134.196" ];
+
 
     # Let 'nixos-version --json' know the Git revision of this flake.
     system.configurationRevision = nixpkgs.lib.mkIf (flake-self ? rev) flake-self.rev;
