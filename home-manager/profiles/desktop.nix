@@ -30,16 +30,10 @@
       gping
       gthumb
       hcloud
-      hue-cli
       inkscape
       iperf3
-      # ipu6ep-camera-bin
-      #jetbrains.pycharm-professional
-      #jetbrains.clion
       julia
-      libnfc
       libreoffice
-      libwebcam
       libsForQt5.kio-gdrive
       minecraft
       musescore
@@ -71,12 +65,10 @@
       unzip
       virt-manager
       vlc
-      wait-for-build
       wireguard-go
-      wireguard-tools
       xournal
       yakuake
-      #      yubioath-flutter
+      yubioath-flutter
       zip
       zoom-us
     ];
