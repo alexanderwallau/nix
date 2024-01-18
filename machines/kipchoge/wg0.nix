@@ -40,6 +40,11 @@
           publicKey = "gzpPYd8REjXsTPRIHs3MF/OJV2nl4YU1p5E0UaDwKCU=";
           allowedIPs = [ "192.168.69.101/32" ];
         }
+        # iPad
+        {
+          publicKey = "iAUCVa+1Rp3pdlK5wZCsiCtNx80uRCDKhA/1Gus/LEI=";
+          allowedIPs = [ "192.168.69.103/32" ];
+        }
       ];
 
 
