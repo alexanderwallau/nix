@@ -21,6 +21,7 @@ in {
           port = 3400;
           protocolUseSSL = true;
           useSSL = false;
+          allowGravatar = true;
           db = {
             dialect = "sqlite";
             storage = "/var/lib/hedgedoc/db.sqlite";
