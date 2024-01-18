@@ -64,7 +64,9 @@
     firewall = {
       allowedTCPPorts = [ 443 80 ];
     };
-    nameservers = [ "192.168.69.1" ];
+    nameservers = [ "192.168.69.1" "1.1.1.1" ];
+    # Fallback ntp service, this one being T-Online
+    timeServers = [ "194.25.134.196" ];
     hostName = "phelps";
   };
 }

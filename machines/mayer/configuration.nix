@@ -88,12 +88,17 @@
     interfaces.ens3 = {
       ipv6.addresses = [{ address = "2a0a:4cc0:1:73::1"; prefixLength = 64; }];
     };
+
     defaultGateway6 = {
       address = "fe80::1";
       interface = "ens3";
     };
-    firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; };
 
+    firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; };
+    nameservers = [ "192.168.69.1" "1.1.1.1" ];
+
+    # Fallback ntp service, this one being T-Online
+    timeServers = [ "194.25.134.196" ];
     hostName = "mayer";
   };
 

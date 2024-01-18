@@ -146,7 +146,11 @@
       wget
       git
     ];
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1" ];
-  networking.hostName = "kipchoge";
+  networking = {
+    nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    # Fallback ntp service, this one being T-Online
+    timeServers = [ "194.25.134.196" ];
+    hostName = "kipchoge";
+  };
 }
 
