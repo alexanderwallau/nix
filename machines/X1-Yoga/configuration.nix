@@ -82,6 +82,8 @@
     hostName = "X1-Yoga";
     # Monitoring
     firewall.interfaces."Kipchoge".allowedTCPPorts = [ 9100 ];
+    # Fallback ntp service, this one being T-Online
+    timeServers = [ "194.25.134.196" ];
   };
 }
 
