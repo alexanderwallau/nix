@@ -66,10 +66,13 @@
       zoom-us
     ];
   # Virtualisation
-  virtualisation.libvirtd.enable = true;
-  virtualisation.vmware.host = {
-    enable = true;
-
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+    };
+    vmware.host = {
+      enable = true;
+    };
   };
 
   # Onedrive
