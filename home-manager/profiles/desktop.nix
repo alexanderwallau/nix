@@ -7,8 +7,6 @@
       #awallau.musescore
 
       # packages from nixpkgs
-      _1password-gui
-      bolt
       bonn-mensa
       cifs-utils
       cmake
@@ -16,7 +14,6 @@
       dconf
       discord
       dnsutils
-      dogdns
       element-desktop
       eza
       firefox
@@ -25,18 +22,14 @@
       gdu
       gimp
       gitui
-      glances
       gparted
       gping
       gthumb
-      hcloud
       inkscape
       iperf3
       julia
       libreoffice
       libsForQt5.kio-gdrive
-      minecraft
-      musescore
       neofetch
       networkmanager-openvpn
       nextcloud-client
@@ -49,28 +42,22 @@
       p7zip
       pciutils
       pipewire
-      plasma5Packages.plasma-thunderbolt
       protonvpn-gui
       qemu
-      qrencode
       restic
-      rnote
       signal-desktop
       spotify
       tdesktop
-      texlive.combined.scheme-full
       thunderbird-bin
       tidal-dl
       #todoist-electron
       unzip
-      virt-manager
       vlc
       wireguard-go
       xournal
       yakuake
       yubioath-flutter
       zip
-      zoom-us
     ];
 
   awallau.programs = {

@@ -53,11 +53,17 @@
   # install packages system wide
   environment.systemPackages = with pkgs;
     [
+      _1password-gui
       bash-completion
+      bolt
       fprintd
       git
+      musescore
+      plasma5Packages.plasma-thunderbolt
+      texlive.combined.scheme-full
       virt-manager
       wget
+      zoom-us
     ];
   # Virtualisation
   virtualisation.libvirtd.enable = true;
