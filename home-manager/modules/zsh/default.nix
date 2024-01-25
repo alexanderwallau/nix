@@ -130,6 +130,7 @@ in
         c = "cd";
         b = "bat";
         cls = "clear";
+        du = "gdu";
 
 
       };
