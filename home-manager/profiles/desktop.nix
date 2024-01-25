@@ -49,7 +49,10 @@
       spotify
       tdesktop
       thunderbird-bin
+
       tidal-dl
+      qobuz-dl
+      lyricsgenius
       #todoist-electron
       unzip
       vlc
