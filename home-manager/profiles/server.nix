@@ -6,9 +6,6 @@
       vs-fix = pkgs.callPackage ../../pkgs/vs-fix { };
     in
     with pkgs; [
-      # my packages
-      #awallau.musescore
-
       # packages from nixpkgs
       cifs-utils
       cmake
@@ -17,10 +14,7 @@
       dogdns
       eza
       fuse3
-      gcc
       gdu
-      gitui
-      glances
       gping
       neofetch
       nixpkgs-fmt
@@ -36,7 +30,7 @@
     htop.enable = true;
     vim.enable = true;
     zsh.enable = true;
-    python.enable = true;
+    python.enable = false;
 
   };
 
@@ -55,7 +49,7 @@
   manual.manpages.enable = true;
 
   # tells you the package that provides a command
-  programs.command-not-found.enable = true;
+  programs.command-not-found.enable = false;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
