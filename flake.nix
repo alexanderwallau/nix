@@ -63,10 +63,17 @@
 
     shelly-exporter = {
       url = "github:MayNiklas/shelly-exporter";
-      inputs = { nixpkgs.follows = "nixpkgs"; };
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
     vscode-server = {
       url = "github:msteen/nixos-vscode-server";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-utils.follows = "flake-utils";
+      };
     };
     plasma-manager = {
       # KDE Plasma User Settings Generator
