@@ -7,17 +7,17 @@ let
     with python-packages; [
       ipykernel
       jupyter
-                jupyter-client
-          jupyterlab
+      jupyter-client
+      jupyterlab
       ipython
       matplotlib
-          seaborn
-          cufflinks
-          black
+      seaborn
+      cufflinks
+      black
       numpy
       pandas
       plotly
-      # plotnine broken atm
+      plotnine
       scikit-learn
       requests
       scipy
