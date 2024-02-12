@@ -45,6 +45,11 @@
           publicKey = "iAUCVa+1Rp3pdlK5wZCsiCtNx80uRCDKhA/1Gus/LEI=";
           allowedIPs = [ "192.168.69.103/32" ];
         }
+        # SchmackBook
+        {
+          publicKey = "sY1JI0u03NWKahjfIWoXkPSpuqqEaqrZmJm7oCi0DBQ=";
+          allowedIPs = [ "192.168.69.104/32" ];
+        }
       ];
 
 
