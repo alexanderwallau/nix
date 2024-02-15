@@ -7,8 +7,8 @@ let
     {
     name = "${cfg.name}";
     port = 7000; // Leave this for airplay2
-    drift_tolerance_in_seconds = 0.002; 
-    resync_threshold_in_seconds = 0.050; 
+    drift_tolerance_in_seconds = 0.002;
+    resync_threshold_in_seconds = 0.050;
     default_airplay_volume = -28.0; // this is the suggested volume after a reset or after the high_volume_threshold has been exceed and the high_volume_idle_timeout_in_minutes has passed
 
     	high_threshold_airplay_volume = -16.0; // airplay volume greater or equal to this is "very loud"
@@ -40,7 +40,7 @@ let
     };
     pa =
     {
-    application_name = "Shairport Sync"; 
+    application_name = "Shairport Sync";
     };
      // --with-metadata, --with-dbus-interface, --with-mpris-interface or --with-mqtt-client.
      // In those cases, "enabled" and "include_cover_art" will both be "yes" by default
@@ -61,9 +61,8 @@ let
   '';
 in
 {
-  options.awallau.shairport-sync.enable = {
-    enable = mkEnableOption "activate shairport";
-    description = "Enable shairport-sync";
+  options.awallau.shairport-sync = with lib; {
+    enable = lib.mkEnableOption "activate shairport";
 
     name = mkOption {
       type = types.str;

@@ -1,9 +1,10 @@
 { config, pkgs, lib, ... }:
 with lib;
 let cfg = config.awallau.gitlab-runner;
-in {
-  options.awallau.gitlab-runner = mkOptions{
-  enable = mkEnableOption "activate gitlab-runner(s)";
+in
+{
+  options.awallau.gitlab-runner = with lib;{
+  enable = lib.mkEnableOption "activate gitlab-runner(s)";
 
   dockerImage = mkOption {
     type = types.str;
@@ -14,6 +15,7 @@ in {
     type = types.str;
     default = "/var/run/gitlab-runner/config-1";
     description = "path to the registration file for the gitlab-runner";
+  };
   };
   config = mkIf cfg.enable {
     services.gitlab-runner = {
