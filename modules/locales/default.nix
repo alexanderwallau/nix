@@ -8,9 +8,9 @@ in
 
   config = mkIf cfg.enable {
 
-    services.xserver = {
+    services.xserver.xkb = {
       layout = "de";
-      xkbOptions = "eurosign:e";
+      options = "eurosign:e";
     };
 
     # Set your time zone.
