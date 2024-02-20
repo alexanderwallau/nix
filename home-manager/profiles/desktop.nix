@@ -30,6 +30,7 @@
       julia
       libreoffice
       libsForQt5.kio-gdrive
+      mullvad-vpn
       neofetch
       networkmanager-openvpn
       nextcloud-client
@@ -42,7 +43,6 @@
       p7zip
       pciutils
       pipewire
-      protonvpn-gui
       qemu
       restic
       signal-desktop
