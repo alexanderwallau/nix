@@ -32,7 +32,7 @@
     docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
-    # set up language and timezone    
+    # set up language and timezone
     locales.enable = true;
     # minio for s3
     minio = {
@@ -70,18 +70,13 @@
           "https://mail.alexanderwallau.de"
           "https://s3.alexanderwallau.de"
           "https://archive.alexanderwallau.de"
-          "https://books.alexanderwallau.de"
           "https://git.alexanderwallau.de"
-          "https://links.alexanderwallau.de"
           "https://md.alexanderwallau.de"
           "https://minio.s3.alexanderwallau.de"
           "https://netbox.alexanderwallau.de"
           "https://pay.alexanderwallau.de"
           "https://speedtest.alexanderwallau.de"
           "https://status.alexanderwallau.de"
-          "https://uptime.alexanderwallau.de"
-
-
         ];
       };
       nginx = {
@@ -94,7 +89,6 @@
         configure-prometheus = true;
         listenAddress = "192.168.69.1";
       };
-
     };
     monitoring = {
       grafana = {
@@ -110,10 +104,6 @@
     openssh.enable = true;
     # enables users which got moved into a seperate file
     podman.enable = true;
-    uptime-kuma = {
-      domain = "uptime.alexanderwallau.de";
-      enable = true;
-    };
     user = {
       awallau.enable = true;
       root.enable = true;
@@ -153,4 +143,3 @@
     hostName = "kipchoge";
   };
 }
-
