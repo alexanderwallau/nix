@@ -88,4 +88,5 @@
     timeServers = [ "194.25.134.196" ];
     hostName = "pi4b";
   };
+   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }
