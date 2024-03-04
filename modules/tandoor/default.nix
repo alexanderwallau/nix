@@ -29,13 +29,12 @@ in
         enable = true;
         port = cfg.port;
         extraConfig = {
-          DB_ENGINE = "django.db.backends.postgresql";
-          POSTGRES_HOST = "/var/run/postgresql";
-          POSTGRES_USER = "tandoor";
-          POSTGRES_DB = "tandoor";
+          DB_ENGINE = "django.db.backends.sqlite3";
           TZ = "Europe/Berlin";
-          ENABLE_SIGNUP = 0;
+          ENABLE_SIGNUP = 1;
           ENABLE_PDF_EXPORT = 1;
+          DEBUG = 1;
+          SQL_DEBUG = 1;
         };
       };
 
