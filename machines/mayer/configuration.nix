@@ -51,19 +51,17 @@
     nginx.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
-    # set up language and timezone    
+    # set up language and timezone
     locales.enable = true;
     # set up paperless
     paperless.enable = true;
-    # set up postgresql
-    postgres.enable = true;
     # set up ssh server
     openssh.enable = true;
-    # recepies 
-    #tandoor = {
-    # enable = true;
-    #domain = "rezepte.alexanderwallau.de";
-    #};
+    # recepies
+    tandoor = {
+     enable = true;
+    domain = "rezepte.alexanderwallau.de";
+    };
 
     # enables users which got moved into a seperate file
     user = {
@@ -106,4 +104,3 @@
 
 
 }
-
