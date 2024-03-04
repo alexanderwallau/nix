@@ -54,58 +54,43 @@ in
         virtualHost = null;
 
         database = {
-          host = "127.0.0.1";
-          port = 5432;
-          type = "pgsql";
-          user = "freshrss";
-          passFile = "${cfg.passwordFilePostgres}";
+          type = "sqlite";
         };
 
       };
-      #Thing needs a Database
-      postgresql = {
-        ensureUsers = [{
-          name = "freshrss";
-          ensurePermissions = {
-            "DATABASE freshrss" = "ALL";
-            "SCHEMA public" = "ALL";
-            "ALL TABLES IN SCHEMA public" = "ALL";
-          };
-        }];
-        ensureDatabases = [ "freshrss" ];
+
+
+      # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/web-apps/freshrss.nix
+      # And https://git.kempkens.io/daniel/dotfiles/src/branch/master/system/nixos/freshrss.nix
+      nginx.virtualHosts."${cfg.domain}" = {
+        http3 = true;
+        enableACME = true;
+        forceSSL = true;
+        extraConfig = ''
+          add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
+        '';
+        root = "${config.services.freshrss.package}/p";
+        # php files handling
+        # this regex is mandatory because of the API
+        locations."~ ^.+?\.php(/.*)?$".extraConfig = ''
+          fastcgi_pass unix:${config.services.phpfpm.pools.${config.services.freshrss.pool}.socket};
+          fastcgi_split_path_info ^(.+\.php)(/.*)$;
+          # By default, the variable PATH_INFO is not set under PHP-FPM
+          # But FreshRSS API greader.php need it. If you have a “Bad Request” error, double check this var!
+          # NOTE: the separate $path_info variable is required. For more details, see:
+          # https://trac.nginx.org/nginx/ticket/321
+          set $path_info $fastcgi_path_info;
+          fastcgi_param PATH_INFO $path_info;
+          include ${config.services.nginx.package}/conf/fastcgi_params;
+          include ${config.services.nginx.package}/conf/fastcgi.conf;
+        '';
+
+        locations."/" = {
+          tryFiles = "$uri $uri/ index.php";
+          index = "index.php index.html index.htm";
+        };
       };
     };
-
-
-    # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/web-apps/freshrss.nix
-    # And https://git.kempkens.io/daniel/dotfiles/src/branch/master/system/nixos/freshrss.nix
-    services.nginx.virtualHosts."${cfg.domain}" = {
-      http3 = true;
-      enableACME = true;
-      forceSSL = true;
-      extraConfig = ''
-        add_header Strict-Transport-Security "max-age=31536000; includeSubDomains; preload" always;
-      '';
-      root = "${config.services.freshrss.package}/p";
-      # php files handling
-      # this regex is mandatory because of the API
-      locations."~ ^.+?\.php(/.*)?$".extraConfig = ''
-        fastcgi_pass unix:${config.services.phpfpm.pools.${config.services.freshrss.pool}.socket};
-        fastcgi_split_path_info ^(.+\.php)(/.*)$;
-        # By default, the variable PATH_INFO is not set under PHP-FPM
-        # But FreshRSS API greader.php need it. If you have a “Bad Request” error, double check this var!
-        # NOTE: the separate $path_info variable is required. For more details, see:
-        # https://trac.nginx.org/nginx/ticket/321
-        set $path_info $fastcgi_path_info;
-        fastcgi_param PATH_INFO $path_info;
-        include ${config.services.nginx.package}/conf/fastcgi_params;
-        include ${config.services.nginx.package}/conf/fastcgi.conf;
-      '';
-
-      locations."/" = {
-        tryFiles = "$uri $uri/ index.php";
-        index = "index.php index.html index.htm";
-      };
-    };
+    systemd.services.phpfpm-freshrss.after = [ "postgresql.service" ];
   };
 }
