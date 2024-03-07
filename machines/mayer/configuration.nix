@@ -80,6 +80,9 @@
       git
     ];
 
+# Build arm images
+ boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
   networking = {
     enableIPv6 = true;
     dhcpcd.IPv6rs = true;
