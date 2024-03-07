@@ -15,7 +15,7 @@ in
     services.xserver = {
       enable = true;
       displayManager.sddm.enable = true;
-      desktopManager.plasma5 = {
+      desktopManager.plasma6 = {
         enable = true;
 
       };
