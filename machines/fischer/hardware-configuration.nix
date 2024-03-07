@@ -56,7 +56,7 @@
 
 
   services.xserver = {
-    layout = "us";
+    xkb.layout = "us";
   };
 
   # Set your time zone.
