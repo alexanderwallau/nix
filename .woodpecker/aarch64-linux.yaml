@@ -44,7 +44,7 @@
       {
         "commands":
           [
-            "nix build '.#nixosConfigurations.pi4b.config.system.build.toplevel' -o 'result-kipchoge'",
+            "nix build '.#nixosConfigurations.pi4b.config.system.build.toplevel' -o 'result-pi4b'",
             "nix path-info --closure-size -h $(readlink -f 'result-pi4b')",
           ],
         "image": "bash",
