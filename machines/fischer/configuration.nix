@@ -16,16 +16,12 @@
   awallau = {
     # enables the docker module
     docker.enable = true;
+    gnome.enable = true;
     # enable home-manager profile
     home-manager.enable = true;
-    # enable kde & xserver
-    #kde.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
-    #logitech special functions for MX Master 3S
-    #surrently broken
-    #logiops.enable = true;
-    # DNS server on localhost
+
     unbound.enable = true;
     # set up ssh server
     openssh.enable = true;
@@ -40,7 +36,7 @@
     # Sound maybe
     sound.enable = true;
     # zsh as default shell for all users
-    sway.enable = true;
+    # sway.enable = true;
     zsh.enable = true;
   };
 
@@ -71,4 +67,3 @@
     networkmanager.enable = true;
   };
 }
-

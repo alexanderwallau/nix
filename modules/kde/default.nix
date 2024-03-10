@@ -11,7 +11,7 @@ in
     # Enable networkmanager
     networking.networkmanager.enable = true;
 
-    # enable the Plasma 5 Desktop Environment.
+    # enable the Plasma 6 Desktop Environment.
     services.xserver = {
       enable = true;
       displayManager.sddm.enable = true;
@@ -21,7 +21,7 @@ in
       };
     };
     # exclude some packages from plasma5
-    environment.plasma5.excludePackages = with pkgs.libsForQt5; [
+    environment.plasma6.excludePackages = with pkgs.libsForQt5; [
       gwenview
       oxygen
       khelpcenter
