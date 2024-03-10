@@ -28,7 +28,7 @@
   awallau.programs = {
     git.enable = true;
     htop.enable = true;
-    vim.enable = true;
+    vim.enable = false;
     zsh.enable = true;
     python.enable = false;
 
