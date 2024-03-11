@@ -59,7 +59,7 @@
     openssh.enable = true;
     # recepies
     tandoor = {
-     enable = true;
+     enable = false;
     domain = "rezepte.alexanderwallau.de";
     };
 
