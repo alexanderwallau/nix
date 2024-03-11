@@ -16,14 +16,14 @@ in
         userEmail = "alexander.wallau@gmx.net";
         userName = "alexanderwallau";
         aliases = {
-        co = "checkout";
-        p = "pull";
-        ps = "push";
-        s = "status";
+          co = "checkout";
+          p = "pull";
+          ps = "push";
+          s = "status";
         };
-         ignores = [ ".direnv/" ];
-      attributes = [ "*.pdf diff=pdf" ];
-      diff-so-fancy.enable = true;
+        ignores = [ ".direnv/" ];
+        attributes = [ "*.pdf diff=pdf" ];
+        diff-so-fancy.enable = true;
       };
     };
     home.packages = [ pkgs.pre-commit ];

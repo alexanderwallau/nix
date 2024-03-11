@@ -4,18 +4,18 @@ let cfg = config.awallau.gitlab-runner;
 in
 {
   options.awallau.gitlab-runner = with lib;{
-  enable = lib.mkEnableOption "activate gitlab-runner(s)";
+    enable = lib.mkEnableOption "activate gitlab-runner(s)";
 
-  dockerImage = mkOption {
-    type = types.str;
-    default = "python:latest";
-    description = "docker image to use for the gitlab-runner";
-  };
-  registrationConfigFile = mkOption {
-    type = types.str;
-    default = "/var/run/gitlab-runner/config-1";
-    description = "path to the registration file for the gitlab-runner";
-  };
+    dockerImage = mkOption {
+      type = types.str;
+      default = "python:latest";
+      description = "docker image to use for the gitlab-runner";
+    };
+    registrationConfigFile = mkOption {
+      type = types.str;
+      default = "/var/run/gitlab-runner/config-1";
+      description = "path to the registration file for the gitlab-runner";
+    };
   };
   config = mkIf cfg.enable {
     services.gitlab-runner = {

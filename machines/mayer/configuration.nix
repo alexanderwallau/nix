@@ -59,8 +59,8 @@
     openssh.enable = true;
     # recepies
     tandoor = {
-     enable = false;
-    domain = "rezepte.alexanderwallau.de";
+      enable = false;
+      domain = "rezepte.alexanderwallau.de";
     };
 
     # enables users which got moved into a seperate file
@@ -80,8 +80,8 @@
       git
     ];
 
-# Build arm images
- boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  # Build arm images
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   networking = {
     enableIPv6 = true;

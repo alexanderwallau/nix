@@ -1,5 +1,5 @@
 { self, ... }:
-{ pkgs, lib, config, modulesPath, nixos-hardware,... }: {
+{ pkgs, lib, config, modulesPath, nixos-hardware, ... }: {
 
   imports = [
     # being able to build the sd-image
@@ -24,8 +24,8 @@
   awallau = {
     # enable home-manager profile
     home-manager = {
-        enable = true;
-        profile = "server";
+      enable = true;
+      profile = "server";
     };
     # set up language and timezone
     locales.enable = true;
@@ -74,22 +74,22 @@
       raspberrypi-eeprom
     ];
 
-    lollypops.deployment = {
-      local-evaluation = true;
-      ssh = { user = "root"; };
-    };
+  lollypops.deployment = {
+    local-evaluation = true;
+    ssh = { user = "root"; };
+  };
 
-    documentation = {
-      enable = false;
-      doc.enable = false;
-      info.enable = false;
-      man.enable = false;
-    };
+  documentation = {
+    enable = false;
+    doc.enable = false;
+    info.enable = false;
+    man.enable = false;
+  };
   networking = {
     nameservers = [ "192.168.69.1" "1.0.0.1" ];
     # Fallback ntp service, this one being T-Online
     timeServers = [ "194.25.134.196" ];
     hostName = "pi4b";
   };
-   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 }

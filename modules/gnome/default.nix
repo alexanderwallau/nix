@@ -8,11 +8,11 @@ in
 
   config = mkIf cfg.enable {
 
-  awallau = {
-    wayland.enable = true;
-    kde.enable = mkForce false;
-    sway.enable = mkForce false;
-  };
+    awallau = {
+      wayland.enable = true;
+      kde.enable = mkForce false;
+      sway.enable = mkForce false;
+    };
 
     services.xserver = {
       # Enable the X11 windowing system.
