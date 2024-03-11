@@ -23,7 +23,10 @@
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
     # enable home-manager profile
-    home-manager = { enable = true; profile = "server"; };
+    home-manager = {
+        enable = true;
+        profile = "server";
+    };
     # set up language and timezone
     locales.enable = true;
     # enable node exporter
