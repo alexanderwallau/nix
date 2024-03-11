@@ -30,9 +30,12 @@ in
       gnome-settings-daemon.enable = true;
     };
 
-    environment.systemPackages = with pkgs; [
-      gnomeExtensions.appindicator
-      gnomeExtensions.zoom-wayland-extension
+    environment.systemPackages = with pkgs.gnomeExtensions; [
+      appindicator
+      wireguard-indicator
+      wireless-hid
+      workspace-switcher-manager
+      yakuake
     ];
 
     services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
