@@ -92,7 +92,7 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      supportedSystems = [ "x86_64-linux" ];
+      supportedSystems = [ "x86_64-linux" "aarch64-linux"];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     with inputs;
@@ -195,7 +195,7 @@
           # nix run '.#lollypops' -- phelps
           # nix run '.#lollypops' -- phelps X1-Yoga
           # nix run '.#lollypops' -- phelps X1-Yoga -p
-          # nix run '.#lollypops' -- mayerX1-Yoga -p 
+          # nix run '.#lollypops' -- mayerX1-Yoga -p
           default = self.apps.${pkgs.system}.lollypops;
           lollypops = lollypops.apps.${pkgs.system}.default {
             configFlake = self;
