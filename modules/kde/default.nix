@@ -12,16 +12,18 @@ in
     networking.networkmanager.enable = true;
 
     # enable the Plasma 6 Desktop Environment.
-    services.xserver = {
-      enable = true;
-      displayManager.sddm.enable = true;
+    services = {
+      xserver = {
+        enable = true;
+        displayManager.sddm.enable = true;
+      };
       desktopManager.plasma6 = {
         enable = true;
-
+        # enable the kde applications
       };
     };
     # exclude some packages from plasma5
-    environment.plasma6.excludePackages = with pkgs.libsForQt5; [
+    environment.plasma6.excludePackages = with pkgs.kdePackages; [
       gwenview
       oxygen
       khelpcenter
