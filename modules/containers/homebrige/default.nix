@@ -3,7 +3,7 @@ with lib;
 let cfg = config.awallau.containers.homebridge;
 in
 {
-options.awallau.containers.librespeed = {
+options.awallau.containers.homebridge = {
   enable = mkEnableOption "activate homebridge";
 
   nginx = mkEnableOption "enable nginx for homebridge";
