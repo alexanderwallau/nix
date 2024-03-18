@@ -23,8 +23,9 @@ options.awallau.containers.librespeed = {
     type = types.str;
     default = "end0";
     description = "interface to listen on";
-    # This schould in be your local lan/wifi interface as using wireguard adds undesirable latency even if the server is in the same network
+    # This should in be your local lan/wifi interface as using wireguard adds undesirable latency even if the server is in the same network
   };
+};
 
   config = mkIf cfg.enable {
   systemd.tmpfiles.rules = [
@@ -47,8 +48,6 @@ options.awallau.containers.librespeed = {
     ];
   };
   services.nginx.virtualHosts = mkIf cfg.nginx {
-
-    # Graphana
     "${cfg.domain}" = {
       forceSSL = true;
       enableACME = true;
@@ -71,4 +70,5 @@ options.awallau.containers.librespeed = {
 
     allowedTCPPortRanges = [{ from = 52100; to = 52150; }];
   };
+};
 }
