@@ -6,7 +6,7 @@ stdenv.mkDerivation rec {
 
   src = fetchurl {
     url = "https://electron-dl.todoist.com/linux/Todoist-${version}.AppImage";
-    sha256 = "sha256-Uuam4sYrevdKcO6FP3et02iARQ7MBQ8SHEG0962WAWU=";
+    vendorHash = "sha256-Uuam4sYrevdKcO6FP3et02iARQ7MBQ8SHEG0962WAWU=";
   };
 
   appimageContents = appimageTools.extractType2 {
