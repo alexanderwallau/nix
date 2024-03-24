@@ -14,29 +14,55 @@ in
       sway.enable = mkForce false;
     };
 
-    services.xserver = {
-      # Enable the X11 windowing system.
-      enable = true;
-      # Enable the GNOME Desktop Environment.
-      displayManager.gdm.enable = true;
-      desktopManager.gnome.enable = true;
+    services = {
+      xserver = {
+        # Enable the X11 windowing system.
+        enable = true;
+        # Enable the GNOME Desktop Environment.
+        displayManager = {
+          defaultSession = "gnome";
+          gdm.enable = true;
+        };
+        desktopManager.gnome.enable = true;
+      };
+
+      gnome = {
+        core-developer-tools.enable = true;
+        core-os-services.enable = true;
+        core-shell.enable = true;
+        core-utilities.enable = true;
+        gnome-settings-daemon.enable = true;
+      };
     };
 
-    services.gnome = {
-      core-developer-tools.enable = true;
-      core-os-services.enable = true;
-      core-shell.enable = true;
-      core-utilities.enable = true;
-      gnome-settings-daemon.enable = true;
-    };
+    environment = {
+      gnome.excludePackages = (with pkgs; [
+        gnome-photos
+        gnome-tour
+      ]) ++ (with pkgs.gnome; [
+        # cheese # webcam tool
+        gnome-music
+        # gedit # text editor
+        epiphany # web browser
+        geary # email reader
+        # gnome-characters
+        tali # poker game
+        iagno # go game
+        hitori # sudoku game
+        atomix # puzzle game
+        yelp # Help view
+        # gnome-contacts
+        gnome-initial-setup
+      ]);
 
-    environment.systemPackages = with pkgs.gnomeExtensions; [
-      appindicator
-      wireguard-indicator
-      wireless-hid
-      workspace-switcher-manager
-      yakuake
-    ];
+      systemPackages = with pkgs.gnomeExtensions; [
+        appindicator
+        wireguard-indicator
+        wireless-hid
+        workspace-switcher-manager
+        yakuake
+      ];
+    };
 
     services.udev.packages = with pkgs; [ gnome3.gnome-settings-daemon ];
 
