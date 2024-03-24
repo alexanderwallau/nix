@@ -92,7 +92,12 @@
     # Monitoring
     firewall.interfaces."Kipchoge".allowedTCPPorts = [ 9100 ];
     # Fallback ntp service, this one being T-Online
-    timeServers = [ "194.25.134.196" ];
+    timeServers = [
+      "ptbtime1.ptb.de"
+      "ptbtime2.ptb.de"
+      "ptbtime3.ptb.de"
+    ];
+
   };
 }
 
