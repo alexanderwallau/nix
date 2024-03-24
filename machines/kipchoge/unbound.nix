@@ -9,6 +9,8 @@ let
     "nas.wallau" = "192.168.178.5";
     "iceportal.de" = "172.18.1.110";
     "status.alexanderwallau.de" = "192.168.69.1";
+    "onlyoffice.alexanderwallau.de" = "192.168.69.2";
+
     "x1-yoga" = "192.168.69.100";
     "mayer" = "192.168.69.2";
     "phelps" = "192.168.69.3";
@@ -51,41 +53,23 @@ in
             "127.0.0.1"
             "192.168.69.1"
             "192.168.178.201"
+            "::1"
           ];
           access-control = [
             "127.0.0.0/8 allow"
             "192.168.0.0/16 allow"
+            "127.0.0.0/8 allow"
+            "::1 allow"
           ];
         };
 
         forward-zone = [
           {
-            name = "fritz.box";
+            name = "fritz.box.";
             forward-addr = [
               "192.168.178.1"
             ];
             forward-tls-upstream = "no";
-          }
-          {
-            name = "nas.wallau";
-            forward-addr = [
-              "192.168.178.45"
-            ];
-            forward-tls-upstream = "no";
-          }
-          {
-            name = "*.alexanderwallau.de";
-            forward-addr = [
-              "192.168.69.2"
-            ];
-            forward-tls-upstream = "yes";
-          }
-          {
-            name = "*.s3.alexanderwallau.de";
-            forward-addr = [
-              "192.168.69.1"
-            ];
-            forward-tls-upstream = "yes";
           }
           {
             name = "google.*.";

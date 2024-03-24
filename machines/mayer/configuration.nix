@@ -51,6 +51,10 @@
     nginx.enable = true;
     # set up general nix stuff
     nix-common.enable = true;
+    onlyoffice = {
+      enable = true;
+      domain = "onlyoffice.alexanderwallau.de";
+    };
     # set up language and timezone
     locales.enable = true;
     # set up paperless

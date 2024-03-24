@@ -51,10 +51,12 @@ in
             "\"${adlist.unbound-adblockStevenBlack}\""
           ];
           interface = [
+          "::1"
             "127.0.0.1"
           ];
           access-control = [
             "127.0.0.0/8 allow"
+            "::1/64 allow"
           ];
         };
 
