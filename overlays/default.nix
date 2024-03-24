@@ -9,7 +9,6 @@ self: super: {
   #todoist-electron = super.pkgs.callPackage ../pkgs/todoist-electron { };
   wait-for-build = super.pkgs.callPackage ../pkgs/wait-for-build { };
   vs-fix = super.pkgs.callPackage ../pkgs/vs-fix { };
-  tidal-dl = super.callPackage ../pkgs/tidal-dl { };
   lyricsgenius = super.callPackage ../pkgs/lyricsgenius { };
   fritzbox-exporter = super.callPackage ../pkgs/fritzbox-exporter { };
   mtu = super.callPackage ../pkgs/mtu { };
