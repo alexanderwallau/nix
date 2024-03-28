@@ -1,23 +1,15 @@
+# Edit this configuration file to define what should be installed on
+# your system.  Help is available in the configuration.nix(5) man page
+# and in the NixOS manual (accessible by running ‘nixos-help’).
+
 { self, ... }:
-{ pkgs, lib, config, modulesPath, nixos-hardware, ... }: {
+{ pkgs, lib, config, nixpkgs, nixos-hardware, ... }: {
 
   imports = [
     # being able to build the sd-image
-    "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
-    # https://github.com/NixOS/nixos-hardware/tree/master/raspberry-pi/4
-    nixos-hardware.nixosModules.raspberry-pi-4
+    "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+    ./hardware-config.nix
   ];
-
-  hardware = {
-    raspberry-pi."4" = {
-      apply-overlays-dtmerge.enable = true;
-      fkms-3d.enable = true;
-    };
-    deviceTree = {
-      enable = true;
-    };
-  };
-  console.enable = true;
 
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
@@ -52,7 +44,7 @@
   # to build ARM stuff through qemu
   sdImage.compressImage = false;
   sdImage.imageBaseName = "raspi-image";
-  nix.registry.nixpkgs.flake = pkgs;
+  nix.registry.nixpkgs.flake = nixpkgs;
   nix.nixPath = [ "nixpkgs=${pkgs}" ];
   # this workaround is currently needed to build the sd-image
   # basically: there currently is an issue that prevents the sd-image to be built successfully
@@ -63,7 +55,8 @@
         super.makeModulesClosure (x // { allowMissing = true; });
     })
   ];
-
+  # Enable argonone fan daemon
+  services.hardware.argonone.enable = true;
 
   environment.systemPackages = with pkgs;
     [
@@ -86,10 +79,21 @@
     man.enable = false;
   };
   networking = {
+    interfaces = {
+      wlan0 = {
+        useDHCP = true;
+        wakeOnLan.enable = true;
+      };
+    };
+    defaultGateway = "192.168.178.1";
     nameservers = [ "192.168.69.1" "1.0.0.1" ];
-    # Fallback ntp service, this one being T-Online
-    timeServers = [ "194.25.134.196" ];
+    timeServers = [
+      "ptbtime1.ptb.de"
+      "ptbtime2.ptb.de"
+      "ptbtime3.ptb.de"
+    ];
+
     hostName = "pi4b";
   };
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
+
 }

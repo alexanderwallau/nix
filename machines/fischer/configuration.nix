@@ -49,10 +49,7 @@
       git
       virt-manager
     ];
-  # sway on tty1 login
-  environment.loginShellInit = ''
-    [[ "$(tty)" == /dev/tty1 ]] && sway
-  '';
+
   # Virtualisation
   virtualisation.libvirtd.enable = true;
   sound.mediaKeys.enable = true;
