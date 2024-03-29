@@ -11,14 +11,14 @@ let
       jupyterlab
       ipython
       matplotlib
-      seaborn
-      cufflinks
+      #seaborn
+      #cufflinks
       black
       numpy
       pandas
-      plotly
-      plotnine
-      scikit-learn
+      #plotly
+      #plotnine
+      #scikit-learn
       requests
       scipy
       #tensorflow-build
