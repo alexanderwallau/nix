@@ -89,9 +89,8 @@
     };
     defaultGateway = "192.168.178.1";
     nameservers = [ "192.168.69.1" "1.0.0.1" ];
-    networkManager = {
+    networkmanager = {
       enable = true;
-      wireless.enable = true;
     };
     timeServers = [
       "ptbtime1.ptb.de"
