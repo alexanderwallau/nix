@@ -81,6 +81,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "nixpkgs";
     };
+    argononed = {
+      url = "gitlab:DarkElvenAngel/argononed/master";
+      flake = false;
+    };
 
 
     bonn-mensa = {
