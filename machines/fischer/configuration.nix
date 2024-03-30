@@ -44,7 +44,7 @@
   environment.systemPackages = with pkgs;
     [
       bash-completion
-      fprintd
+      #fprintd
       wget
       git
       virt-manager
