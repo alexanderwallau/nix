@@ -3,7 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, ... }:
-{ pkgs, lib, config, modulesPath, flake-self, home-manager, argononed, nixos-hardware, nixpkgs, ... }: {
+{ pkgs, lib, config, modulesPath, flake-self, home-manager, nixos-hardware, nixpkgs, ... }: {
   imports = [
     # being able to build the sd-image
     "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
