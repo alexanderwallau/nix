@@ -3,11 +3,10 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 { self, ... }:
-{ pkgs, lib, config, nixpkgs, nixos-hardware, ... }: {
-
+{ pkgs, lib, config, modulesPath, flake-self, home-manager, argononed, nixos-hardware, nixpkgs, ... }: {
   imports = [
     # being able to build the sd-image
-    "${nixpkgs}/nixos/modules/installer/sd-card/sd-image-aarch64.nix"
+    "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
     ./hardware-config.nix
   ];
 
@@ -44,8 +43,8 @@
   # to build ARM stuff through qemu
   sdImage.compressImage = false;
   sdImage.imageBaseName = "raspi-image";
-  nix.registry.nixpkgs.flake = nixpkgs;
-  nix.nixPath = [ "nixpkgs=${pkgs}" ];
+  #  nix.registry.nixpkgs.flake = nixpkgs;
+  #  nix.nixPath = [ "nixpkgs=${pkgs}" ];
   # this workaround is currently needed to build the sd-image
   # basically: there currently is an issue that prevents the sd-image to be built successfully
   # remove this once the issue is fixed!
@@ -56,7 +55,7 @@
     })
   ];
   # Enable argonone fan daemon
-  services.hardware.argonone.enable = true;
+  # services.hardware.argonone.enable = true;
 
   environment.systemPackages = with pkgs;
     [
@@ -78,6 +77,9 @@
     info.enable = false;
     man.enable = false;
   };
+
+  
+
   networking = {
     interfaces = {
       wlan0 = {
@@ -87,6 +89,10 @@
     };
     defaultGateway = "192.168.178.1";
     nameservers = [ "192.168.69.1" "1.0.0.1" ];
+    networkManager = {
+      enable = true;
+      wireless.enable = true;
+    };
     timeServers = [
       "ptbtime1.ptb.de"
       "ptbtime2.ptb.de"
