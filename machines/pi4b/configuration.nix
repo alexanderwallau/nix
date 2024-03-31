@@ -4,10 +4,23 @@
 
 { self, ... }:
 { pkgs, lib, config, modulesPath, flake-self, home-manager, nixos-hardware, nixpkgs, ... }: {
+
   imports = [
     # being able to build the sd-image
     "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
     ./hardware-config.nix
+  ];
+
+  ### build sd-image
+  # nix build .\#nixosConfigurations.pi4b.config.system.build.sdImage
+  sdImage.compressImage = false;
+  sdImage.imageBaseName = "raspi-image";
+  # currently needed to build the sd-image - will need to be removed in the future
+  nixpkgs.overlays = [
+    (final: super: {
+      makeModulesClosure = x:
+        super.makeModulesClosure (x // { allowMissing = true; });
+    })
   ];
 
   # top level option name
@@ -37,23 +50,6 @@
     zsh.enable = true;
   };
 
-  ### build sd-image
-  # nix build .\#nixosConfigurations.pi4b.config.system.build.sdImage
-  # add boot.binfmt.emulatedSystems = [ "aarch64-linux" ]; to your x86 system
-  # to build ARM stuff through qemu
-  sdImage.compressImage = false;
-  sdImage.imageBaseName = "raspi-image";
-  #  nix.registry.nixpkgs.flake = nixpkgs;
-  #  nix.nixPath = [ "nixpkgs=${pkgs}" ];
-  # this workaround is currently needed to build the sd-image
-  # basically: there currently is an issue that prevents the sd-image to be built successfully
-  # remove this once the issue is fixed!
-  nixpkgs.overlays = [
-    (final: super: {
-      makeModulesClosure = x:
-        super.makeModulesClosure (x // { allowMissing = true; });
-    })
-  ];
   # Enable argonone fan daemon
   # services.hardware.argonone.enable = true;
 
