@@ -1,6 +1,5 @@
 {
-  "labels": { "labels.backend": "local" },
-  "platform": "linux/arm64",
+  "labels": { "backend": "local", "platform": "linux/arm64" },
   "when": { "event": "manual" },
   "steps":
     [
