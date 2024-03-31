@@ -14,7 +14,7 @@
   ### build sd-image
   # nix build .\#nixosConfigurations.pi4b.config.system.build.sdImage
   sdImage.compressImage = false;
-  sdImage.imageBaseName = "raspi-image";
+  sdImage.imageBaseName = "pi4b-image";
   # currently needed to build the sd-image - will need to be removed in the future
   nixpkgs.overlays = [
     (final: super: {
