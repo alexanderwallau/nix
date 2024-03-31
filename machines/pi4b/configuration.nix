@@ -78,8 +78,6 @@
     man.enable = false;
   };
 
-  
-
   networking = {
     interfaces = {
       wlan0 = {
