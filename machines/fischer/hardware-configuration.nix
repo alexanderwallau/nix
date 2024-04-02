@@ -23,7 +23,6 @@
         efiSupport = true;
         useOSProber = true;
         default = "0";
-        theme = pkgs.sleek-grub-theme;
       };
       efi.canTouchEfiVariables = true;
     };
