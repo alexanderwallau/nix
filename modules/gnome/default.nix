@@ -9,7 +9,9 @@ in
   config = mkIf cfg.enable {
 
     awallau = {
-      wayland.enable = true;
+      # NOTE from the original source of this module:
+      # There is a reason, I did not enable my wayland module in the original gnome module.
+      wayland.enable = mkForce false;
       kde.enable = mkForce false;
       sway.enable = mkForce false;
     };
