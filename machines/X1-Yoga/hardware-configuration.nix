@@ -31,6 +31,7 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
+        efiInstallAsRemovable = true;
         useOSProber = true;
         default = "2";
       };
