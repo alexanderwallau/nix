@@ -140,7 +140,7 @@
     firewall.trustedInterfaces = ["wg0" "wg1" ];
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     # Fallback ntp service, this one being T-Online
-    ttimeServers = [
+    timeServers = [
       "ptbtime1.ptb.de"
       "ptbtime2.ptb.de"
       "ptbtime3.ptb.de"
