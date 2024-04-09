@@ -137,10 +137,14 @@
       git
     ];
   networking = {
+    firewall.trustedInterfaces = ["wg0" "wg1" ];
     nameservers = [ "1.1.1.1" "1.0.0.1" ];
     # Fallback ntp service, this one being T-Online
-    timeServers = [ "194.25.134.196" ];
-    trustedInterfaces = ["wg0" "wg1" ];
+    ttimeServers = [
+      "ptbtime1.ptb.de"
+      "ptbtime2.ptb.de"
+      "ptbtime3.ptb.de"
+    ];
     hostName = "kipchoge";
   };
 }

@@ -99,7 +99,10 @@
       interface = "ens3";
     };
 
-    firewall = { allowedTCPPorts = [ 443 80 9100 9115 ]; };
+    firewall = { 
+      allowedTCPPorts = [ 443 80 9100 9115 ]; 
+      trustedInterfaces = ["wg0" ];
+      };
     nameservers = [ "192.168.69.1" "1.1.1.1" ];
 
     # Fallback ntp service, this one being T-Online
@@ -108,7 +111,7 @@
       "ptbtime2.ptb.de"
       "ptbtime3.ptb.de"
     ];
-    trustedInterfaces = ["wg0" ];
+    
     hostName = "mayer";
   };
 

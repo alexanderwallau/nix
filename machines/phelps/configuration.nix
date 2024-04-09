@@ -70,6 +70,7 @@
   networking = {
     firewall = {
       allowedTCPPorts = [ 443 80 ];
+      trustedInterfaces = [ "wg0" ];
     };
     nameservers = [ "192.168.69.1" "1.1.1.1" ];
     timeServers = [
@@ -77,7 +78,6 @@
       "ptbtime2.ptb.de"
       "ptbtime3.ptb.de"
     ];
-    trustedInterfaces = ["wg0"];
     hostName = "phelps";
   };
 }
