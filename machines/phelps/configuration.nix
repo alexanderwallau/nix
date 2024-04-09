@@ -77,7 +77,7 @@
       "ptbtime2.ptb.de"
       "ptbtime3.ptb.de"
     ];
-
+    trustedInterfaces = ["wg0"];
     hostName = "phelps";
   };
 }
