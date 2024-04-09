@@ -35,7 +35,7 @@
         useOSProber = true;
         default = "2";
       };
-      efi.canTouchEfiVariables = true;
+     # efi.canTouchEfiVariables = true;
     };
     # encrypt the root partition
     initrd.luks.devices = {
