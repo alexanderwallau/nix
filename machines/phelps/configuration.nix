@@ -28,7 +28,7 @@
     #gitlab runner 1
     gitlab-runner = {
       enable = true;
-      dockerImage = "ubuntu:23.10"
+      dockerImage = "ubuntu:23.10";
       registrationConfigFile = "/var/lib/gitlab-runner/config-1";
     };
 
