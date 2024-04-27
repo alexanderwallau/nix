@@ -28,7 +28,7 @@
   awallau.programs = {
     git.enable = true;
     htop.enable = true;
-    vim.enable = false;
+    vim.enable = true;
     zsh.enable = true;
     python.enable = false;
 
@@ -57,6 +57,7 @@
   # Allow "unfree" licenced packages
   nixpkgs.config = {
     allowUnfree = true;
+    allowUnsupportedSystem = true;
   };
 
   # This value determines the Home Manager release that your

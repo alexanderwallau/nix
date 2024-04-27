@@ -3,8 +3,6 @@
   # Install these packages for my user
   home.packages =
     with pkgs; [
-      # my packages
-      #awallau.musescore
 
       # packages from nixpkgs
       bonn-mensa
@@ -69,7 +67,7 @@
     git.enable = true;
     htop.enable = true;
     python.enable = true;
-    vim.enable = false;
+    vim.enable = true;
     vscode.enable = true;
     zsh.enable = true;
 
