@@ -17,17 +17,16 @@ in
     };
 
     services = {
+      displayManager.defaultSession = "gnome";
       xserver = {
         # Enable the X11 windowing system.
         enable = true;
         # Enable the GNOME Desktop Environment.
-        displayManager = {
-          defaultSession = "gnome";
-          gdm.enable = true;
-        };
         desktopManager.gnome.enable = true;
+        displayManager.gdm.enable = true;
       };
-
+        
+        
       gnome = {
         core-developer-tools.enable = true;
         core-os-services.enable = true;
