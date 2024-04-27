@@ -20,7 +20,8 @@ in {
     services = {
       onlyoffice = {
         enable = true;
-        hostname = "${cfg.domain}";
+        # Want custom nginx so that host can be specifically allowed!
+        #hostname = "${cfg.domain}";
         port = cfg.port;
       };
       nginx.virtualHosts."${cfg.domain}" = {
@@ -30,13 +31,12 @@ in {
           proxyPass = "http://127.0.0.1:${toString cfg.port}";
         };
         extraConfig =''
-          allow 192.168.69.0/16;
-          allow 192.168.178.0/16;
-          allow 202.61.232.46/24;
+          allow 192.168.69.0/24;
+          allow 192.168.178.0/24;
+          allow 202.61.232.46;
           deny all; # deny all remaining ips
         '';
-      };    
+      };
     };
     };
   }
-
