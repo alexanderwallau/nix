@@ -67,7 +67,7 @@
     git.enable = true;
     htop.enable = true;
     python.enable = true;
-    vim.enable = true;
+    vim.enable = false;
     vscode.enable = true;
     zsh.enable = true;
 
