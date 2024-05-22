@@ -29,8 +29,8 @@
     # encrypt the root partition
     initrd.luks.devices = {
       root = {
-        # Get UUID from blkid /dev/nvme0n1p6
-        device = "/dev/disk/by-uuid/3003bc44-ca25-44fe-abe0-4cf855d3f8a7";
+        # Get UUID from blkid /dev/sda2
+        device = "/dev/disk/by-uuid/2c490a0b-cb57-4c5a-8f29-02e41a7fcdd2";
         preLVM = true;
         allowDiscards = true;
       };
@@ -40,18 +40,18 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/ec22563e-b40c-4d57-acb5-5b03b17fe8ae";
+      device = "/dev/disk/by-uuid/1f2d45d2-23ff-43e0-8895-80ecb4e9c51a";
       fsType = "ext4";
     };
 
   fileSystems."/boot" =
     {
-      device = "/dev/disk/by-uuid/15D9-4E96";
+      device = "/dev/disk/by-uuid/8FB4-1604";
       fsType = "vfat";
     };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/b33f9452-b2ef-4dbf-ba9d-fc4dd566857b"; }];
+    [{ device = "/dev/disk/by-uuid/2a5df563-096e-450f-95a3-f0acfed15bc5"; }];
 
 
   services.xserver = {
