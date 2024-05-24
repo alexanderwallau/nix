@@ -31,11 +31,11 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
-        efiInstallAsRemovable = true;
+        efiInstallAsRemovable = false;
         useOSProber = true;
         default = "2";
       };
-     # efi.canTouchEfiVariables = true;
+      efi.canTouchEfiVariables = true;
     };
     # encrypt the root partition
     initrd.luks.devices = {
