@@ -3,8 +3,6 @@
   # Install these packages for my user
   home.packages =
     with pkgs; [
-      # my packages
-      #awallau.musescore
 
       # packages from nixpkgs
       bonn-mensa

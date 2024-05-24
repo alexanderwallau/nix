@@ -71,6 +71,8 @@ in
     nixpkgs = {
       # Allow unfree licenced packages
       config.allowUnfree = true;
+      # gvisor not currently build for aarch 64 damn it
+      config.allowUnsupportedSystem = true;
     };
 
     #Clean Journalctl logs oder than 7 days or if Larger than 1GB

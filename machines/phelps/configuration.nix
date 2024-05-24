@@ -25,6 +25,13 @@
       };
     };
     docker.enable = true;
+    #gitlab runner 1
+    gitlab-runner = {
+      enable = true;
+      dockerImage = "ubuntu:23.10";
+      registrationConfigFile = "/var/lib/gitlab-runner/config-1";
+    };
+
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up language and timezone    

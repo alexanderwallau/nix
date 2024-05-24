@@ -57,6 +57,7 @@
   # Allow "unfree" licenced packages
   nixpkgs.config = {
     allowUnfree = true;
+    allowUnsupportedSystem = true;
   };
 
   # This value determines the Home Manager release that your
