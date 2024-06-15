@@ -80,4 +80,3 @@ nix fmt flake.nix
 
 - Propperly pair Bluetooth with dual-bootet Win10
 - NFC
-- Make X220 great again

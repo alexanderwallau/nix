@@ -91,6 +91,11 @@
       url = "github:alexanderwallau/bonn-mensa";
       inputs = { nixpkgs.follows = "nixpkgs"; };
     };
+    
+    authentik-nix = {
+    url = "github:nix-community/authentik-nix";
+    inputs = { nixpkgs.follows = "nixpkgs"; };
+  };
 
   };
 
@@ -157,6 +162,7 @@
             modules = builtins.attrValues self.nixosModules ++ [
               lollypops.nixosModules.lollypops
               (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
+              authentik-nix.nixosModules.default
               vscode-server.nixosModules.default
               ({ config, pkgs, ... }: {
                 services.vscode-server.enable = true;
