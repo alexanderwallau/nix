@@ -93,13 +93,13 @@
   # enable all the firmware with a license allowing redistribution
   hardware.enableRedistributableFirmware = true;
   # Fingerprint service options
- # services.fprintd = {
-  #  enable = true;
-   # tod = {
-    #  enable = true;
-     # driver = pkgs.libfprint-2-tod1-goodix;
- #   };
-  #};
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = pkgs.libfprint-2-tod1-goodix;
+   };
+  };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
