@@ -46,7 +46,7 @@ in
       }
     ];
     };
-    nginx.virtualHost."${cfg.domain}" = {
+    nginx.virtualHosts."${cfg.domain}" = {
       enableACME = true;
       forceSSL = true;
       locations."/" = {
