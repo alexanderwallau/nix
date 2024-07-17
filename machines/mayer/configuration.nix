@@ -18,7 +18,12 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
-    # enable freshrss
+    anki-sync = {
+      enable = true;
+      User = "awallau";
+      passwordFile = "/var/src/secret/anki-sync";
+      domain = "anki-sync.alexanderwallau.de";
+    };
     containers =
       {
         rss-bridge = {
@@ -28,6 +33,7 @@
         };
       };
     docker.enable = true;
+    # enable freshrss
     freshrss = {
       enable = true;
       defaultUser = "awallau";
