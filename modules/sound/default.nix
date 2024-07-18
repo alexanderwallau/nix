@@ -9,7 +9,6 @@ in
   config = mkIf cfg.enable {
 
     # Enable sound.
-    sound.enable = true;
     hardware.pulseaudio = {
       enable = true;
       package = pkgs.pulseaudioFull;
