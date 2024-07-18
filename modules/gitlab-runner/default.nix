@@ -17,6 +17,8 @@ in
       description = "path to the registration file for the gitlab-runner";
     };
   };
+  # services.gitlab-runner.services.gitlab-runner-1.authenticationTokenConfigFile
+  # Change once all gitlab instances are updated
   config = mkIf cfg.enable {
     services.gitlab-runner = {
       enable = true;
