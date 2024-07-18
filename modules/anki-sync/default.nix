@@ -35,7 +35,7 @@ in
     enable = true;
     # Since on localhost technically not needed but for the sake of completeness I include this option
     #openFirewall = true;
-    address = "127.0.0.1";
+    address = "0.0.0.0";
     # One could also make that flexible but what else uses this port hart coded?
     port = 27701;
     # Technically one could define many users, maybe in the future if needed
