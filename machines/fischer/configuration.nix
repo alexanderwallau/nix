@@ -52,7 +52,6 @@
 
   # Virtualisation
   virtualisation.libvirtd.enable = true;
-  sound.mediaKeys.enable = true;
 
   # automatic screen orientation
   hardware.sensor.iio.enable = true;
