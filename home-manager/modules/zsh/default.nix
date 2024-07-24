@@ -114,6 +114,9 @@ in
 
         # nix shells overeasy
         ns = "nix-shell -p ";
+        npaus = "export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1";
+        npai = "export NIXPKGS_ALLOW_INSECURE=1";
+        npau = "export NIXPKGS_ALLOW_UNFREE=1";
 
         # Other
         lsblk = "${pkgs.util-linux}/bin/lsblk -o name,mountpoint,label,size,type,uuid";
