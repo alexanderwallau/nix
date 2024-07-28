@@ -32,6 +32,14 @@
           port = "3134";
         };
       };
+      cryptpad = {
+        enable = true;
+        domain = "cryptpad.alexanderwallau.de";
+        httpSafeOrigin = "cryptpad-sb.alexanderwallau.de";
+        Port = 3001;
+        websocketPort = 3002;
+        #adminKeys = [ "[
+      };
     docker.enable = true;
     # enable freshrss
     freshrss = {
