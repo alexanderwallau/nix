@@ -24,6 +24,11 @@
       passwordFile = "/var/src/secret/anki-sync";
       domain = "anki-sync.alexanderwallau.de";
     };
+    audiobookshelf = {
+      enable = true;
+      port = 13378;
+      domain = "audiobookshelf.alexanderwallau.de";
+    };
     containers =
       {
         rss-bridge = {
@@ -34,8 +39,8 @@
       };
       cryptpad = {
         enable = true;
-        domain = "cryptpad.alexanderwallau.de";
-        httpSafeOrigin = "cryptpad-sb.alexanderwallau.de";
+        domain = "https://cryptpad.alexanderwallau.de";
+        httpSafeOrigin = "https://cryptpad-sb.alexanderwallau.de";
         Port = 3001;
         websocketPort = 3002;
         #adminKeys = [ "[
