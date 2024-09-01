@@ -15,6 +15,7 @@
       element-desktop
       eza
       firefox
+      ffmpeg
       fuse3
       gcc
       gdu
