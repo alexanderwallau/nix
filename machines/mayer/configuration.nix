@@ -41,8 +41,8 @@
         enable = true;
         domain = "https://cryptpad.alexanderwallau.de";
         httpSafeOrigin = "https://cryptpad-sb.alexanderwallau.de";
-        Port = 3001;
-        websocketPort = 3002;
+        Port = 3002;
+        websocketPort = 3003;
         #adminKeys = [ "[
       };
     docker.enable = true;
