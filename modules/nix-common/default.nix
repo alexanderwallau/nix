@@ -28,12 +28,14 @@ in
           "nix-cache:4FILs79Adxn/798F8qk2PC1U8HaTlaPqptwNJrXNA1g="
           "alexanderwallau.cachix.org-1:vi7QC6uUBbRi69tJmp/Ylta1f3BliiW2ABV89EFRiX0="
           "mayniklas.cachix.org-1:gti3flcBaUNMoDN2nWCOPzCi2P68B5JbA/4jhUqHAFU="
+          "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         ];
         substituters = mkIf (cfg.disable-cache != true) [
           "https://cache.nixos.org"
-          "https://alexanderwallau.cachix.org?priority=75"
-          "https://mayniklas.cachix.org?priority=75"
-          "https://cache.lounge.rocks/nix-cache?priority=100"
+          "https://alexanderwallau.cachix.org"
+          "https://mayniklas.cachix.org"
+          "https://cache.lounge.rocks/nix-cache"
+          "https://nix-community.cachix.org"
         ];
         trusted-substituters = mkIf (cfg.disable-cache != true) [
           "https://cache.nixos.org"
@@ -49,9 +51,6 @@ in
         dates = "weekly";
         options = "--delete-older-than 3d";
       };
-      # clean journalctl
-
-
 
       extraOptions = ''
         # this enables the technically experimental feature Flakes
