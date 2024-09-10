@@ -39,22 +39,17 @@ in
     environment = {
 
       gnome.excludePackages = (with pkgs; [
+        atomix # puzzle game
         epiphany
         geary
+                gnome-initial-setup
+        gnome-music
         gnome-photos
         gnome-tour
-        yelp
-      ]) ++ (with pkgs.gnome; [
-        # cheese # webcam tool
-        gnome-music
-        # gedit # text editor
-        # gnome-characters
-        tali # poker game
-        iagno # go game
         hitori # sudoku game
-        atomix # puzzle game
-        # gnome-contacts
-        gnome-initial-setup
+        iagno # go game
+        tali # poker game
+        yelp
       ]);
 
       systemPackages = with pkgs.gnomeExtensions; [
@@ -62,7 +57,6 @@ in
         wireguard-indicator
         wireless-hid
         workspace-switcher-manager
-        yakuake
       ];
     };
 
