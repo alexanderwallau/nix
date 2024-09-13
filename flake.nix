@@ -91,6 +91,10 @@
       url = "github:alexanderwallau/bonn-mensa";
       inputs = { nixpkgs.follows = "nixpkgs"; };
     };
+
+    # https://github.com/musnix/musnix/
+    # A collection of optimization options for realtime audio
+    musnix.url = "github:musnix/musnix";
     
 
   };
