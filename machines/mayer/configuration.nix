@@ -38,7 +38,7 @@
         };
       };
       cryptpad = {
-        enable = true;
+        enable = ;
         domain = "https://cryptpad.alexanderwallau.de";
         httpSafeOrigin = "https://cryptpad-sb.alexanderwallau.de";
         Port = 3002;
@@ -94,14 +94,6 @@
     # zsh as default shell for all users
     zsh.enable = true;
   };
-
-  # install packages system wide
-  environment.systemPackages = with pkgs;
-    [
-      bash-completion
-      wget
-      git
-    ];
 
   # Build arm images
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];

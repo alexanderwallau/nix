@@ -74,6 +74,14 @@ in
       config.allowUnsupportedSystem = true;
     };
 
+    # install packages system wide
+  environment.systemPackages = with pkgs;
+    [
+      bash-completion
+      wget
+      git
+    ];
+
     #Clean Journalctl logs oder than 7 days or if Larger than 1GB
     services.journald.extraConfig = ''
       SystemMaxUse=1G

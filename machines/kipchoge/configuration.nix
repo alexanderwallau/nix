@@ -129,13 +129,6 @@
     ];
   };
 
-  # install packages system wide
-  environment.systemPackages = with pkgs;
-    [
-      bash-completion
-      wget
-      git
-    ];
   networking = {
     firewall.trustedInterfaces = ["wg0" "wg1" ];
     nameservers = [ "1.1.1.1" "1.0.0.1" ];

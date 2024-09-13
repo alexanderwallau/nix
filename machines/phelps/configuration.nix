@@ -57,15 +57,6 @@
     zsh.enable = true;
   };
 
-  # install packages system wide
-  environment.systemPackages = with pkgs;
-    [
-      bash-completion
-      git
-      openconnect
-      wget
-      vpn-slice
-    ];
 
   documentation = {
     enable = false;

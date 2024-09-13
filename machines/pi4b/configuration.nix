@@ -55,9 +55,6 @@
 
   environment.systemPackages = with pkgs;
     [
-      bash-completion
-      wget
-      git
       libraspberrypi
       raspberrypi-eeprom
     ];
