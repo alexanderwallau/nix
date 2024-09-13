@@ -6,8 +6,7 @@ in {
   options.awallau.sound = {
     enable = mkEnableOption "Activate sound with pipewire";
 
-    pro-audio = mkOption {
-      type = types.bool;
+    pro-audio = mkEnableOption {
       example = "true";
       default = "false";
       description = "Use low latency audio setup with jack instead of pipewire and realtime kernel.";

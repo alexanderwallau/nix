@@ -38,7 +38,7 @@
         };
       };
       cryptpad = {
-        enable = ;
+        enable = false;
         domain = "https://cryptpad.alexanderwallau.de";
         httpSafeOrigin = "https://cryptpad-sb.alexanderwallau.de";
         Port = 3002;
