@@ -54,7 +54,7 @@
   networking = {
     enableIPv6 = true;
     dhcpcd.IPv6rs = true;
-    interfaces."eth0" = {
+    interfaces."enp1s0" = {
       ipv6.addresses = [ { address = "2a01:4ff:f0:99e::1"; prefixLength = 64; } ];
     };
       defaultGateway6 = {
