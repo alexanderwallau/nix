@@ -4,7 +4,7 @@
 
 # Since this is the only Hetzner-x86 machine a dedicated cloud module did not seem nessesary
 { self, ... }:
-{ config, pkgs, lib,flake-self, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -56,11 +56,11 @@
     dhcpcd.IPv6rs = true;
     interfaces."eth0" = {
       ipv6.addresses = [ { address = "2a01:4ff:f0:99e::1"; prefixLength = 64; } ];
+    };
       defaultGateway6 = {
         address = "fe80::1";
         interface = "eth0";
       };
-    };
     firewall = {
       allowedTCPPorts = [ 443 80 9100];
       #trustedInterfaces = [ "wg0" ];
