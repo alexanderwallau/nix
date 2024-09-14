@@ -4,7 +4,7 @@
 
 # Since this is the only Hetzner-x86 machine a dedicated cloud module did not seem nessesary
 { self, ... }:
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib,flake-self, ... }:
 
 {
   imports =
