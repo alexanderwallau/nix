@@ -60,7 +60,7 @@
         "commands":
           [
             "nix build '.#nixosConfigurations.werth.config.system.build.toplevel' -o 'result-werth'",
-            "nix path-info --closure-size -h $(readlink -f result-X1-Yoga)",
+            "nix path-info --closure-size -h $(readlink -f 'result-werth')",
           ],
         "image": "bash",
         "name": "Build Werth",
