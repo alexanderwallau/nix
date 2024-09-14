@@ -162,6 +162,7 @@
             modules = builtins.attrValues self.nixosModules ++ [
               lollypops.nixosModules.lollypops
               (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
+              disko.nixosModules.disko
               vscode-server.nixosModules.default
               ({ config, pkgs, ... }: {
                 services.vscode-server.enable = true;
