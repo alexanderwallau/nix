@@ -56,5 +56,20 @@
         "name": "Push mayer to Attic",
         "secrets": ["attic_key"],
       },
+      {
+        "commands":
+          [
+            "nix build '.#nixosConfigurations.werth.config.system.build.toplevel' -o 'result-X1-Yoga'",
+            "nix path-info --closure-size -h $(readlink -f result-X1-Yoga)",
+          ],
+        "image": "bash",
+        "name": "Build Werth",
+      },
+      {
+        "commands": ["attic push lounge-rocks:nix-cache 'result-werth'"],
+        "image": "bash",
+        "name": "Push Werth to Attic",
+        "secrets": ["attic_key"],
+      },
     ],
 }
