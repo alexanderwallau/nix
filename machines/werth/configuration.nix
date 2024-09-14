@@ -60,7 +60,7 @@
         address = "fe80::1";
         interface = "eth0";
       };
-    }
+    };
     firewall = {
       allowedTCPPorts = [ 443 80 9100];
       #trustedInterfaces = [ "wg0" ];
