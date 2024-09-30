@@ -46,17 +46,7 @@ in
         access_log /var/log/nginx/access.log combined_anon buffer=32k flush=5m;
       '';
       # RFC 9116
-      locations."/.well-known/security.txt".root = pkgs.writeTextFile {
-          name = "security.txt";
-          text = ''
-            Contact: mailto:kontakt@alexanderwallau.de
-            Expires: 2029-12-31T22:59:00.000Z
-            Encryption: https://keys.openpgp.org/vks/v1/by-fingerprint/25121E72847D5226FEF57BC09FAA4DA547D6AD70
-            Preferred-Languages: de, en, fr
-
-          '';
-          destination = "/.well-known/security.txt";
-        };
+     
 
       # both lines can help if errors occur
       # especially with using longer paths
