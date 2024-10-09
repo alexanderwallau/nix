@@ -38,10 +38,10 @@
         };
       };
       cryptpad = {
-        enable = false;
-        domain = "https://cryptpad.alexanderwallau.de";
-        httpSafeOrigin = "https://cryptpad-sb.alexanderwallau.de";
-        Port = 3002;
+        enable = true;
+        domain = "cryptpad.alexanderwallau.de";
+        httpSafeOrigin = "cryptpad-sb.alexanderwallau.de";
+        port = 3002;
         websocketPort = 3003;
         #adminKeys = [ "[
       };
@@ -97,6 +97,8 @@
 
   # Build arm images
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  # lol
 
   networking = {
     enableIPv6 = true;
