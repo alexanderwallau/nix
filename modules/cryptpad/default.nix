@@ -56,15 +56,18 @@ in
         proxyPass = "http://localhost:${builtins.toString cfg.port}";
       };
       locations."/cryptpad_websocket" = {
-        proxyPass = "http://localhost:${builtins.toString cfg.port}/";
+        proxyPass = "http://localhost:${builtins.toString cfg.websocketPort}/";
         proxyWebsockets = true;
       };
     }; 
     "${cfg.httpSafeOrigin}" = {
       enableACME = true;
       forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:${builtins.toString cfg.port}";
+      };
       locations."/cryptpad_websocket" = {
-        proxyPass = "http://localhost:${builtins.toString cfg.port}/";
+        proxyPass = "http://localhost:${builtins.toString cfg.websocketPort}/";
         proxyWebsockets = true;
       };
     };
