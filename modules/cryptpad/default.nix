@@ -18,13 +18,11 @@ in
       example = "https://cryptpad-ui.example.com. Apparently optional but recommended.";
       description = "Cryptpad sandbox URL";
           };
-    Port = mkOption {
-      type = types.int;
+    port = mkOption {
       default = 3001;
       description = "Port on which the Node.js server should listen";
       };
       websocketPort = mkOption {
-      type = types.int;
       default = 3002;
       description = "Port for the websocket that needs to be separate";
       };
@@ -38,18 +36,39 @@ in
 
   config = lib.mkIf cfg.enable {
     services = {
-      cryptpad.settings = {
-        httpUnsafeOrigin  = "${cfg.domain}";
-        httpsSafeOrigin = "${cfg.httpSafeOrigin}";
-        httpPort = "${cfg.Port}";
-        websocketPort = "${cfg.websocketPort}";
-        adminKeys = "${cfg.adminKeys}";
+      cryptpad = {
+        enable = true;
+        settings = {
+          httpUnsafeOrigin  = "https://${cfg.domain}";
+          httpSafeOrigin = "https://${cfg.httpSafeOrigin}";
+          httpAdress =  "0.0.0.0";
+          httpPort = cfg.port;
+          #adminKeys = "${cfg.adminKeys}";
+        };
       };
 
 
-    nginx.virtualHosts."${cfg.domain}" = {
-      locations."/".proxyPass = "http://127.0.0.1:3001";
+    nginx.virtualHosts ={
+      "${cfg.domain}" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/" = {
+        proxyPass = "http://localhost:${builtins.toString cfg.port}";
+      };
+      locations."/cryptpad_websocket" = {
+        proxyPass = "http://localhost:${builtins.toString cfg.port}/";
+        proxyWebsockets = true;
+      };
+    }; 
+    "${cfg.httpSafeOrigin}" = {
+      enableACME = true;
+      forceSSL = true;
+      locations."/cryptpad_websocket" = {
+        proxyPass = "http://localhost:${builtins.toString cfg.port}/";
+        proxyWebsockets = true;
+      };
     };
   };
+};
 };
 }
