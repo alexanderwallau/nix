@@ -12,33 +12,39 @@ disko.devices = {
         type = "disk";
         device = "/dev/sda";
         content = {
-          type = "gpt";
-          partitions = {
-            boot = {
-              size = "1M";
-              type = "EF02";
-              priority = 1;
+        type = "table";
+        format = "gpt";
+        partitions = [
+          {
+            name = "boot";
+            start = "0";
+            end = "1M";
+            flags = [ "bios_grub" ];
+          }
+          {
+            name = "ESP";
+            start = "1M";
+            end = "512M";
+            bootable = true;
+            content = {
+              type = "filesystem";
+              format = "vfat";
+              mountpoint = "/boot";
             };
-            ESP = {
-              size = "512M";
-              type = "EF00";
-              content = {
-                type = "filesystem";
-                format = "vfat";
-                mountpoint = "/boot";
-              };
+          }
+          {
+            name = "nixos";
+            start = "512M";
+            end = "100%";
+            content = {
+              type = "filesystem";
+              format = "ext4";
+              mountpoint = "/";
             };
-            root = {
-              size = "100%";
-              name = "nixos";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/";
-              };
-            };
-          };
-        };
+          }
+        ];
+      };
+        
       };
     };
   };
@@ -74,7 +80,7 @@ disko.devices = {
       enable = true;
       interval = "weekly";
     };
-
+    fileSystems."/".label = "nixos";
     services.qemuGuest.enable = true;
 
   
