@@ -66,7 +66,12 @@ in
         log-lines = 25
       '';
     };
-
+    sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.sshKeyPaths = [ "/home/awallau/.ssh/id_ed25519" ];
+    secrets = { };
+    templates = { };
+  };
     nixpkgs = {
       # Allow unfree licenced packages
       config.allowUnfree = true;

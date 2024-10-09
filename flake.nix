@@ -164,6 +164,7 @@
               (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
               disko.nixosModules.disko
               vscode-server.nixosModules.default
+              sops-nix.nixosModules.sops
               ({ config, pkgs, ... }: {
                 services.vscode-server.enable = true;
               })
