@@ -60,7 +60,7 @@
     };
       defaultGateway6 = {
         address = "fe80::1";
-        interface = "eth0";
+        interface = "enp1s0";
       };
     firewall = {
       allowedTCPPorts = [ 443 80 9100];
