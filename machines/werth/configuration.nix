@@ -24,7 +24,8 @@
     home-manager = { enable = true; profile = "server"; };
     # set up language and timezone
     locales.enable = true;
-
+    # enable note exporter
+    metrics = { node = { enable = true; flake = true; }; };
     # enable nginx
     nginx.enable = true;
     # set up general nix stuff
