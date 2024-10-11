@@ -11,7 +11,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #./wg0.nix
+      ./wg0.nix
     ];
 
 
@@ -62,12 +62,13 @@
         address = "fe80::1";
         interface = "enp1s0";
       };
-    firewall = {
-      allowedTCPPorts = [ 443 80 9100];
-      #trustedInterfaces = [ "wg0" ];
-    };
+    firewall = { 
+      allowedTCPPorts = [ 443 80 9100 9115 ]; 
+      trustedInterfaces = ["wg0" ];
+      };
+      # Nameserver across the atlantic may yield somewhat meh performance
+    nameservers = [ "192.168.69.1" "1.1.1.1" ];
 
-    nameservers = [ "1.1.1.1" "1.0.0.1" ];
     # Fallback ntp service, this one being not T-Online since us east coast xDD
     timeServers = [
       "0.us.pool.ntp.org"
