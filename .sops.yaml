@@ -3,6 +3,7 @@ keys:
   - &mayer age1csr3ts08ffjvlm8mt263drqxvg7fj0wp975dzpvzxaa9fvzwdyss26d0mf
   - &kipchoge age169d5m7e830dlg72wa7zr3sfsjaa5k8u5m5g5rayag24v3alyuu4s6290gk
   - &phelps age12aksgxzr5kml0ct3kpwj06hkhaq4fsm5lw3egz29jjqmkleqvp9qrqeglm
+  - &werth age1y0jqjgj2js5hzthgwh5vm3kj6u78arkndzts7sh2xf5g9xrq4qus9gztt4
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -11,3 +12,4 @@ creation_rules:
           - *kipchoge
           - *mayer
           - *phelps
+          - *werth
