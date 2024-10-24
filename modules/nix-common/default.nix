@@ -11,7 +11,7 @@ in
 
   config = mkIf cfg.enable {
     nix = {
-      package = pkgs.nixFlakes;
+      package = pkgs.nixVersions.stable;
 
       # Set the $NIX_PATH entry for nixpkgs. This is necessary in
       # this setup with flakes, otherwise commands like `nix-shell
