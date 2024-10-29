@@ -118,7 +118,7 @@
     };
 
     firewall = { 
-      allowedTCPPorts = [ 443 80 9100 9115 ]; 
+      allowedTCPPorts = [ 80 443 ]; 
       trustedInterfaces = ["wg0" ];
       };
     nameservers = [ "192.168.69.1" "1.1.1.1" ];
