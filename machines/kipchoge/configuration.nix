@@ -104,6 +104,10 @@
     openssh.enable = true;
     # enables users which got moved into a seperate file
     podman.enable = true;
+    postgres = {
+      enable = true;
+      port = 5432;
+    };
     user = {
       awallau.enable = true;
       root.enable = true;

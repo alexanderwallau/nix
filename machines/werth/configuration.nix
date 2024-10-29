@@ -32,6 +32,11 @@
     nix-common.enable = true;
     # set up ssh server
     openssh.enable = true;
+    
+    postgres = {
+      enable = true;
+      port = 5432;
+    };
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;

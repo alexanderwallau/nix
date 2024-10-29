@@ -80,6 +80,11 @@
     paperless.enable = true;
     # set up ssh server
     openssh.enable = true;
+    
+    postgres = {
+      enable = true;
+      port = 5432;
+    };
     # recepies
     tandoor = {
       enable = false;
