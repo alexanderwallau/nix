@@ -54,7 +54,6 @@ in
 
       systemPackages = with pkgs.gnomeExtensions; [
         appindicator
-        wireguard-indicator
         wireless-hid
         workspace-switcher-manager
       ];
