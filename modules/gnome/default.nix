@@ -26,14 +26,14 @@ in
         displayManager.gdm.enable = true;
       };
         
-      gnome-settings-daemon.enable = true;
+
       
       gnome = {
         core-developer-tools.enable = true;
         core-os-services.enable = true;
         core-shell.enable = true;
         core-utilities.enable = true;
-        
+        gnome-settings-daemon.enable = true;
       };
     };
 
