@@ -78,7 +78,8 @@
         wakeOnLan.enable = true;
       };
     };
-    defaultGateway = "192.168.178.1";
+# In theory a good Idea, not that good when using this thing on the go so for now disable this
+#    defaultGateway = "192.168.178.1";
     nameservers = [ "192.168.69.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;
