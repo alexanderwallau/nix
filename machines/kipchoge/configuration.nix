@@ -32,6 +32,11 @@
     docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
+
+    keycloak = {
+      enable = true;
+      domain = "sso.alexanderwallau.de";
+    };
     # set up language and timezone
     locales.enable = true;
     # minio for s3

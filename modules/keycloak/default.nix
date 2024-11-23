@@ -37,17 +37,19 @@ in
         username = "keycloak";
         passwordFile = config.sops.secrets."keycloak".path;
         createLocally = true;
+        port = 5432;
       };
       settings = {
-        hostname = cfg.domain;
-        https-port = null;
+        hostname = "${cfg.domain}";
+        http-relative-path = "";
+        hostname-backchannel-dynamic = false;
         http-port = cfg.port;
-        http-relative-path = "/";
-        proxy-headers = "forwarded";
-        metrics-enabled = true;
+        http-host = "127.0.0.1";
+        http-enabled = true;
+        proxy-headers = "xforwarded";
       };
-      sslCertificate = "/home/awallau/cert.pem";
-      sslCertificateKey = "/home/awallau/key.pem";
+
+
       themes.keywind = pkgs.stdenv.mkDerivation rec {
               name = "keywind";
               src = fetchGit {
@@ -61,7 +63,8 @@ in
             };
     };
 
-    services.nginx.virtualHosts."${cfg.domain}" = {
+    services.nginx.virtualHosts = {
+      "${cfg.domain}" = {
         enableACME = true;
         forceSSL = true;
         locations = {
@@ -75,6 +78,7 @@ in
           };
         };
       };
+    };
     };
 
 }
