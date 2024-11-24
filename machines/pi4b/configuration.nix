@@ -51,7 +51,9 @@
   };
 
   # Enable argonone fan daemon
-  # services.hardware.argonone.enable = true;
+  # Now in nixpkgs.unstable
+  # The default package suffises
+  services.hardware.argonone.enable = true;
 
   environment.systemPackages = with pkgs;
     [
