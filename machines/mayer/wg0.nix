@@ -7,9 +7,7 @@
       ips = [ "192.168.69.2/24" ];
       listenPort = 52192;
       mtu = 1412;
-
-      privateKeyFile = toString /var/src/secret/wireguard/privatekey;
-      generatePrivateKeyFile = true;
+      privateKeyFile = toString config.sops.secrets."mayer-wg-private-key".path;
 
       peers = [
         {

@@ -7,9 +7,7 @@
       ips = [ "192.168.69.1/24" ];
       listenPort = 52192;
       mtu = 1412;
-
-      privateKeyFile = toString /var/src/secrets/wireguard/private;
-      generatePrivateKeyFile = true;
+      privateKeyFile = toString config.sops.secrets."kipchoge-wg0-private-key".path;
 
       postSetup = ''
         ${pkgs.iptables}/bin/iptables -t nat -A POSTROUTING -s 192.168.69.0/24 -o enp0s6 -j MASQUERADE
