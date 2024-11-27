@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
-
+sops.secrets ={
+      "kipchoge-wg0-private-key" = { };
+    };
   networking = {
     firewall.allowedUDPPorts = [ 52192 ];
     wireguard.interfaces.wg0 = {

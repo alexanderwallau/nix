@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
-
+sops.secrets ={
+    "mayer-wg-private-key" = { };
+    };
   networking = {
     firewall.allowedUDPPorts = [ 52192 ];
     wireguard.interfaces.wg0 = {

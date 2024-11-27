@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }: {
-
+sops.secrets ={
+      "kipchoge-wg1-private-key" = { };
+      "kipchoge-wg1-preshared-key" = { };
+    };
   networking = {
     wireguard.interfaces.wg1 = {
 
@@ -18,7 +21,7 @@
 
       peers = [{
         publicKey = "IPyxZ2Sa2UsJwvVMYh8yyidi1hIlKdcgnyKSEldL/Qk=";
-        privateKeyFile = toString config.sops.secrets."kipchoge-wg1-preshared-key".path;
+        presharedKeyFile = toString config.sops.secrets."kipchoge-wg1-preshared-key".path;
         allowedIPs = [ "192.168.178.0/24" ];
         endpoint = "awll.goip.de:53796";
         persistentKeepalive = 15;
