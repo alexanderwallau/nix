@@ -30,7 +30,11 @@
           publicKey = "sqBSxPs6lxrPFIK6uNr+9VuOLiytvxl9ST8PFEnbRz0=";
           allowedIPs = [ "192.168.69.3/32" ];
         }
-
+        # pi4b
+        {
+          publicKey = "bUlY0CKYGhMP69rjj6II7mk2mvnJ/n8txa2ZYFF6rEc=";
+          allowedIPs = [ "192.168.69.4/32" ];
+        }
         # Werth
         {
           publicKey = "xhzaSbhk9yLPhZjRtK1MpF7UHbEJ66oPVf4irzqULkY=";

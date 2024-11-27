@@ -9,6 +9,7 @@
     # being able to build the sd-image
     "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
     ./hardware-config.nix
+    ./wg0.nix
   ];
 
   ### build sd-image
