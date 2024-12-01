@@ -27,7 +27,6 @@ in
       };
         
 
-      pkgs.gnome-settings-daemon.enable = true;
       
       gnome = {
         core-developer-tools.enable = true;
