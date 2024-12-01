@@ -13,6 +13,11 @@ in
       default = "s3.my-fast.de";
       description = "Domain name for the minio service";
     };
+    region = mkOption {
+      type = types.str;
+      default = "eu-central-1";
+      description = "Region for the minio service";
+    };
 
   };
 
@@ -47,7 +52,7 @@ in
       enable = true;
       listenAddress = "127.0.0.1:9000";
       consoleAddress = "127.0.0.1:9001";
-      region = "eu-central-1";
+      region = cfg.region;
       rootCredentialsFile = "/var/src/secrets/minio";
     };
 

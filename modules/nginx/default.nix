@@ -45,7 +45,8 @@ in
 
         access_log /var/log/nginx/access.log combined_anon buffer=32k flush=5m;
       '';
-
+      # RFC 9116
+     
 
       # both lines can help if errors occur
       # especially with using longer paths

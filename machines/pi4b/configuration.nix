@@ -9,6 +9,7 @@
     # being able to build the sd-image
     "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
     ./hardware-config.nix
+    ./wg0.nix
   ];
 
   ### build sd-image
@@ -51,13 +52,12 @@
   };
 
   # Enable argonone fan daemon
-  # services.hardware.argonone.enable = true;
+  # Now in nixpkgs.unstable
+  # The default package suffises
+  services.hardware.argonone.enable = true;
 
   environment.systemPackages = with pkgs;
     [
-      bash-completion
-      wget
-      git
       libraspberrypi
       raspberrypi-eeprom
     ];
@@ -81,7 +81,8 @@
         wakeOnLan.enable = true;
       };
     };
-    defaultGateway = "192.168.178.1";
+# In theory a good Idea, not that good when using this thing on the go so for now disable this
+#    defaultGateway = "192.168.178.1";
     nameservers = [ "192.168.69.1" "1.0.0.1" ];
     networkmanager = {
       enable = true;

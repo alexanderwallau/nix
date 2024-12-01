@@ -24,6 +24,11 @@
       passwordFile = "/var/src/secret/anki-sync";
       domain = "anki-sync.alexanderwallau.de";
     };
+    audiobookshelf = {
+      enable = true;
+      port = 13378;
+      domain = "audiobookshelf.alexanderwallau.de";
+    };
     containers =
       {
         rss-bridge = {
@@ -36,8 +41,8 @@
         enable = true;
         domain = "cryptpad.alexanderwallau.de";
         httpSafeOrigin = "cryptpad-sb.alexanderwallau.de";
-        Port = 3001;
-        websocketPort = 3002;
+        port = 3002;
+        websocketPort = 3003;
         #adminKeys = [ "[
       };
     docker.enable = true;
@@ -75,6 +80,11 @@
     paperless.enable = true;
     # set up ssh server
     openssh.enable = true;
+    
+    postgres = {
+      enable = true;
+      port = 5432;
+    };
     # recepies
     tandoor = {
       enable = false;
@@ -90,16 +100,10 @@
     zsh.enable = true;
   };
 
-  # install packages system wide
-  environment.systemPackages = with pkgs;
-    [
-      bash-completion
-      wget
-      git
-    ];
-
   # Build arm images
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+
+  # lol
 
   networking = {
     enableIPv6 = true;
@@ -114,7 +118,7 @@
     };
 
     firewall = { 
-      allowedTCPPorts = [ 443 80 9100 9115 ]; 
+      allowedTCPPorts = [ 80 443 ]; 
       trustedInterfaces = ["wg0" ];
       };
     nameservers = [ "192.168.69.1" "1.1.1.1" ];

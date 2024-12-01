@@ -13,6 +13,7 @@
       dnsutils
       dogdns
       eza
+      ffmpeg
       fuse3
       gdu
       gping

@@ -32,6 +32,11 @@
     docker.enable = true;
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
+
+    keycloak = {
+      enable = true;
+      domain = "sso.alexanderwallau.de";
+    };
     # set up language and timezone
     locales.enable = true;
     # minio for s3
@@ -104,6 +109,10 @@
     openssh.enable = true;
     # enables users which got moved into a seperate file
     podman.enable = true;
+    postgres = {
+      enable = true;
+      port = 5432;
+    };
     user = {
       awallau.enable = true;
       root.enable = true;
@@ -129,13 +138,6 @@
     ];
   };
 
-  # install packages system wide
-  environment.systemPackages = with pkgs;
-    [
-      bash-completion
-      wget
-      git
-    ];
   networking = {
     firewall.trustedInterfaces = ["wg0" "wg1" ];
     nameservers = [ "1.1.1.1" "1.0.0.1" ];

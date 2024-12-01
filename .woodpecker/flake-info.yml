@@ -19,4 +19,10 @@
         "name": "Check Flake",
       },
     ],
+  "when":
+    [
+      { "event": "manual" },
+      { "branch": "main", "event": "push" },
+      { "branch": "update_flake_lock_action", "event": "push" },
+    ],
 }

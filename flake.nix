@@ -91,17 +91,17 @@
       url = "github:alexanderwallau/bonn-mensa";
       inputs = { nixpkgs.follows = "nixpkgs"; };
     };
+
+    # https://github.com/musnix/musnix/
+    # A collection of optimization options for realtime audio
+    musnix.url = "github:musnix/musnix";
     
-    authentik-nix = {
-    url = "github:nix-community/authentik-nix";
-    inputs = { nixpkgs.follows = "nixpkgs"; };
-  };
 
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux"];
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     with inputs;
@@ -162,8 +162,9 @@
             modules = builtins.attrValues self.nixosModules ++ [
               lollypops.nixosModules.lollypops
               (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
-              authentik-nix.nixosModules.default
+              disko.nixosModules.disko
               vscode-server.nixosModules.default
+              sops-nix.nixosModules.sops
               ({ config, pkgs, ... }: {
                 services.vscode-server.enable = true;
               })

@@ -22,6 +22,7 @@ in {
           protocolUseSSL = true;
           useSSL = false;
           allowGravatar = true;
+          allowFreeURL = true;
           db = {
             dialect = "sqlite";
             storage = "/var/lib/hedgedoc/db.sqlite";

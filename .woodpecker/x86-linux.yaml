@@ -56,5 +56,26 @@
         "name": "Push mayer to Attic",
         "secrets": ["attic_key"],
       },
+      {
+        "commands":
+          [
+            "nix build '.#nixosConfigurations.werth.config.system.build.toplevel' -o 'result-werth'",
+            "nix path-info --closure-size -h $(readlink -f 'result-werth')",
+          ],
+        "image": "bash",
+        "name": "Build Werth",
+      },
+      {
+        "commands": ["attic push lounge-rocks:nix-cache 'result-werth'"],
+        "image": "bash",
+        "name": "Push Werth to Attic",
+        "secrets": ["attic_key"],
+      },
+    ],
+  "when":
+    [
+      { "event": "manual" },
+      { "branch": "main", "event": "push" },
+      { "branch": "update_flake_lock_action", "event": "push" },
     ],
 }

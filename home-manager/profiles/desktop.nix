@@ -15,6 +15,7 @@
       element-desktop
       eza
       firefox
+      ffmpeg
       fuse3
       gcc
       gdu
@@ -40,18 +41,15 @@
       owncloud-client
       p7zip
       pciutils
-      pipewire
       qemu
       restic
       signal-desktop
       spotify
       tdesktop
       thunderbird-bin
-
       tidal-dl
       qobuz-dl
       lyricsgenius
-      #todoist-electron
       unzip
       vlc
       wireguard-go
