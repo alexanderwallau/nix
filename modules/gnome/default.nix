@@ -27,14 +27,14 @@ in
       };
         
 
+      pkgs.gnome-settings-daemon.enable = true;
       
       gnome = {
         core-developer-tools.enable = true;
         core-os-services.enable = true;
         core-shell.enable = true;
         core-utilities.enable = true;
-        gnome-settings-daemon.enable = true;
-      };
+       };
     };
 
     environment = {
@@ -43,7 +43,7 @@ in
         atomix # puzzle game
         epiphany
         geary
-                gnome-initial-setup
+        gnome-initial-setup
         gnome-music
         gnome-photos
         gnome-tour
