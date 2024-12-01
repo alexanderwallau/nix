@@ -27,12 +27,14 @@ in
       };
         
 
+
       
       gnome = {
         core-developer-tools.enable = true;
         core-os-services.enable = true;
         core-shell.enable = true;
-        core-utilities.enable = true;
+        core-utilities.enable = true; 
+        gnome-settings-daemon.enable = true;
        };
     };
 
@@ -59,7 +61,7 @@ in
       ];
     };
 
-    services.udev.packages = with pkgs; [ gnome.gnome-settings-daemon ];
+    services.udev.packages = with pkgs; [gnome-settings-daemon ];
 
   };
 }
