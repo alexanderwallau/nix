@@ -80,7 +80,7 @@ disko.devices = {
       enable = true;
       interval = "weekly";
     };
-    fileSystems."/".label = "nixos";
+    #fileSystems."/".label = "nixos";
     services.qemuGuest.enable = true;
 
   
