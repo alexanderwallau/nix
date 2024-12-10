@@ -1,5 +1,7 @@
 { config, lib, pkgs, ... }: {
-
+sops.secrets ={
+      "werth-wg-private-key" = { };
+};
   networking = {
     firewall.allowedUDPPorts = [ 52192 ];
     wireguard.interfaces.wg0 = {
@@ -7,9 +9,7 @@
       ips = [ "192.168.69.5/24" ];
       listenPort = 52192;
       mtu = 1412;
-
-      privateKeyFile = toString /var/src/secret/wireguard/privatekey;
-      generatePrivateKeyFile = true;
+      privateKeyFile = toString config.sops.secrets."werth-wg-private-key".path;
 
       peers = [
         {

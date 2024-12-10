@@ -11,7 +11,7 @@ sops.secrets ={
       ips = [ "192.168.69.4/24" ];
       listenPort = 52192;
       mtu = 1412;
-      privateKeyFile = config.sops.secrets."pi4b-wg-private-key".path;
+      privateKeyFile = toString config.sops.secrets."pi4b-wg-private-key".path;
 
       peers = [
         {

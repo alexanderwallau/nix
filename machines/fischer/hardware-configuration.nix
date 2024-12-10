@@ -35,6 +35,48 @@
         allowDiscards = true;
       };
     };
+
+    kernelParams = [
+    "debugfs=off"
+    "lockdown=confidentiality"
+    "module.sig_enforce=1"
+    "oops=panic"
+    "quiet" "loglevel=0"
+    "slab_nomerge"
+    "vsyscall=none"
+  ];
+
+    # A sort of actual effort towards security
+    blacklistedKernelModules = [
+    # Obscure networking protocols
+    "dccp"
+    "sctp"
+    "rds"
+    "tipc"
+    "n-hdlc"
+    "x25"
+    "decnet"
+    "econet"
+    "af_802154"
+    "ipx"
+    "appletalk"
+    "psnap"
+    "p8023"
+    "p8022"
+    "can"
+    "atm"
+    # Various rare filesystems
+    "jffs2"
+    "hfsplus"
+    "squashfs"
+    "udf"
+    "cifs"
+    "nfs"
+    "nfsv3"
+    "gfs2"
+    "vivid"
+    ];
+
   };
 
 
@@ -82,6 +124,7 @@
     keyMap = "us";
   };
 
+
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
   # (the default) this is the recommended approach. When using systemd-networkd it's
   # still possible to use this option, but it's recommended to use it in conjunction
@@ -98,8 +141,14 @@
     tod = {
       enable = true;
       driver = pkgs.libfprint-2-tod1-goodix;
-   };
+    };
   };
+
+  # security.lockKernelModules = false;
+  security.allowSimultaneousMultithreading = true;
+  security.virtualisation.flushL1DataCache = "cond";
+  # security.forcePageTableIsolation = false;
+
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

@@ -5,6 +5,7 @@ keys:
   - &phelps age12aksgxzr5kml0ct3kpwj06hkhaq4fsm5lw3egz29jjqmkleqvp9qrqeglm
   - &werth age1y0jqjgj2js5hzthgwh5vm3kj6u78arkndzts7sh2xf5g9xrq4qus9gztt4
   - &pi4b age1dmc6kqzgktpt9644syw8crumzwq5jm6gp4kq32dq23rfy04ukqrqjf82hp
+  - &fischer age1um6p45c88uhhwquzucvcqglgfe7xhd5ujue9vmjerct3qzp2ndyq22rz4n
 creation_rules:
   - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
     key_groups:
@@ -15,3 +16,4 @@ creation_rules:
           - *phelps
           - *werth
           - *pi4b
+          - *fischer

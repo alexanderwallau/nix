@@ -71,7 +71,7 @@
     # set up general nix stuff
     nix-common.enable = true;
     onlyoffice = {
-      enable = true;
+      enable = false;
       domain = "onlyoffice.alexanderwallau.de";
     };
     # set up language and timezone
