@@ -27,7 +27,6 @@ in
         audiobookshelf = {
         enable = true;
         port = cfg.port;
-        openFirewall = true;
         host ="127.0.0.1";
       };
 
