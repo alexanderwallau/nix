@@ -66,6 +66,11 @@
       enable = true;
       profile = "server";
     };
+    kavita = {
+      enable = true;
+      port = 13379;
+      domain = "ebooks.alexanderwallau.de";
+    };
     metrics = { node = { enable = true; flake = true; }; };
     nginx.enable = true;
     # set up general nix stuff
