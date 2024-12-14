@@ -45,6 +45,9 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    sops.secrets = {
+      "freshrss-postgrespasswordfile" = { };
+    };
     services = {
       freshrss = {
         enable = true;
@@ -54,10 +57,12 @@ in
         virtualHost = null;
 
         database = {
-          type = "sqlite";
+          host = "/var/run/postgresql";
+          type = "pgsql";
         };
 
       };
+
 
 
       # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/web-apps/freshrss.nix
