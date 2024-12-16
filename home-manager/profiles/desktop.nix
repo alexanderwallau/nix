@@ -53,7 +53,7 @@
       unzip
       vlc
       wireguard-go
-      xournal
+      xournalpp
       yakuake
       yubioath-flutter
       zip
