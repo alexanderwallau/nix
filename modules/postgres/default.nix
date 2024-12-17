@@ -27,7 +27,7 @@ in
         enableTCPIP = true;
         
         # Hard code that one, one could make an option but this is really not necessary
-        dataDir = "/var/run/postgres";
+       # dataDir = "/var/run/postgres";
         settings = {
           port = cfg.port;
           log_connections = true;
