@@ -55,6 +55,14 @@
   # Now in nixpkgs.unstable
   # The default package suffises
   services.hardware.argonone.enable = true;
+  # Small Role upgrade for the pi
+  services.unifi = {
+    enable = true;
+    openFirewall = true;
+    unifiPackage = pkgs.unifi;
+    mongodbPackage = pkgs.mongodb-6_0;
+
+  };
 
   environment.systemPackages = with pkgs;
     [
