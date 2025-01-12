@@ -25,7 +25,11 @@ in
         postgresql = {
         enable = true;
         enableTCPIP = true;
-        
+        authentication = pkgs.lib.mkOverride 10 ''
+      #type database  DBuser  CIDR-ADDRESS auth-method
+      local all       all                  trust
+      host  all       all     ::1/128      trust
+    '';
         # Hard code that one, one could make an option but this is really not necessary
        # dataDir = "/var/run/postgres";
         settings = {

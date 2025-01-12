@@ -44,27 +44,60 @@ in
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    sops.secrets = {
-      "freshrss-postgrespasswordfile" = { };
+config = lib.mkIf cfg.enable {
+
+sops.secrets ={
+    "freshrss_oidc_env_file" = { 
+      owner = "freshrss";
+      group = "freshrss";
     };
+    };
+
+    systemd.services = {
+      freshrss-config = {
+      # Not a big fan of this service name, frehrss would be better
+      serviceConfig = {
+        EnvironmentFile =  config.sops.secrets."freshrss_oidc_env_file".path;
+        #Environment = [
+          # The file above  may or may not look like this
+          
+          # OIDC_ENABLED = 1;
+          # OIDC_PROVIDER_METADATA_URL = "https://bla.bla.bla/*/.well-known/openid-configuration";
+          # OIDC_CLIENT_ID =  someid
+          # OIDC_CLIENT_SECRET =  somesecret 
+          # OIDC_X_FORWARDED_HEADERS = "X-Forwarded-Port X-Forwarded-Proto X-Forwarded-Host";
+          # OIDC_SCOPES = "openid email profile";
+        #];
+      };
+      };
+      phpfpm-freshrss.serviceConfig.EnvironmentFile = config.sops.secrets."freshrss_oidc_env_file".path;
+    };
+
     services = {
       freshrss = {
         enable = true;
         defaultUser = "${cfg.defaultUser}";
-        passwordFile = "${cfg.passwordFile}";
+        passwordFile = "";
         baseUrl = "https://${cfg.domain}";
+        authType = "http_auth";
         virtualHost = null;
 
         database = {
           host = "/var/run/postgresql";
           type = "pgsql";
+          name = "freshrss";
+          user = "freshrss";
         };
 
       };
-
-
-
+      # more postgres stuff see down below
+      postgresql = {
+      ensureUsers = [{
+        name = "freshrss";
+        ensureDBOwnership = true;
+      }];
+      ensureDatabases = [ "freshrss" ];
+    };
       # Based on: https://github.com/NixOS/nixpkgs/blob/nixos-unstable/nixos/modules/services/web-apps/freshrss.nix
       # And https://git.kempkens.io/daniel/dotfiles/src/branch/master/system/nixos/freshrss.nix
       nginx.virtualHosts."${cfg.domain}" = {
@@ -98,4 +131,5 @@ in
     };
     systemd.services.phpfpm-freshrss.after = [ "postgresql.service" ];
   };
+
 }
