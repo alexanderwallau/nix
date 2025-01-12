@@ -56,13 +56,13 @@
   # The default package suffises
   services.hardware.argonone.enable = true;
   # Small Role upgrade for the pi
+  # Note to self pi4b with 4gigs has appearently not enough power to built cusom mongo db package
   services.unifi = {
     enable = true;
     openFirewall = true;
-    unifiPackage = pkgs.unifi;
-    mongodbPackage = pkgs.mongodb-6_0;
-
-  };
+    unifiPackage = pkgs.unifi8;
+    mongodbPackage = pkgs.mongodb-7_0;
+    };
 
   environment.systemPackages = with pkgs;
     [
@@ -91,9 +91,14 @@
     };
 # In theory a good Idea, not that good when using this thing on the go so for now disable this
 #    defaultGateway = "192.168.178.1";
-    nameservers = [ "192.168.69.1" "1.0.0.1" ];
+    nameservers = [ "192.168.6y9.1" "1.0.0.1" ];
+    # May need Wifi
     networkmanager = {
       enable = true;
+    };
+    firewall = { 
+      allowedTCPPorts = [ 80 443 ]; 
+      trustedInterfaces = ["wg0" ];
     };
     timeServers = [
       "ptbtime1.ptb.de"
