@@ -30,32 +30,36 @@ in
 
   };
     config = lib.mkIf cfg.enable {
-    services = {
-    anki-sync-server = {
-    enable = true;
-    # Since on localhost technically not needed but for the sake of completeness I include this option
-    #openFirewall = true;
-    address = "0.0.0.0";
-    # One could also make that flexible but what else uses this port hart coded?
-    port = 27701;
-    # Technically one could define many users, maybe in the future if needed
-    users = [
-      {
-        username = "${cfg.User}";
-        passwordFile = toString cfg.passwordFile;
-      }
-    ];
-    };
-    nginx.virtualHosts."${cfg.domain}" = {
-      enableACME = true;
-      forceSSL = true;
-      locations."/" = {
-            proxyPass = "http://127.0.0.1:27701";
-            extraConfig = ''
-              client_max_body_size 256M;
-            '';
-          };
-  };
-  };
+      networking.firewall.allowedTCPPorts = [ 22701 ];
+      services = {
+        anki-sync-server = {
+          enable = true;
+          openFirewall = true;
+          
+          baseDirectory = "/var/lib/anki-sync";
+          # if not specified this will use ipv6
+          address = "127.0.0.1";
+          # One could also make that flexible but what else uses this port hart coded?
+          port = 27701;
+          # Technically one could define many users, maybe in the future if needed
+          # Also technically we could sops this but atm idc
+          users = [
+            {
+              username = "${cfg.User}";
+              passwordFile = toString cfg.passwordFile;
+            }
+          ];
+        };
+        nginx.virtualHosts."${cfg.domain}" = {
+          enableACME = true;
+          forceSSL = true;
+          locations."/" = {
+              proxyPass = "http://127.0.0.1:27701";
+              extraConfig = ''
+                client_max_body_size 256M;
+              '';
+            };
+        };
+        };
   };
 }
