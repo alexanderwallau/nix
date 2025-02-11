@@ -67,10 +67,10 @@ disko.devices = {
       extraModulePackages = [ ];
     };
 
-    # swapfile
+    # swapfilev double the ram
     swapDevices = [{
       device = "/var/swapfile";
-      size = (1024 * 8);
+      size = (1024 * 4);
     }];
 
     # Running fstrim weekly is a good idea for VMs.
