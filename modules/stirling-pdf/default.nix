@@ -29,6 +29,10 @@ in {
           "${cfg.domain}" = {
             enableACME = true;
             forceSSL = true;
+            extraConfig = ''
+              allow 192.168.69.0/24;
+              deny all;
+              '';
             locations."/" = {
             proxyPass = "http://127.0.0.1:${toString cfg.port}";
             };
