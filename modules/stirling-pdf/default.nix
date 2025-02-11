@@ -15,7 +15,7 @@ in {
       default = "stir.ling.pdf";
       description = "domain name for stirling-pdf";
     };
-  }
+  };
 
   config = mkIf cfg.enable {
     services = {
