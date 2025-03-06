@@ -32,7 +32,7 @@
     vim.enable = false;
     zsh.enable = true;
     python.enable = false;
-
+    tmux.enable = true;
   };
 
   # Imports
@@ -42,6 +42,7 @@
     ../modules/zsh
     ../modules/htop
     ../modules/python
+    ../modules/tmux
   ];
 
 

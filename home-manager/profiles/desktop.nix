@@ -65,6 +65,7 @@
     git.enable = true;
     htop.enable = true;
     python.enable = true;
+    tmux.enable = true;
     vim.enable = false;
     vscode.enable = true;
     zsh.enable = true;
@@ -85,6 +86,7 @@
     ../modules/sway
     ../modules/swaylock
     ../modules/waybar
+    ../modules/tmux
   ];
   fonts.fontconfig.enable = true;
   services.gnome-keyring = { enable = true; };
