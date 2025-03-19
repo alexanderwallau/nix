@@ -1,11 +1,11 @@
 { lib, pkgs, config, ... }:
 with lib;
-let cfg = config.awallau.kavita;
+let cfg = config.awallau.komga;
 in
 {
 
-  options.awallau.kavita = {
-    enable = mkEnableOption "activate kavita";
+  options.awallau.komga = {
+    enable = mkEnableOption "activate komga";
 
     port = mkOption {
       type = types.port;
@@ -21,24 +21,16 @@ in
   };
 
     config = mkIf cfg.enable {
-      sops.secrets = {
-        "kavita" = {
-          owner = "kavita";
-          group = "kavita";
-        };
-      };
-# Currently retired for not supporting SSO Login + komga suits my needs better 
 
       services = {
-          kavita = {
+          komga = {
               enable = true;
-              #user = "awallau";
-              dataDir = "/var/lib/kavita";
+              stateDir = "/var/lib/komga";
               settings = {
-                IpAddresses = "127.0.0.1";
-                Port = cfg.port;
+                server = {
+                  port = cfg.port;
                 };
-              tokenKeyFile = config.sops.secrets."kavita".path;
+              };
             };
 
         nginx.virtualHosts."${cfg.domain}" = {

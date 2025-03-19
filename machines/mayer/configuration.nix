@@ -66,7 +66,7 @@
       enable = true;
       profile = "server";
     };
-    kavita = {
+    komga = {
       enable = true;
       port = 13379;
       domain = "ebooks.alexanderwallau.de";
