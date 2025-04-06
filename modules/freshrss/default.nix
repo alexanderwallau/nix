@@ -46,41 +46,13 @@ in
 
 config = lib.mkIf cfg.enable {
 
-sops.secrets ={
-    "freshrss_oidc_env_file" = { 
-      owner = "freshrss";
-      group = "freshrss";
-    };
-    };
-
-    systemd.services = {
-      freshrss-config = {
-      # Not a big fan of this service name, frehrss would be better
-      serviceConfig = {
-        EnvironmentFile =  config.sops.secrets."freshrss_oidc_env_file".path;
-        #Environment = [
-          # The file above  may or may not look like this
-          
-          # OIDC_ENABLED = 1;
-          # OIDC_PROVIDER_METADATA_URL = "https://bla.bla.bla/*/.well-known/openid-configuration";
-          # OIDC_CLIENT_ID =  someid
-          # OIDC_CLIENT_SECRET =  somesecret 
-          # OIDC_X_FORWARDED_HEADERS = "X-Forwarded-Port X-Forwarded-Proto X-Forwarded-Host";
-          # OIDC_SCOPES = "openid email profile";
-        #];
-      };
-      };
-      phpfpm-freshrss.serviceConfig.EnvironmentFile = config.sops.secrets."freshrss_oidc_env_file".path;
-    };
-
     services = {
       freshrss = {
         enable = true;
         defaultUser = "${cfg.defaultUser}";
-        passwordFile = "";
+        passwordFile = "${cfg.passwordFile}";
         baseUrl = "https://${cfg.domain}";
         authType = "http_auth";
-        virtualHost = null;
 
         database = {
           host = "/var/run/postgresql";
