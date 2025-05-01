@@ -11,18 +11,14 @@ let
       jupyterlab
       ipython
       matplotlib
-      #seaborn
-      #cufflinks
       black
       numpy
       pandas
-      #plotly
-      #plotnine
-      #scikit-learn
+      ploars # pandas do be slow
+      plotly
+      plotnine
       requests
       scipy
-      #tensorflow-build
-      #tensorboard
       jinja2
       rpy2
 
@@ -40,5 +36,3 @@ in
   };
 
 }
-
-     
