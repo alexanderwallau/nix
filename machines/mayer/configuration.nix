@@ -114,7 +114,7 @@
     enableIPv6 = true;
     dhcpcd.IPv6rs = true;
     interfaces.ens3 = {
-      ipv6.addresses = [{ address = "2a0a:4cc0:1:73::1"; prefixLength = 64; }];
+      ipv6.addresses = [{ address = "2a0a:4cc0:c0:d895::"; prefixLength = 64; }];
     };
 
     defaultGateway6 = {
