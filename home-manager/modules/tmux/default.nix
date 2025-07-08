@@ -11,7 +11,6 @@ in
     programs.tmux = {
       enable = true;
       mouse = true;
-      copyMode = true;
       terminal = "xterm-256color";
       clock24 = true; 
       shortcut = "C-a";
