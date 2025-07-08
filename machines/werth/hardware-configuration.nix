@@ -5,7 +5,7 @@
     (modulesPath + "/profiles/qemu-guest.nix")
     flake-self.inputs.disko.nixosModules.disko
   ];
-  # Lets try Disko with nix-anywhere for the fiirst time
+  # Lets try Disko with nix-anywhere for the first time
 disko.devices = {
     disk = {
       main = {
@@ -67,10 +67,10 @@ disko.devices = {
       extraModulePackages = [ ];
     };
 
-    # swapfilev double the ram
+    # This server is not for heavy computation and because space is limited use Ram-Sized SwapFile
     swapDevices = [{
       device = "/var/swapfile";
-      size = (1024 * 4);
+      size = (1024 * 2);
     }];
 
     # Running fstrim weekly is a good idea for VMs.
