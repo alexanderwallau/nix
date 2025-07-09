@@ -21,7 +21,7 @@
     #kernelPackages = pkgs.unstable.linuxPackages;
     extraModulePackages = with config.boot.kernelPackages; [
       # intel-speed-select
-      ivsc-driver
+     # ivsc-driver
     ];
     supportedFilesystems = [ "ntfs" ];
 
