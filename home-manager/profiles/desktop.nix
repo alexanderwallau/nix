@@ -49,7 +49,7 @@
       thunderbird-bin
       tidal-dl
       qobuz-dl
-      lyricsgenius
+      #lyricsgenius
       unzip
       vlc
       wireguard-go
