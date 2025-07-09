@@ -14,8 +14,8 @@ let
       black
       numpy
       pandas
-      ploars # pandas do be slow
-      plotly
+      #polars # pandas do be slow
+      #plotly
       plotnine
       requests
       scipy
