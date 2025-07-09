@@ -14,8 +14,8 @@ let
       black
       numpy
       pandas
-      #polars # pandas do be slow
-      #plotly
+      polars # pandas do be slow
+      plotly
       plotnine
       requests
       scipy
@@ -24,7 +24,7 @@ let
 
     ];
 
-  python-with-packages = pkgs.python311.withPackages my-python-packages;
+  python-with-packages = pkgs.python313.withPackages my-python-packages;
 
 in
 {
