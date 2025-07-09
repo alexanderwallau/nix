@@ -54,7 +54,7 @@
       vlc
       wireguard-go
       xournalpp
-      yakuake
+      kdePackages.yakuake
       yubioath-flutter
       zip
     ];
