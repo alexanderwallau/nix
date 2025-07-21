@@ -34,7 +34,6 @@
     lollypops = {
       url = "github:pinpox/lollypops";
       inputs = {
-        flake-utils.follows = "flake-utils";
         nixpkgs.follows = "nixpkgs";
       };
     };
