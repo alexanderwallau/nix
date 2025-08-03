@@ -21,20 +21,28 @@ in
 
   config = mkIf cfg.enable {
     
+    # Since Things across the network may use other hosts dbs and the syncing is only available  via the wireguard net we wait on it a bit during boot
+     # Elegantly copied from: https://github.com/NixOS/infra/blob/main/build/haumea/postgresql.nix
+    systemd.services.postgresql = {
+    after = [ "wireguard-wg0.service" ];
+    requires = [ "wireguard-wg0.service" ];
+    };  
       services = {
         postgresql = {
         enable = true;
         enableTCPIP = true;
         # Hard code that one, one could make an option but this is really not necessary
-       # dataDir = "/var/run/postgres";
+        # dataDir = "/var/run/postgres";
+
         settings = {
           port = cfg.port;
+          # logging options
           log_connections = true;
           log_statement = "all";
           logging_collector = true;
           log_disconnections = true;
           log_destination = lib.mkForce "syslog";
-          };
+        };
       };
       postgresqlBackup = {
         enable = true;
