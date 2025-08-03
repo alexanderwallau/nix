@@ -52,10 +52,9 @@ config = lib.mkIf cfg.enable {
         defaultUser = "${cfg.defaultUser}";
         passwordFile = "${cfg.passwordFile}";
         baseUrl = "https://${cfg.domain}";
-        authType = "http_auth";
 
         database = {
-          host = "/var/run/postgresql";
+          host = "127.0.0.1";
           type = "pgsql";
           name = "freshrss";
           user = "freshrss";
