@@ -17,8 +17,8 @@ in
       enable = true;
       appName = "Git";
       database.user = "git";
-      # dump.enable = true;
-      # dump.interval = "weekly";
+      dump.enable = true;
+      dump.interval = "weekly";
       lfs.enable = true;
       user = "git";
       mailerPasswordFile = "/var/lib/gitea/gitea-mailer-password";
