@@ -128,6 +128,7 @@ in
               client_max_body_size 256M;
             '';
           };
+          locations."= /robots.txt".alias = ./robots.txt;
         };
       };
     };
