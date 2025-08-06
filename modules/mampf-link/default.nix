@@ -1,9 +1,9 @@
 { config, lib, pkgs, ... }:
 with lib;
 let cfg = config.awallau.mampf-link;
-  
+
 in {
-  options.awallau.mampf-link= {
+  options.awallau.mampf-link = {
     enable = lib.mkEnableOption "Enable mampf.link";
     # With current packaging this is more of a dream, the port is hardcoded for c# reasons unbeknowns to me
     port = lib.mkOption {
@@ -18,7 +18,8 @@ in {
     };
   };
 
-  config = lib.mkIf config.services.myapp.enable {
+  config = lib.mkIf cfg.enable {
+
     systemd.services.myapp = {
       description = "Mampf.link";
       wantedBy = [ "multi-user.target" ];
@@ -28,8 +29,6 @@ in {
         # Environment = "PORT=${toString config.services.mampf.link.port}";
       };
     };
-  };
-
 
     services.nginx = {
       enable = true;
@@ -44,4 +43,7 @@ in {
         };
       };
     };
+
+  };
+
 }
