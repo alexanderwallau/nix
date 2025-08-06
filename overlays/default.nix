@@ -13,4 +13,5 @@ self: super: {
   fritzbox-exporter = super.callPackage ../pkgs/fritzbox-exporter { };
   mtu = super.callPackage ../pkgs/mtu { };
   qobuz-dl = super.callPackage ../pkgs/qobuz-dl { };
+  mampf-link = super.callPackage ../pkgs/mampf-link { };
 }

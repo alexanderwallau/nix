@@ -8,4 +8,5 @@
   mtu-check = pkgs.callPackage ./mtu-check { };
 
   frizbox-exporter = pkgs.callPackage ./frizbox-exporter { };
+  mampf-link = pkgs.callPackage ./mampf-link { };
 }
