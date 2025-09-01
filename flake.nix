@@ -31,8 +31,9 @@
 
     # lollypops deployment tool
     # https://github.com/pinpox/lollypops
+    # But hard coded to the last working release
     lollypops = {
-      url = "github:pinpox/lollypops";
+      url = "github:pinpox/lollypops/098b95c871a8fb6f246ead8d7072ec2201d7692b";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
