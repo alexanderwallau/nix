@@ -13,7 +13,7 @@ in
       autosuggestion.enable = true;
       enableCompletion = true;
       autocd = true;
-      dotDir = config.xdg.configHome;
+      dotDir = "${config.xdg.configHome}/zsh";
       # Must apparently now be specified otherwise it is only the current shell session
       history.path = "$HOME/.zsh_history";
       syntaxHighlighting.enable = true;
@@ -102,10 +102,10 @@ in
         # nix
 
         # switching within a flake repository
-        frb = "${pkgs.nixos-rebuild}/bin/nixos-rebuild --use-remote-sudo switch --flake";
+        frb = "${pkgs.nixos-rebuild}/bin/nixos-rebuild -sudo switch --flake";
 
         # always execute nixos-rebuild with sudo for switching
-        nixos-rebuild = "${pkgs.nixos-rebuild}/bin/nixos-rebuild --use-remote-sudo";
+        nixos-rebuild = "${pkgs.nixos-rebuild}/bin/nixos-rebuild --sudo";
 
         # list syslinks into nix-store
         nix-list = "${pkgs.nix}/bin/nix-store --gc --print-roots";
