@@ -71,6 +71,11 @@
       port = 13379;
       domain = "ebooks.alexanderwallau.de";
     };
+    mealie = {
+      enable = true;
+      domain = "rezepte.alexanderwallau.de";
+      port = 13380;
+    };
     metrics = { node = { enable = true; flake = true; }; };
     nginx.enable = true;
     # set up general nix stuff
@@ -95,12 +100,6 @@
       enable = false;
       domain = "stirling-pdf.alexanderwallau.de";
     };
-    # recepies
-    tandoor = {
-      enable = false;
-      domain = "rezepte.alexanderwallau.de";
-    };
-
     # enables users which got moved into a seperate file
     user = {
       awallau.enable = true;
