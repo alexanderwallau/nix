@@ -26,9 +26,7 @@
       gthumb
       inkscape
       iperf3
-      julia
       libreoffice
-      libsForQt5.kio-gdrive
       mullvad-vpn
       neofetch
       networkmanager-openvpn
@@ -45,11 +43,11 @@
       restic
       signal-desktop
       spotify
-      tdesktop
+      telegram-desktop
       thunderbird-bin
       tidal-dl
       qobuz-dl
-      #lyricsgenius
+
       unzip
       vlc
       wireguard-go
