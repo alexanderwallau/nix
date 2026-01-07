@@ -1,28 +1,25 @@
-{
-  "labels": { "backend": "local" },
-  "platform": "linux/amd64",
-  "steps":
-    [
-      {
-        "commands": ["nix flake show"],
-        "image": "bash",
-        "name": "Show Flake ",
-      },
-      {
-        "commands": ["nix flake info"],
-        "image": "bash",
-        "name": "Show Flake Info",
-      },
-      {
-        "commands": [nix flake check --all-systems --print-build-logs],
-        "image": "bash",
-        "name": "Check Flake",
-      },
-    ],
-  "when":
-    [
-      { "event": "manual" },
-      { "branch": "main", "event": "push" },
-      { "branch": "update_flake_lock_action", "event": "push" },
-    ],
-}
+labels:
+  backend: local
+  platform: linux/amd64
+
+steps:
+    - name: Show Flake
+      image: bash
+      commands:
+      - nix flake show
+    - name: Show Flake Info 
+      image: bash
+      commands:
+        - nix flake info
+    - name: Check Flake
+      image: bash
+      commands:
+        - nix flake check --all-systems --print-build-logs
+
+when:
+  event:
+    - manual
+    - push
+  branch:
+    - main
+    - update_flake_lock_action
