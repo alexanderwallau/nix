@@ -1,3 +1,6 @@
+labels:
+  backend: local
+  platform: linux/amd64
 steps:
   - name: Setup Attic
     image: bash
