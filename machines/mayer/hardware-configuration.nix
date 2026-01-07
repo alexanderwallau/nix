@@ -30,7 +30,7 @@
     options = [ "nosuid" "nodev" "relatime" "size=2G" ];
   };
 
-  services.logind.extraConfig = ''
+  services.logind.settings.Login = ''
     RuntimeDirectorySize=2G
   '';
 
