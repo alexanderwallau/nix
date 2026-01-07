@@ -14,11 +14,13 @@ in
       enableCompletion = true;
       autocd = true;
       dotDir = ".config/zsh";
+      # Must apparently now be specified otherwise it is only the current shell session
+      history.path = "$HOME/.zsh_history";
       syntaxHighlighting.enable = true;
 
       sessionVariables = { ZDOTDIR = "/home/awallau/.config/zsh"; };
 
-      initExtra = ''
+      initContent = ''
           bindkey "^[[1;5C" forward-word
           bindkey "^[[1;5D" backward-word
 
@@ -27,8 +29,8 @@ in
             ${pkgs.git}/bin/git reset --soft HEAD~$1
           }
 
-          # get giteat website that hosts information on all the genres and sub-genres listened to around the world. Fortunately they also display information in lists, showing 1) the most popular genres in almost 3,000 cities and 2) ordering the cities from most to fewest spotify listeners.hub url of current repository
-          gh() {
+          # get git
+            gh() {
             echo $(${pkgs.git}/bin/git config --get remote.origin.url | sed -e 's/\(.*\)git@\(.*\):[0-9\/]*/https:\/\/\2\//g')
           }
           ipinfo() {
