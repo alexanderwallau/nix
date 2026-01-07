@@ -30,10 +30,6 @@
     options = [ "nosuid" "nodev" "relatime" "size=2G" ];
   };
 
-  services.logind.settings.Login = ''
-    RuntimeDirectorySize=2G
-  '';
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
 }

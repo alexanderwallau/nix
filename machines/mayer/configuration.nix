@@ -90,6 +90,11 @@
       enable = true;
       port = 5432;
     };
+
+    stirling-pdf = {
+      enable = false;
+      domain = "stirling-pdf.alexanderwallau.de";
+    };
     # recepies
     tandoor = {
       enable = false;
