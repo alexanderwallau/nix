@@ -57,16 +57,12 @@
       bolt
       fprintd
       musescore
-      plasma5Packages.plasma-thunderbolt
       texlive.combined.scheme-full
       virt-manager
       zoom-us
     ];
   # Virtualisation
   virtualisation = {
-    libvirtd = {
-      enable = true;
-    };
     vmware.host = {
       enable = true;
     };
