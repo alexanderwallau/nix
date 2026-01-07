@@ -1,81 +1,72 @@
-{
-  "labels": { "backend": "local", "platform": "linux/amd64" },
-  "steps":
-    [
-      {
-        "commands":
-          [
-            "attic login lounge-rocks https://cache.lounge.rocks $ATTIC_KEY --set-default",
-          ],
-        "image": "bash",
-        "name": "Setup Attic",
-        "environment": { "ATTIC_KEY": { "from_secret": "attic_key" } },
-      },
-      {
-        "commands":
-          [
-            "nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' -o 'result-X1-Yoga'",
-            "nix path-info --closure-size -h $(readlink -f result-X1-Yoga)",
-          ],
-        "image": "bash",
-        "name": "Build X1-Yoga",
-      },
-      {
-        "commands": ["attic push lounge-rocks:nix-cache 'result-X1-Yoga'"],
-        "image": "bash",
-        "name": "Push X1-Yoga to Attic",
-        "environment": { "ATTIC_KEY": { "from_secret": "attic_key" } },
-      },
-      {
-        "commands":
-          [
-            "nix build '.#nixosConfigurations.fischer.config.system.build.toplevel' -o 'result-fischer'",
-            "nix path-info --closure-size -h $(readlink -f 'result-fischer')",
-          ],
-        "image": "bash",
-        "name": "Build fischer",
-      },
-      {
-        "commands": ["attic push lounge-rocks:nix-cache 'result-fischer'"],
-        "image": "bash",
-        "name": "Push fischer to Attic",
-        "environment": { "ATTIC_KEY": { "from_secret": "attic_key" } },
-      },
-      {
-        "commands":
-          [
-            "nix build '.#nixosConfigurations.mayer.config.system.build.toplevel' -o 'result-mayer'",
-            "nix path-info --closure-size -h $(readlink -f result-mayer)",
-          ],
-        "image": "bash",
-        "name": "Build mayer",
-      },
-      {
-        "commands": ["attic push lounge-rocks:nix-cache 'result-mayer'"],
-        "image": "bash",
-        "name": "Push mayer to Attic",
-        "environment": { "ATTIC_KEY": { "from_secret": "attic_key" } },
-      },
-      {
-        "commands":
-          [
-            "nix build '.#nixosConfigurations.werth.config.system.build.toplevel' -o 'result-werth'",
-            "nix path-info --closure-size -h $(readlink -f 'result-werth')",
-          ],
-        "image": "bash",
-        "name": "Build Werth",
-      },
-      {
-        "commands": ["attic push lounge-rocks:nix-cache 'result-werth'"],
-        "image": "bash",
-        "name": "Push Werth to Attic",
-        "environment": { "ATTIC_KEY": { "from_secret": "attic_key" } },
-      },
-    ],
-  "when":
-    [
-      { "event": "manual" },
-      { "branch": "main", "event": "push" },
-      { "branch": "update_flake_lock_action", "event": "push" },
-    ],
-}
+steps:
+  - name: Setup Attic
+    image: bash
+    environment:
+      ATTIC_KEY:
+        from_secret: attic_key
+    commands:
+      - attic login lounge-rocks https://cache.lounge.rocks $ATTIC_KEY --set-default
+
+  - name: Build X1 Yoga
+    image: bash
+    commands:
+      - nix build '.#nixosConfigurations.X1-Yoga.config.system.build.toplevel' -o 'result-X1-Yoga'
+      - nix path-info --closure-size -h $(readlink -f result-X1-Yoga)
+
+  - name: Push X1 Yoga
+    image: bash
+    environment:
+      ATTIC_KEY:
+        from_secret: attic_key
+    commands:
+      - attic push lounge-rocks:nix-cache 'result-X1-Yoga'
+
+  - name: Build Fischer
+    image: bash
+    commands:
+      - nix build '.#nixosConfigurations.fischer.config.system.build.toplevel' -o 'result-fischer'
+      - nix path-info --closure-size -h $(readlink -f 'result-fischer')
+
+  - name: Push Fischer
+    image: bash
+    environment:
+      ATTIC_KEY:
+        from_secret: attic_key
+    commands:
+      - attic push lounge-rocks:nix-cache 'result-fischer'
+
+  - name: Build Mayer
+    image: bash
+    commands:
+      - nix build '.#nixosConfigurations.mayer.config.system.build.toplevel' -o 'result-mayer'
+      - nix path-info --closure-size -h $(readlink -f result-mayer)
+
+  - name: Push Mayer
+    image: bash
+    environment:
+      ATTIC_KEY:
+        from_secret: attic_key
+    commands:
+      - attic push lounge-rocks:nix-cache 'result-mayer'
+
+  - name: Build WErt
+    image: bash
+    commands:
+      - nix build '.#nixosConfigurations.werth.config.system.build.toplevel' -o 'result-werth'
+      - nix path-info --closure-size -h $(readlink -f 'result-werth')
+
+  - name: Push Werth
+    image: bash
+    environment:
+      ATTIC_KEY:
+        from_secret: attic_key
+    commands:
+      - attic push lounge-rocks:nix-cache 'result-werth'
+
+when:
+  event:
+    - manual
+    - push
+  branch:
+    - main
+    - update_flake_lock_action
