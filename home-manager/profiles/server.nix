@@ -11,7 +11,7 @@
       cmake
       dconf
       dnsutils
-      dogdns
+      doggo
       eza
       ffmpeg
       fuse3
@@ -22,7 +22,6 @@
       nmap
       unzip
       zip
-
       vs-fix
     ];
 

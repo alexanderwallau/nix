@@ -13,7 +13,7 @@ in
       autosuggestion.enable = true;
       enableCompletion = true;
       autocd = true;
-      dotDir = ".config/zsh";
+      dotDir = config.xdg.configHome;
       # Must apparently now be specified otherwise it is only the current shell session
       history.path = "$HOME/.zsh_history";
       syntaxHighlighting.enable = true;

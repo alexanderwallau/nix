@@ -10,7 +10,8 @@ in
     programs.vscode = {
       enable = true;
       package = pkgs.vscode;
-      userSettings = {
+      profiles.default = {
+        userSettings = {
         "nix" = {
           "enableLanguageServer" = true;
           "serverPath" = "${pkgs.nil}/bin/nil";
@@ -46,9 +47,9 @@ in
         "prettier.printWidth" = 160;
         "problems.showCurrentInStatus" = true;
         "redhat.telemetry.enabled" = false;
-      };
+        };
 
-      extensions = with pkgs.vscode-extensions; [
+      extensions =  with pkgs.vscode-extensions; [
         adpyke.codesnap
         dracula-theme.theme-dracula
         eamodio.gitlens
@@ -80,7 +81,8 @@ in
         vadimcn.vscode-lldb
         yzhang.markdown-all-in-one
       ];
-    };
+      };
+  };
 
   };
 }
