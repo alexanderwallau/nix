@@ -71,7 +71,7 @@
   services.hardware.bolt.enable = true;
   # benefit from Plasma's UI for managing Thunderbolt devices
   environment.systemPackages = with pkgs;[
-    plasma5Packages.plasma-thunderbolt
+    kdePackages.plasma-thunderbolt
   ];
   # Let's try it without those lines first!
   # # The names of the video drivers the configuration supports.
