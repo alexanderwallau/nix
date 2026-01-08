@@ -102,7 +102,7 @@ in
         # nix
 
         # switching within a flake repository
-        frb = "${pkgs.nixos-rebuild}/bin/nixos-rebuild -sudo switch --flake";
+        frb = "${pkgs.nixos-rebuild}/bin/nixos-rebuild --sudo switch --flake";
 
         # always execute nixos-rebuild with sudo for switching
         nixos-rebuild = "${pkgs.nixos-rebuild}/bin/nixos-rebuild --sudo";
