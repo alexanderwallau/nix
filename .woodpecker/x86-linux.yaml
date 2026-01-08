@@ -66,6 +66,9 @@ steps:
     commands:
       - attic push lounge-rocks:nix-cache 'result-werth'
 
+depends_on:
+  - flake-info
+
 when:
   event:
     - manual

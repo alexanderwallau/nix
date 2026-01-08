@@ -51,6 +51,8 @@ steps:
         from_secret: attic_key
     commands:
       - attic push lounge-rocks:nix-cache 'result-pi4b'
+depends_on:
+  - flake-info
 
 when:
   event:
