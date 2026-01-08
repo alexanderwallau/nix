@@ -31,6 +31,11 @@
     };
     containers =
       {
+        bento-pdf = {
+          enable = true;
+          # default port suffices
+          domain = "pdf.alexanderwallau.de";
+        };
         rss-bridge = {
           enable = true;
           domain = "rss-bridge.alexanderwallau.de";
@@ -94,11 +99,6 @@
     postgres = {
       enable = true;
       port = 5432;
-    };
-
-    stirling-pdf = {
-      enable = false;
-      domain = "stirling-pdf.alexanderwallau.de";
     };
     # enables users which got moved into a seperate file
     user = {
