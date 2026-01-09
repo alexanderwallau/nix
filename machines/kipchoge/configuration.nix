@@ -22,6 +22,14 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
+    changedetection = {
+      enable = true;
+      domain = "change.alexanderwallau.de";
+      port = 8567;
+      chromePort = 8568;
+      # This server has 12 Gigs of Ram and uses typically not that much
+      maxMemory = "4G";
+    };
     containers = {
       librespeed = {
         enable = true;
