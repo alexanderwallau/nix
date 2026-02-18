@@ -9,8 +9,8 @@
       # h5ai not nixed yet need to manually config php
       # More or less a giant Fileserver
       "pdok.alexanderwallau.de" = {
-        addSSL = true;
-        enableACME = true;
+        addSSL = false;
+        enableACME = false;
         root = "/var/www/pdok.alexanderwallau.de";
         locations."/" = {
           tryFiles = "$uri $uri/ index.php";
