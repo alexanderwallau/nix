@@ -76,9 +76,12 @@
       port = 13379;
       domain = "ebooks.alexanderwallau.de";
     };
+    # set up language and timezone
+    locales.enable = true;
+    
     mealie = {
       enable = true;
-      domain = "rezepte.alexanderwallau.de";
+      domain = "mealie.alexanderwallau.de";
       port = 13380;
     };
     metrics = { node = { enable = true; flake = true; }; };
@@ -89,8 +92,7 @@
       enable = false;
       domain = "onlyoffice.alexanderwallau.de";
     };
-    # set up language and timezone
-    locales.enable = true;
+
     # set up paperless
     paperless.enable = true;
     # set up ssh server
@@ -128,6 +130,7 @@
 
     firewall = { 
       allowedTCPPorts = [ 80 443 ]; 
+      # Means wg0 is completly open which in this case is fine 
       trustedInterfaces = ["wg0" ];
       };
     nameservers = [ "192.168.69.1" "1.1.1.1" ];
