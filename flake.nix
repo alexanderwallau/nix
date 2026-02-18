@@ -115,7 +115,7 @@
       };
 
       packages = forAllSystems (system:
-        import ./pkgs { pkgs = nixpkgs.legacyPackages.${system}; }
+        import ./pkgs { pkgs = nixpkgs.legacyPackages.${stdenv.hostPlatform.system}; }
       );
 
       # Output all modules in ./modules to flake. Modules should be in

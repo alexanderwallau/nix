@@ -22,7 +22,7 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
-    changedetection = {
+    changedetection-io = {
       enable = true;
       domain = "change.alexanderwallau.de";
       port = 8567;
