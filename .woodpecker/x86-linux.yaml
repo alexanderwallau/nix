@@ -52,7 +52,7 @@ steps:
     commands:
       - attic push lounge-rocks:nix-cache 'result-mayer'
 
-  - name: Build WErt
+  - name: Build Werth
     image: bash
     commands:
       - nix build '.#nixosConfigurations.werth.config.system.build.toplevel' -o 'result-werth'
