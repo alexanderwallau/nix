@@ -36,7 +36,7 @@ in
           enable = true;
           openFirewall = true;
           
-          baseDirectory = "/var/lib/anki-sync";
+          #baseDirectory = "/var/lib/anki-sync";
           # if not specified this will use ipv6
           address = "127.0.0.1";
           # One could also make that flexible but what else uses this port hart coded?
