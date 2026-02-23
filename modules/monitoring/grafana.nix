@@ -49,6 +49,9 @@ in
           http_addr = "127.0.0.1";
           domain = cfg.domain;
         };
+        # ini syntax from reading from file, a hot fix more or less 
+        security.secret_key = "$__file{/var/src/secrets/grafana_sc}";
+        
         "auth.anonymous".enabled' = true;
       };
 
