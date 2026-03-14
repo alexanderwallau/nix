@@ -17,7 +17,7 @@
       fuse3
       gdu
       gping
-      neofetch
+      fastfetch
       nixpkgs-fmt
       nmap
       unzip
