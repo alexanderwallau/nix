@@ -57,7 +57,7 @@ in
       users.extraUsers.awallau.extraGroups = [ "postgres" ];
       environment.systemPackages = with pkgs;
       [
-       # pgloader
+        pgloader
         postgresql
       ];
       # enable these pkgs for all users serves the benefit of beeing able to import data from the various systemd-service accounts 
