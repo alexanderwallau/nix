@@ -95,6 +95,9 @@
     # https://github.com/musnix/musnix/
     # A collection of optimization options for realtime audio
     musnix.url = "github:musnix/musnix";
+
+    # An openmensa compatible parser for the Bonner Studierendenwerk
+    stwb-openmensa.url = "github:alexanderwallau/stwb-openmensa";
     
 
   };

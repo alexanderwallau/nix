@@ -95,12 +95,25 @@
 
     # set up paperless
     paperless.enable = true;
+    # set up pokecardmaker
+    pokecardmaker = {
+      enable = false;
+      domain = "pcm.alexanderwallau.de";
+    };
+
     # set up ssh server
     openssh.enable = true;
     
     postgres = {
       enable = true;
       port = 5432;
+    };
+    stwb-openmensa = {
+      enable = true;
+      domain = "openmensa.alexanderwallau.de";
+      port = 3571;
+      # The default is set exactly how I want it so no point in changing 
+      # refreshTimes = ...
     };
     # enables users which got moved into a seperate file
     user = {
