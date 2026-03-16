@@ -14,6 +14,7 @@
       dnsutils
       element-desktop
       eza
+      fastfetch
       firefox
       ffmpeg
       fuse3
@@ -28,7 +29,6 @@
       iperf3
       libreoffice
       mullvad-vpn
-      neofetch
       networkmanager-openvpn
       nextcloud-client
       nixpkgs-fmt
