@@ -43,6 +43,33 @@ in
         ];
         # Save space by hardlinking store files
         auto-optimise-store = true;
+
+        # If set to true, Nix will fall back to building from source if a binary substitute fails.
+        fallback = true;
+
+        # the timeout (in seconds) for establishing connections in the binary cache substituter. 
+        connect-timeout = 10;
+
+        warn-dirty = false;
+
+        # Parallel builds - use all available cores
+        max-jobs = "auto";
+        cores = 0; # 0 = use all cores per derivation
+
+        # HTTP/2 for faster cache downloads
+        http2 = true;
+
+        # Continue building other derivations on failure
+        keep-going = true;
+
+        # these log lines are only shown on a failed build
+        log-lines = 25;
+
+          experimental-features = [
+        "nix-command"
+        "flakes"
+        ];
+
       };
 
       # Clean up old generations after 3 days
@@ -52,26 +79,17 @@ in
         options = "--delete-older-than 3d";
       };
 
-      extraOptions = ''
-        # this enables the technically experimental feature Flakes
-        experimental-features = nix-command flakes
+      # Pin nixpkgs registry to flake input for faster `nix shell nixpkgs#<pkg>` etc.
+      # Without this, nix downloads a fresh nixpkgs tarball instead of using the flake's pinned version
+      registry.nixpkgs.flake = nixpkgs;
 
-        # If set to true, Nix will fall back to building from source if a binary substitute fails.
-        fallback = true
-
-        # the timeout (in seconds) for establishing connections in the binary cache substituter. 
-        connect-timeout = 10
-
-        # these log lines are only shown on a failed build
-        log-lines = 25
-      '';
     };
     sops = {
-    defaultSopsFile = ../../secrets/secrets.yaml;
-    age.sshKeyPaths = [ "/home/awallau/.ssh/id_ed25519" ];
-    secrets = { };
-    templates = { };
-  };
+      defaultSopsFile = ../../secrets/secrets.yaml;
+      age.sshKeyPaths = [ "/home/awallau/.ssh/id_ed25519" ];
+      secrets = { };
+      templates = { };
+    };
     nixpkgs = {
       # Allow unfree licenced packages
       config.allowUnfree = true;
@@ -80,12 +98,12 @@ in
     };
 
     # install packages system wide
-  environment.systemPackages = with pkgs;
-    [
-      bash-completion
-      wget
-      git
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        bash-completion
+        wget
+        git
+      ];
 
     #Clean Journalctl logs oder than 7 days or if Larger than 1GB
     services.journald.extraConfig = ''
@@ -95,7 +113,6 @@ in
 
     # Let 'nixos-version --json' know the Git revision of this flake.
     system.configurationRevision = nixpkgs.lib.mkIf (flake-self ? rev) flake-self.rev;
-    nix.registry.nixpkgs.flake = nixpkgs;
 
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
