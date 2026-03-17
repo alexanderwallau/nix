@@ -17,25 +17,26 @@ in
     };
 
     services = {
-      displayManager.defaultSession = "gnome";
-      xserver = {
-        # Enable the X11 windowing system.
-        enable = true;
-        # Enable the GNOME Desktop Environment.
-        desktopManager.gnome.enable = true;
-        displayManager.gdm.enable = true;
+      desktopManager.gnome.enable = true;
+      displayManager = {
+        defaultSession = "gnome";
+        gdm.enable = true;
       };
-        
+      xserver = {
+        # Keep X11 for know, with further testing this will become obsolete (I hope)
+        enable = true;
+      };
 
 
-      
+
+
       gnome = {
         core-developer-tools.enable = true;
         core-os-services.enable = true;
         core-shell.enable = true;
-        core-utilities.enable = true; 
+        core-apps.enable = true;
         gnome-settings-daemon.enable = true;
-       };
+      };
     };
 
     environment = {
@@ -61,7 +62,7 @@ in
       ];
     };
 
-    services.udev.packages = with pkgs; [gnome-settings-daemon ];
+    services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 
   };
 }

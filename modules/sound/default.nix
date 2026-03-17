@@ -23,7 +23,7 @@ in {
     # This block is always enabled
     {
       # Disabled since pipewire or jack is used
-      hardware.pulseaudio.enable = false;
+      services.pulseaudio.enable = false;
     }
 
     # if pro-audio is enabled
