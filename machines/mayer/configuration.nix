@@ -36,6 +36,12 @@
           # default port suffices
           domain = "pdf.alexanderwallau.de";
         };
+        bichon = {
+          enable = true;
+          domain = "bichon.alexanderwallau.de";
+          
+        };
+
         rss-bridge = {
           enable = true;
           domain = "rss-bridge.alexanderwallau.de";
