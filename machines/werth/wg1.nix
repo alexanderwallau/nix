@@ -24,7 +24,7 @@
       peers = [
         # Macbook
         {
-          publicKey = "tIsnNtRJx7pHT0Make8FfSQcnvobqUmU+6e4A+E2oCs=";
+          publicKey = "G9k8p79pK6tYzWaIZEwawL4Qp7DuZBsfhrb/8ys5ZAs=";
           allowedIPs = [ "192.168.70.102/32" ];
         }
       ];
@@ -38,4 +38,4 @@
     # "net.ipv6.conf.all.proxy_ndp" = 1;
   };
 
-}≤
+}

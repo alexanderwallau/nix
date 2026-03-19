@@ -12,7 +12,7 @@
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./wg0.nix
-     # ./wg1.nix
+      ./wg1.nix
     ];
 
 
@@ -35,7 +35,7 @@
     openssh.enable = true;
     
     postgres = {
-      enable = false;
+      enable = true;
       port = 5432;
     };
     # enables users which got moved into a seperate file
