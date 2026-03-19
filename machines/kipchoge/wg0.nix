@@ -57,7 +57,7 @@ sops.secrets ={
         }
         # SchmackBook
         {
-          publicKey = "sY1JI0u03NWKahjfIWoXkPSpuqqEaqrZmJm7oCi0DBQ=";
+          publicKey = "R6/tyxlF2QJ+9ee1bkbkY2+cZLZHZCe9y4+nXQo/RWw=";
           allowedIPs = [ "192.168.69.104/32" ];
         }
       ];
