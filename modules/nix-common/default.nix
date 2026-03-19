@@ -37,6 +37,7 @@ in
           "https://cache.lounge.rocks/nix-cache"
           "https://nix-community.cachix.org"
         ];
+
         trusted-substituters = mkIf (cfg.disable-cache != true) [
           "https://cache.nixos.org"
           "https://cache.lounge.rocks"
@@ -65,9 +66,9 @@ in
         # these log lines are only shown on a failed build
         log-lines = 25;
 
-          experimental-features = [
-        "nix-command"
-        "flakes"
+        experimental-features = [
+          "nix-command"
+          "flakes"
         ];
 
       };
