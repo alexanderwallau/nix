@@ -31,6 +31,10 @@
       maxMemory = "4G";
     };
     containers = {
+      chartdb = {
+        enable = true;
+        domain = "db-manager.alexanderwallau.de";
+      };
       librespeed = {
         enable = true;
         domain = "speedtest.alexanderwallau.de";
