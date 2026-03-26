@@ -47,6 +47,12 @@
           domain = "rss-bridge.alexanderwallau.de";
           port = "3134";
         };
+        solidtime = {
+          enable = true;
+          domain = "solidtime.alexanderwallau.de";
+          dataDir = "/var/lib/solidtime";
+          secretFile = "/var/src/secret/solidtime";
+        };
       };
       cryptpad = {
         enable = true;
