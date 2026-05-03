@@ -29,19 +29,20 @@
     size = 4096;
   }];
 
-  # services.argonone = {
-  #   enable = true;
-  #   logLevel = 4;
-  #   settings = {
-  #     fanTemp0 = 41;
-  #     fanSpeed0 = 20;
-  #     fanTemp1 = 46;
-  #     fanSpeed1 = 50;
-  #     fanTemp2 = 51;
-  #     fanSpeed2 = 80;
-  #     hysteresis = 4;
-  #   };
-  # };
+  # Give the Pi the option of bluetooth (here the well like module/bluetooth is not applicaple sinc hw.b does not work in this case)
+  systemd.services.btattach = {
+    before = [ "bluetooth.service" ];
+    after = [ "dev-ttyAMA0.device" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      ExecStart = "${pkgs.bluez}/bin/btattach -B /dev/ttyAMA0 -P bcm -S 3000000";
+    };
+  };
+  
+  # Enable argonone fan daemon
+  # Now in nixpkgs.unstable
+  # The default package suffises
+  services.hardware.argonone.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
 

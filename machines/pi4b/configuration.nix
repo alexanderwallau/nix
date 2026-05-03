@@ -51,10 +51,7 @@
     zsh.enable = true;
   };
 
-  # Enable argonone fan daemon
-  # Now in nixpkgs.unstable
-  # The default package suffises
-  services.hardware.argonone.enable = true;
+
   # Small Role upgrade for the pi
   # Note to self pi4b with 4gigs has apparently not enough power to built custom mongo db package
   services.unifi = {
@@ -62,7 +59,7 @@
     openFirewall = true;
     unifiPackage = pkgs.unifi;
     mongodbPackage = pkgs.mongodb;
-    };
+  };
 
   environment.systemPackages = with pkgs;
     [
@@ -89,16 +86,13 @@
         wakeOnLan.enable = true;
       };
     };
-# In theory a good Idea, not that good when using this thing on the go so for now disable this
-#    defaultGateway = "192.168.178.1";
     nameservers = [ "192.168.69.1" "1.0.0.1" ];
-    # May need Wifi
     networkmanager = {
       enable = true;
     };
-    firewall = { 
-      allowedTCPPorts = [ 80 443 ]; 
-      trustedInterfaces = ["wg0" ];
+    firewall = {
+      allowedTCPPorts = [ 80 443 ];
+      trustedInterfaces = [ "wg0" ];
     };
     timeServers = [
       "ptbtime1.ptb.de"

@@ -1,8 +1,8 @@
 { config, lib, pkgs, ... }: {
 
-sops.secrets ={
-      "pi4b-wg-private-key" = { };
-    };
+  sops.secrets = {
+    "pi4b-wg-private-key" = { };
+  };
 
   networking = {
     firewall.allowedUDPPorts = [ 52192 ];
