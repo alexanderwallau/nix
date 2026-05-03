@@ -1,8 +1,7 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
+{ config
+, lib
+, pkgs
+, ...
 }:
 let
   cfg = config.awallau.geo-ip;
@@ -12,9 +11,11 @@ let
     )
   );
   enabledLocations = (
-    builtins.concatMap (
-      vhost: builtins.filter (loc: loc.value.enableGeoIP) (lib.attrsToList vhost.value.locations)
-    ) (lib.attrsToList config.services.nginx.virtualHosts)
+    builtins.concatMap
+      (
+        vhost: builtins.filter (loc: loc.value.enableGeoIP) (lib.attrsToList vhost.value.locations)
+      )
+      (lib.attrsToList config.services.nginx.virtualHosts)
   );
   enable =
     (!cfg.forceDisable)
@@ -67,7 +68,7 @@ in
   };
 
   config = lib.mkIf enable {
-sops.secrets = {
+    sops.secrets = {
       "maxmind-licence-key" = { };
     };
 
