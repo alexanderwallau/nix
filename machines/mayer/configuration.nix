@@ -62,6 +62,10 @@
         websocketPort = 3003;
         #adminKeys = [ "[
       };
+      davis = {
+        enable = true;
+        domain = "calender.alexanderwallau.de";
+      };
     docker.enable = true;
     # enable freshrss
     freshrss = {
