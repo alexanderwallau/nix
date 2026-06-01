@@ -160,7 +160,7 @@
     firewall = { 
       allowedTCPPorts = [ 80 443 ]; 
       # Means wg0 is completly open which in this case is fine 
-      trustedInterfaces = ["wg0" ];
+      trustedInterfaces = ["wg0" "docker0" ];
       };
     nameservers = [ "192.168.69.1" "1.1.1.1" ];
 
