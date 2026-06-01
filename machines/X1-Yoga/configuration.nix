@@ -54,12 +54,14 @@
   environment.systemPackages = with pkgs;
     [
       _1password-gui
+      anki
       bolt
       fprintd
       musescore
       texlive.combined.scheme-full
       virt-manager
       zoom-us
+      zotero
     ];
   # Virtualisation
   virtualisation = {
