@@ -53,7 +53,7 @@
     locales.enable = true;
     # minio for s3
     minio = {
-      enable = true;
+      enable = false;
       domain = "s3.alexanderwallau.de";
     };
     metrics = {
