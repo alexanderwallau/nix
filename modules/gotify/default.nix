@@ -28,6 +28,7 @@ in
         # That could be done with an option as per we know I wont option this
         GOTIFY_DEFAULTUSER_NAME = "awallau";
       };
+      # This Containts at the moment GOTIFY_DEFAULTUSER_Pass = ...
       environmentFiles = [ config.sops.secrets."gotify-admin-psk".path ];
       };
 
