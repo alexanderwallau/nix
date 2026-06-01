@@ -42,6 +42,10 @@
       };
     };
     docker.enable = true;
+    gotify = {
+      enable = true;
+      domain = "ntfy.alexanderwallau.de";
+    };
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
 
