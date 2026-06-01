@@ -93,8 +93,10 @@ in {
     };
   };
 
-  systemd.services.hedgedoc.preStart = lib.mkBefore ''
-    export OIDC_SECRET="$(cat ${config.sops.secrets."hedgedoc-oidc-secret".path})"
-  '';
+  systemd.services= {
+    hedgedoc.preStart = lib.mkBefore ''
+      export OIDC_SECRET="$(cat ${config.sops.secrets."hedgedoc-oidc-secret".path})"
+      '';
+    };
 };
 }
