@@ -9,6 +9,8 @@
     # being able to build the sd-image
     "${modulesPath}/installer/sd-card/sd-image-aarch64.nix"
     ./hardware-config.nix
+    # Move Networking to own file
+    ./networking.nix
     ./wg0.nix
   ];
 
@@ -78,29 +80,8 @@
     info.enable = false;
     man.enable = false;
   };
-
-  networking = {
-    interfaces = {
-      wlan0 = {
-        useDHCP = true;
-        wakeOnLan.enable = true;
-      };
-    };
-    nameservers = [ "192.168.69.1" "1.0.0.1" ];
-    networkmanager = {
-      enable = true;
-    };
-    firewall = {
-      allowedTCPPorts = [ 80 443 ];
-      trustedInterfaces = [ "wg0" ];
-    };
-    timeServers = [
-      "ptbtime1.ptb.de"
-      "ptbtime2.ptb.de"
-      "ptbtime3.ptb.de"
-    ];
-
-    hostName = "pi4b";
-  };
+  # The Rest is in ./networking.nix
+  networking.hostName = "pi4b";
+  
 
 }

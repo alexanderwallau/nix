@@ -38,7 +38,6 @@
       ExecStart = "${pkgs.bluez}/bin/btattach -B /dev/ttyAMA0 -P bcm -S 3000000";
     };
   };
-  
   # Enable argonone fan daemon
   # Now in nixpkgs.unstable
   # The default package suffises
