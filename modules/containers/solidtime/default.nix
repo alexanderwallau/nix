@@ -1,7 +1,18 @@
 { lib, pkgs, config, ... }:
 with lib;
 let
-  cfg = config.awallau.containers.solidtime;
+  cfg        = config.awallau.containers.solidtime;
+  backend    = config.virtualisation.oci-containers.backend;
+  backendPkg = pkgs.${backend};
+  backendBin = "${backendPkg}/bin/${backend}";
+  # Subnet for the solidtime Docker bridge — must match pg_hba rule below
+  subnet     = "172.40.0.0/24";
+
+  networkDep = {
+    after    = [ "solidtime-network.service" ];
+    requires = [ "solidtime-network.service" ];
+  };
+
   sharedVolumes = [
     "${cfg.dataDir}/data:/var/www/html/storage/app"
     "${cfg.dataDir}/logs:/var/www/html/storage/logs"
@@ -51,11 +62,12 @@ in
         image = "solidtime/solidtime:0.11";
         user = "1000:1000";
         networks = [ "solidtime" ];
-        # I do want to use the system postgres which suprisingly is not inside a docker network 
+        # I do want to use the system postgres which suprisingly is not inside a docker network
         ports = [ "127.0.0.1:${toString cfg.port}:8000" ];
         dependsOn = [ "solidtime-gotenberg" ];
         # That has to be a list and the singluar option does not exist :(
         environmentFiles = [ cfg.secretFile ];
+        extraOptions = [ "--add-host=host.docker.internal:host-gateway" ];
         environment = {
           # That they use 1 container for three "modes" is a bit baffeling and massive overhead, but I may not know php best practices
           CONTAINER_MODE = "http";
@@ -77,6 +89,7 @@ in
         user = "1000:1000";
         # I speculate that I can get away without a db pasword, that be nice why, because setting that declarativly with this env file is more limbo than not useing one"
         environmentFiles = [ cfg.secretFile ];
+        extraOptions = [ "--add-host=host.docker.internal:host-gateway" ];
         environment = {
           CONTAINER_MODE = "scheduler";
           DB_CONNECTION = "pgsql";
@@ -95,6 +108,7 @@ in
         user = "1000:1000";
 
         environmentFiles = [ cfg.secretFile ];
+        extraOptions = [ "--add-host=host.docker.internal:host-gateway" ];
         environment = {
           CONTAINER_MODE = "worker";
           WORKER_COMMAND = "php /var/www/html/artisan queue:work";
@@ -111,6 +125,7 @@ in
       solidtime-gotenberg = {
         autoStart = true;
         image = "gotenberg/gotenberg:8";
+        networks = [ "solidtime" ];
       };
     };
 
@@ -120,7 +135,7 @@ in
       virtualHosts."${cfg.domain}" = {
         enableACME = true;
         forceSSL = true;
-        # For now make it internal only   
+        # For now make it internal only
         extraConfig = ''
           allow 192.168.69.0/24;
           allow 192.168.178.0/24;
@@ -135,7 +150,8 @@ in
 
     # Ensure the DB and user exist in the system postgres
     services.postgresql = {
-      
+      # Listen on all interfaces so the container can reach host postgres via host.docker.internal
+      settings.listen_addresses = lib.mkForce "*";
       ensureDatabases = [ "solidtime" ];
       ensureUsers = [
         {
@@ -143,9 +159,43 @@ in
           ensureDBOwnership = true;
         }
       ];
+      # Allow connections from Docker bridge subnet
+      authentication = pkgs.lib.mkAfter ''
+        host solidtime solidtime ${subnet} trust
+      '';
     };
-    # Systemd stuff like decleratively creating a docker network and container tmp file rules
+
+    # Open port 5432 for the solidtime Docker bridge — named networks create br-<hash>
+    # interfaces that are NOT docker0, so trusting docker0 in the firewall is not enough
+    networking.firewall.extraCommands = lib.mkAfter ''
+      iptables -A nixos-fw -s ${subnet} -p tcp --dport 5432 -j nixos-fw-accept
+    '';
+    networking.firewall.extraStopCommands = lib.mkAfter ''
+      iptables -D nixos-fw -s ${subnet} -p tcp --dport 5432 -j nixos-fw-accept || true
+    '';
+
     systemd = {
+      # Create the solidtime bridge network with a fixed subnet so pg_hba and
+      # the firewall rule above match the actual bridge IP range
+      services.solidtime-network = {
+        description = "Create solidtime container network";
+        before = map (n: "${backend}-${n}.service") [
+          "solidtime" "solidtime-gotenberg"
+        ];
+        wantedBy = [ "multi-user.target" ];
+        after    = [ "network.target" ];
+        serviceConfig = {
+          Type            = "oneshot";
+          RemainAfterExit = true;
+          ExecStart = pkgs.writeShellScript "solidtime-net-create" ''
+            ${backendBin} network inspect solidtime >/dev/null 2>&1 \
+              || ${backendBin} network create --subnet=${subnet} solidtime
+          '';
+          ExecStop = pkgs.writeShellScript "solidtime-net-rm" ''
+            ${backendBin} network rm solidtime 2>/dev/null || true
+          '';
+        };
+      };
 
       tmpfiles.rules = [
         "d ${cfg.dataDir}      0755 1000 1000 - -"
@@ -181,6 +231,6 @@ in
   # APP_ENV="production"
   # APP_DEBUG="false"
   # APP_URL="https://your-domain.com"
-  # APP_FORCE_HTTPS="false" we reverse proxy 
+  # APP_FORCE_HTTPS="false" we reverse proxy
   # APP_ENABLE_REGISTRATION = "false" --> Super Admin does that
 }
