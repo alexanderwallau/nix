@@ -42,6 +42,8 @@ in
           logging_collector = true;
           log_disconnections = true;
           log_destination = lib.mkForce "syslog";
+          # THe firewall handels the rest or so I'm told
+          listen_addresses = "*";
         };
       };
       postgresqlBackup = {
