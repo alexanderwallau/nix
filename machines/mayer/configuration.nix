@@ -77,6 +77,14 @@
     };
     #enable gitea
     gitea.enable = true;
+    # also run
+    gitea-runner = {
+      enable = true;
+    instances.alexanderwallau = {
+      url = "https://git.alexanderwallau.de";
+      name = "mayer-1";  
+    };
+    };
     # enable hedgedoc
     hedgedoc = {
       enable = true;

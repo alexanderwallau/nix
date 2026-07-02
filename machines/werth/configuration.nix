@@ -21,6 +21,13 @@
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
     docker.enable = true;
+    gitea-runner = {
+      enable = true;
+      instances.alexanderwallau = {
+        url = "https://git.alexanderwallau.de";
+        name = "werth-1";  
+      };
+    };
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up language and timezone

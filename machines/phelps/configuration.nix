@@ -16,22 +16,20 @@
   # top level option name
   # by using awallau.* for all our modules, we won't have any conflicts with other modules
   awallau = {
-    containers = {
-      dashy = {
-        enable = true;
-        configFile = "/var/lib/dashy/conf.yml";
-        domain = "fsdash.awll.de";
-        port = "3132";
-      };
-    };
     docker.enable = true;
     #gitlab runner 1
     gitlab-runner = {
-      enable = true;
+      enable = false;
       dockerImage = "ubuntu:23.10";
-      registrationConfigFile = "/var/lib/gitlab-runner/config-1";
     };
 
+    gitea-runner = {
+      enable = true;
+    instances.alexanderwallau = {
+      url = "https://git.alexanderwallau.de";
+      name = "phelps-1";  
+    };
+    };
     # enable home-manager profile
     home-manager = { enable = true; profile = "server"; };
     # set up language and timezone    
