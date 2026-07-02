@@ -34,7 +34,7 @@ in
         settings = {
           # TODO Add SMTP Config
           # wait on https://github.com/NixOS/nixpkgs/pull/476826
-          BASE_URL = "https:${toString cfg.domain}";
+          BASE_URL = "https://${toString cfg.domain}";
           # OIDC configuration
           OIDC_AUTH_ENABLED = true;
           # For unintuitive reasons this needs to create an intermitten "account" to then use the application
@@ -46,13 +46,18 @@ in
           # OIDC_CLIENT_SECRET provided via sops
           # For Reasons the deafault Keycloak group mapping add a "/" imagine having an app with non usable logging..
           OIDC_ADMIN_GROUP = "/mealie_admins";
-          OIDC_USER_GROUP = "mealie_users";
+          OIDC_USER_GROUP = "/mealie_users";
           OIDC_CONFIGURATION_URL =
             # Leaving this plaintext, would have been not that hard to guess
             "https://sso.alexanderwallau.de/realms/alexanderwallau/.well-known/openid-configuration";
           OIDC_PROVIDER_NAME = "alexanderwallau.de";
           # Everythiing will go through the SSO
-          ALLOW_PASSWORD_LOGIN = false;
+          ALLOW_PASSWORD_LOGIN = "false";
+          
+          # Otherwise the sso can not create users since I renamed the default one.... one can reassign them later if desired
+          DEFAULT_GROUP =  "Home";
+          DEFAULT_HOUSEHOLD = "Alexander";
+          
           # Some Gunicorn Basics
           MAX_WORKERS = 1;
           WEB_CONCURRENCY = 1;
