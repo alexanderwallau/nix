@@ -59,8 +59,8 @@ in
           DEFAULT_HOUSEHOLD = "Alexander";
           
           # Some Gunicorn Basics
-          MAX_WORKERS = 1;
-          WEB_CONCURRENCY = 1;
+          MAX_WORKERS = 4;
+          WEB_CONCURRENCY = 4;
           LOG_LEVEL = "warning";
           # The Thing is not smart enough to guess that....
           TZ = "Europe/Berlin";
