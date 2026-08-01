@@ -4,7 +4,9 @@
   inputs = {
     # https://github.com/nixos/nixpkgs
     # nixos repository
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Fix untilo clan, because lolllypops is a caveman tool
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
 
     # https://github.com/numtide/flake-utils
     # flake-utils provides a set of utility functions for creating multi-output flakes
