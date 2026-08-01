@@ -29,6 +29,11 @@
       port = 13378;
       domain = "audiobookshelf.alexanderwallau.de";
     };
+    calibre = {
+      enable = true;
+      port = 13379;
+      domain = "ebooks.alexanderwallau.de";
+    };
     containers =
       {
         bento-pdf = {
@@ -94,11 +99,6 @@
     home-manager = {
       enable = true;
       profile = "server";
-    };
-    komga = {
-      enable = true;
-      port = 13379;
-      domain = "ebooks.alexanderwallau.de";
     };
     # set up language and timezone
     locales.enable = true;
