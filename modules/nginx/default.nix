@@ -29,7 +29,7 @@ in
 
 
       # lets be more picky on our ciphers and protocols
-      sslCiphers = "EECDH+aRSA+AESGCM:EDH+aRSA:EECDH+aRSA:+AES256:+AES128:+SHA1:!CAMELLIA:!SEED:!3DES:!DES:!RC4:!eNULL";
+      sslCiphers = "ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384";
       sslProtocols = "TLSv1.3 TLSv1.2";
       # Logs  
       commonHttpConfig = ''
