@@ -3,7 +3,6 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 # Since this is the only Hetzner-x86 machine a dedicated cloud module did not seem nessesary
-{ self, ... }:
 { config, pkgs, lib, ... }:
 
 {

@@ -45,9 +45,6 @@
       spotify
       telegram-desktop
       thunderbird-bin
-      tidal-dl
-      qobuz-dl
-
       unzip
       vlc
       wireguard-go

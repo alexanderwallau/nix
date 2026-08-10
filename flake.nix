@@ -26,14 +26,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    disko = {
-      url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    sops-nix = {
-      url = "github:Mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+
 
     # https://github.com/nixos/nixos-hardware
     # hardware specific configuration for NixOS
@@ -96,20 +89,67 @@
 
     # An openmensa compatible parser for the Bonner Studierendenwerk
     stwb-openmensa.url = "github:alexanderwallau/stwb-openmensa";
-    
+
 
   };
 
   outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } ({lib, withSystem, ...}:{
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
-      imports = [
-          #inputs.clan-core.flakeModules.default
-          #inputs.home-manager.flakeModules.home-manager
+    flake-parts.lib.mkFlake { inherit inputs; } ({ lib, withSystem, ... }:
+      let
+        inherit (lib)
+          hasPrefix
+          filterAttrs
+          attrValues
+          ;
+      in
+      {
+        systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+        imports = [
+          inputs.clan-core.flakeModules.default
+          inputs.home-manager.flakeModules.home-manager
           inputs.pkgs-by-name-for-flake-parts.flakeModule
           # Each <name>.flake.nix is a flake-parts module
           #(inputs.import-tree (i: i.initFilter (lib.hasSuffix ".flake.nix")) ./modules)
         ];
+
+        clan = {
+          # Not shamelessly stolen from @paulmiro
+          meta.name = "alexanderwallau-clan";
+
+          # Make inputs and the flake itself accessible as module parameters.
+          # Technically, adding the inputs is redundant as they can be also
+          # accessed with self.inputs.X, but adding them individually
+          # allows to only pass what is needed to each module.
+
+          specialArgs = {
+            inherit inputs;
+          } // inputs;
+
+          inventory.instances = {
+            importer-modules-dir = {
+              module = {
+                name = "importer";
+                input = "clan-core";
+              };
+              roles.default.tags."all" = { };
+              roles.default.extraModules = (attrValues (
+                # clan adds every machine as a module, so we need to filter here to prevent infinite recursion
+                filterAttrs (n: _v: !hasPrefix "clan-machine-" n) self.nixosModules
+              )) ++
+              [
+                inputs.vscode-server.nixosModules.default
+                {
+                  services.vscode-server.enable = true;
+                }
+                {
+                  # TODO rewrite the wg things to use network d
+                  # This is temp (it will last years)
+                  networking.wireguard.useNetworkd = false;
+                }
+              ];
+            };
+          };
+        };
         flake.overlays.default =
           final: prev:
           withSystem prev.stdenv.hostPlatform.system (
@@ -119,13 +159,13 @@
             }
           );
 
-      perSystem = { system, pkgs, ... }:
-        {
-          # Use nixpkgs-fmt for `nix fmt`.
-          formatter = pkgs.nixpkgs-fmt;
-          # Each ./pkgs/<name>/package.nix becomes .#packages.<system>.<name>
-          pkgsDirectory = ./pkgs;
-        };
+        perSystem = { system, pkgs, ... }:
+          {
+            # Use nixpkgs-fmt for `nix fmt`.
+            formatter = pkgs.nixpkgs-fmt;
+            # Each ./pkgs/<name>/package.nix becomes .#packages.<system>.<name>
+            pkgsDirectory = ./pkgs;
+          };
 
         # Output all modules in ./modules to flake. Modules should be in
         # individual subdirectories and contain a default.nix file.
@@ -148,28 +188,5 @@
               ];
             };
           };
-
-        # Each subdirectory in ./machines is a host. Add them all to
-        # nixosConfigurations. Host configurations need a file called
-        # configuration.nix that will be read first.
-        flake.nixosConfigurations = builtins.listToAttrs (map
-          (x: {
-            name = x;
-            value = nixpkgs.lib.nixosSystem {
-              # Make inputs and the flake itself accessible as module parameters.
-              specialArgs = { flake-self = self; } // inputs;
-
-              modules = builtins.attrValues self.nixosModules ++ [
-                (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
-                inputs.disko.nixosModules.disko
-                inputs.vscode-server.nixosModules.default
-                inputs.sops-nix.nixosModules.sops
-                {
-                  services.vscode-server.enable = true;
-                }
-              ];
-            };
-          })
-          (builtins.attrNames (builtins.readDir ./machines)));
     });
 }

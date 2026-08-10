@@ -1,7 +1,7 @@
 { config, lib, pkgs, adblock-unbound, ... }:
 with lib;
 let
-  adlist = adblock-unbound.packages.${pkgs.system};
+  adlist = adblock-unbound.packages.${stdenv.hostPlatform.system};
 
   A-records = {
     "pass.telekom.de" = "109.237.176.33";

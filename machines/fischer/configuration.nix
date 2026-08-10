@@ -2,8 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, ... }:
-{ config, pkgs, nixos-hardware, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [

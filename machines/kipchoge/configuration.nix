@@ -2,8 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ self, ... }:
-{ config, pkgs, lib, shelly-exporter, ... }:
+{ config, pkgs, lib, inputs, ... }:
 
 {
   imports =
@@ -14,7 +13,7 @@
       ./wg1.nix
       ./unbound.nix
 
-      shelly-exporter.nixosModules.default
+      inputs.shelly-exporter.nixosModules.default
     ];
 
 
