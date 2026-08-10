@@ -4,7 +4,7 @@ let
 
   cfg = config.awallau.unbound;
 
-  adlist = adblock-unbound.packages.${pkgs.system};
+  adlist = adblock-unbound.packages.${pkgs.stdenv.hostPlatform.system};
 
   dns-overwrites-config = builtins.toFile "dns-overwrites.conf" (''
     # DNS overwrites

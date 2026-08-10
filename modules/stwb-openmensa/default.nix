@@ -1,11 +1,11 @@
-{ lib, pkgs, config, flake-self, ... }:
+{ lib, pkgs, config, self, ... }:
 with lib;
 let
   cfg = config.awallau.stwb-openmensa;
 in
 {
   imports = [
-    flake-self.inputs."stwb-openmensa".nixosModules.default
+    self.inputs."stwb-openmensa".nixosModules.default
   ];
 
   options.awallau.stwb-openmensa = {
@@ -13,7 +13,7 @@ in
 
     package = mkOption {
       type = types.package;
-      default = flake-self.inputs."stwb-openmensa".packages.${pkgs.system}.default;
+      default = self.inputs."stwb-openmensa".packages.${pkgs.stdenv.hostPlatform.system}.default;
       description = "Package to run for the stwb-openmensa service.";
     };
 

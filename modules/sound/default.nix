@@ -1,5 +1,5 @@
 # Huge props to @lgoette and @MayNiklas for their work on this module
-{ lib, pkgs, config, flake-self, ... }:
+{ lib, pkgs, config, self, ... }:
 with lib;
 let cfg = config.awallau.sound;
 in {
@@ -15,7 +15,7 @@ in {
 
   # import additional modules from flake inputs
   imports = [
-    flake-self.inputs.musnix.nixosModules.musnix
+    self.inputs.musnix.nixosModules.musnix
   ];
 
   config = mkIf cfg.enable (mkMerge [
