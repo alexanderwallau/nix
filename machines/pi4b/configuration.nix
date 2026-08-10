@@ -69,10 +69,6 @@
       raspberrypi-eeprom
     ];
 
-  lollypops.deployment = {
-    local-evaluation = true;
-    ssh = { user = "root"; };
-  };
 
   documentation = {
     enable = false;

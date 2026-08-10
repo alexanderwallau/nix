@@ -4,9 +4,7 @@
   inputs = {
     # https://github.com/nixos/nixpkgs
     # nixos repository
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # Fix untilo clan, because lolllypops is a caveman tool
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-26.05-darwin";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     # https://github.com/numtide/flake-utils
     # flake-utils provides a set of utility functions for creating multi-output flakes
@@ -30,16 +28,6 @@
     # https://github.com/nixos/nixos-hardware
     # hardware specific configuration for NixOS
     nixos-hardware.url = "github:nixos/nixos-hardware";
-
-    # lollypops deployment tool
-    # https://github.com/pinpox/lollypops
-    # But hard coded to the last working release
-    lollypops = {
-      url = "github:pinpox/lollypops/098b95c871a8fb6f246ead8d7072ec2201d7692b";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
 
     # we are using the alexanderwallau-keys flake to get the ssh keys from github
     alexanderwallau-keys.url = "https://github.com/alexanderwallau.keys";
@@ -165,7 +153,6 @@
             specialArgs = { flake-self = self; } // inputs;
 
             modules = builtins.attrValues self.nixosModules ++ [
-              lollypops.nixosModules.lollypops
               (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
               disko.nixosModules.disko
               vscode-server.nixosModules.default
@@ -201,21 +188,6 @@
 
         packages = {
           woodpecker-pipeline = pkgs.callPackage ./pkgs/woodpecker-pipeline { inputs = inputs; flake-self = self; };
-        };
-
-        apps = {
-          # lollypops deployment tool
-          # https://github.com/pinpox/lollypops
-          #flake.nix
-          # nix run '.#lollypops' -- --list-all
-          # nix run '.#lollypops' -- phelps
-          # nix run '.#lollypops' -- phelps X1-Yoga
-          # nix run '.#lollypops' -- phelps X1-Yoga -p
-          # nix run '.#lollypops' -- mayerX1-Yoga -p
-          default = self.apps.${pkgs.system}.lollypops;
-          lollypops = lollypops.apps.${pkgs.system}.default {
-            configFlake = self;
-          };
         };
 
       });
