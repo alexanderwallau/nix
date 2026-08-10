@@ -12,6 +12,8 @@
     flake-parts.url = "github:hercules-ci/flake-parts";
     flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
+    pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
+
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
     home-manager = {
@@ -93,40 +95,35 @@
   };
 
   outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
-    flake-parts.lib.mkFlake { inherit inputs; } {
+    flake-parts.lib.mkFlake { inherit inputs; } ({lib, withSystem, ...}:{
       systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
+      imports = [
+          #inputs.clan-core.flakeModules.default
+          #inputs.home-manager.flakeModules.home-manager
+          inputs.pkgs-by-name-for-flake-parts.flakeModule
+          # Each <name>.flake.nix is a flake-parts module
+          #(inputs.import-tree (i: i.initFilter (lib.hasSuffix ".flake.nix")) ./modules)
+        ];
+        flake.overlays.default =
+          final: prev:
+          withSystem prev.stdenv.hostPlatform.system (
+            { config, ... }:
+            {
+              awallau = config.packages;
+            }
+          );
 
-      perSystem = { system, ... }:
-        let
-          pkgs = import nixpkgs {
-            inherit system;
-            config = {
-              allowUnsupportedSystem = true;
-              allowUnfree = true;
-            };
-          };
-        in
+      perSystem = { system, pkgs, ... }:
         {
           # Use nixpkgs-fmt for `nix fmt`.
           formatter = pkgs.nixpkgs-fmt;
-
-          packages = import ./pkgs { inherit pkgs; } // {
-            woodpecker-pipeline = pkgs.callPackage ./pkgs/woodpecker-pipeline {
-              inherit inputs;
-              flake-self = self;
-            };
-          };
+          # Each ./pkgs/<name>/package.nix becomes .#packages.<system>.<name>
+          pkgsDirectory = ./pkgs;
         };
-
-      flake = {
-        # Expose overlay to flake outputs, to allow using it from other flakes.
-        # Flake inputs are passed to the overlay so that the packages defined in
-        # it can use the sources pinned in flake.lock.
-        overlays.default = final: prev: (import ./overlays inputs) final prev;
 
         # Output all modules in ./modules to flake. Modules should be in
         # individual subdirectories and contain a default.nix file.
-        nixosModules =
+        flake.nixosModules =
           builtins.listToAttrs
             (map
               (x: {
@@ -149,7 +146,7 @@
         # Each subdirectory in ./machines is a host. Add them all to
         # nixosConfigurations. Host configurations need a file called
         # configuration.nix that will be read first.
-        nixosConfigurations = builtins.listToAttrs (map
+        flake.nixosConfigurations = builtins.listToAttrs (map
           (x: {
             name = x;
             value = nixpkgs.lib.nixosSystem {
@@ -168,6 +165,5 @@
             };
           })
           (builtins.attrNames (builtins.readDir ./machines)));
-      };
-    };
+    });
 }
