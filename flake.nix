@@ -14,6 +14,12 @@
 
     pkgs-by-name-for-flake-parts.url = "github:drupol/pkgs-by-name-for-flake-parts";
 
+    # Manage networks of machines
+    # https://clan.lol
+    clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.tar.gz";
+    clan-core.inputs.nixpkgs.follows = "nixpkgs";
+    clan-core.inputs.flake-parts.follows = "flake-parts";
+
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
     home-manager = {
