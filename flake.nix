@@ -6,9 +6,11 @@
     # nixos repository
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # https://github.com/numtide/flake-utils
-    # flake-utils provides a set of utility functions for creating multi-output flakes
-    flake-utils.url = "github:numtide/flake-utils";
+
+    # Modular flake attributes
+    # https://github.com/hercules-ci/flake-parts
+    flake-parts.url = "github:hercules-ci/flake-parts";
+    flake-parts.inputs.nixpkgs-lib.follows = "nixpkgs";
 
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
@@ -55,14 +57,12 @@
       url = "github:MayNiklas/shelly-exporter";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
     vscode-server = {
       url = "github:msteen/nixos-vscode-server";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        flake-utils.follows = "flake-utils";
       };
     };
     plasma-manager = {
@@ -92,103 +92,82 @@
 
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
-    let
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
-      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
-    in
-    with inputs;
-    {
+  outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
 
-      # Expose overlay to flake outputs, to allow using it from other flakes.
-      # Flake inputs are passed to the overlay so that the packages defined in
-      # it can use the sources pinned in flake.lock
-      overlays = {
-        default = final: prev: (import ./overlays inputs) final prev;
-      };
-
-      packages = forAllSystems (system:
-        import ./pkgs { pkgs = nixpkgs.legacyPackages.${stdenv.hostPlatform.system}; }
-      );
-
-      # Output all modules in ./modules to flake. Modules should be in
-      # individual subdirectories and contain a default.nix file
-      nixosModules =
-        builtins.listToAttrs
-          (map
-            (x: {
-              name = x;
-              value = import (./modules + "/${x}");
-            })
-            (builtins.attrNames (builtins.readDir ./modules)))
-
-        //
-        {
-          user = { config, pkgs, lib, ... }: {
-            imports = [ ./user ];
+      perSystem = { system, ... }:
+        let
+          pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnsupportedSystem = true;
+              allowUnfree = true;
+            };
           };
-        }
-        //
+        in
         {
-          home-manager = { config, pkgs, lib, ... }: {
-            imports = [
-              ./home-manager
-              home-manager.nixosModules.home-manager
-            ];
+          # Use nixpkgs-fmt for `nix fmt`.
+          formatter = pkgs.nixpkgs-fmt;
+
+          packages = import ./pkgs { inherit pkgs; } // {
+            woodpecker-pipeline = pkgs.callPackage ./pkgs/woodpecker-pipeline {
+              inherit inputs;
+              flake-self = self;
+            };
           };
         };
 
-      # Each subdirectory in ./machines is a host. Add them all to
-      # nixosConfiguratons. Host configurations need a file called
-      # configuration.nix that will be read first
-      nixosConfigurations = builtins.listToAttrs (map
-        (x: {
-          name = x;
-          value = nixpkgs.lib.nixosSystem {
+      flake = {
+        # Expose overlay to flake outputs, to allow using it from other flakes.
+        # Flake inputs are passed to the overlay so that the packages defined in
+        # it can use the sources pinned in flake.lock.
+        overlays.default = final: prev: (import ./overlays inputs) final prev;
 
-            # Make inputs and the flake itself accessible as module parameters.
-            # Technically, adding the inputs is redundant as they can be also
-            # accessed with flake-self.inputs.X, but adding them individually
-            # allows to only pass what is needed to each module.
-            specialArgs = { flake-self = self; } // inputs;
-
-            modules = builtins.attrValues self.nixosModules ++ [
-              (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
-              disko.nixosModules.disko
-              vscode-server.nixosModules.default
-              sops-nix.nixosModules.sops
-              ({ config, pkgs, ... }: {
-                services.vscode-server.enable = true;
+        # Output all modules in ./modules to flake. Modules should be in
+        # individual subdirectories and contain a default.nix file.
+        nixosModules =
+          builtins.listToAttrs
+            (map
+              (x: {
+                name = x;
+                value = import (./modules + "/${x}");
               })
-            ];
-
+              (builtins.attrNames (builtins.readDir ./modules)))
+          // {
+            user = { ... }: {
+              imports = [ ./user ];
+            };
+            home-manager = { ... }: {
+              imports = [
+                ./home-manager
+                inputs.home-manager.nixosModules.home-manager
+              ];
+            };
           };
-        })
-        (builtins.attrNames (builtins.readDir ./machines)));
 
-    }
+        # Each subdirectory in ./machines is a host. Add them all to
+        # nixosConfigurations. Host configurations need a file called
+        # configuration.nix that will be read first.
+        nixosConfigurations = builtins.listToAttrs (map
+          (x: {
+            name = x;
+            value = nixpkgs.lib.nixosSystem {
+              # Make inputs and the flake itself accessible as module parameters.
+              specialArgs = { flake-self = self; } // inputs;
 
-    //
-
-    # this function is used to repeat the same definitions for multible architectures
-    (flake-utils.lib.eachSystem (flake-utils.lib.defaultSystems)) (system:
-      let
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {
-            allowUnsupportedSystem = true;
-            allowUnfree = true;
-          };
-        };
-      in
-      rec {
-
-        # Use nixpkgs-fmt for `nix fmt'
-        formatter = pkgs.nixpkgs-fmt;
-
-        packages = {
-          woodpecker-pipeline = pkgs.callPackage ./pkgs/woodpecker-pipeline { inputs = inputs; flake-self = self; };
-        };
-
-      });
+              modules = builtins.attrValues self.nixosModules ++ [
+                (import "${./.}/machines/${x}/configuration.nix" { inherit self; })
+                inputs.disko.nixosModules.disko
+                inputs.vscode-server.nixosModules.default
+                inputs.sops-nix.nixosModules.sops
+                {
+                  services.vscode-server.enable = true;
+                }
+              ];
+            };
+          })
+          (builtins.attrNames (builtins.readDir ./machines)));
+      };
+    };
 }
