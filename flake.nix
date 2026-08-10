@@ -138,14 +138,13 @@
               )) ++
               [
                 inputs.vscode-server.nixosModules.default
-                {
+                ({config, ...}: {
                   services.vscode-server.enable = true;
-                }
-                {
-                  # TODO rewrite the wg things to use network d
+                                    # TODO rewrite the wg things to use network d
                   # This is temp (it will last years)
                   networking.wireguard.useNetworkd = false;
-                }
+                  clan.core.networking.targetHost = lib.mkDefault config.networking.hostName;
+                })
               ];
             };
           };
@@ -165,6 +164,23 @@
             formatter = pkgs.nixpkgs-fmt;
             # Each ./pkgs/<name>/package.nix becomes .#packages.<system>.<name>
             pkgsDirectory = ./pkgs;
+            devShells.default = pkgs.mkShell {
+              packages = [
+                inputs.clan-core.packages.${system}.clan-cli
+                (pkgs.writeShellScriptBin "rebuild" ''
+                  set -euo pipefail
+                  hostname=''${1:-$(hostname)}
+                  if [[ $hostname != $(hostname) ]]; then
+                    echo "WARNING: Rebuilding configuration for \"$hostname\" on \"$(hostname)\""
+                  fi
+                  ${pkgs.nix-output-monitor}/bin/nom  build .#nixosConfigurations.$hostname.config.system.build.toplevel
+                  ${pkgs.nixos-rebuild}/bin/nixos-rebuild --sudo switch --flake .#$hostname
+                '')
+                (pkgs.writeShellScriptBin "rollout" "${
+                  inputs.clan-core.packages.${system}.clan-cli
+                }/bin/clan machines update $@")
+              ];
+            };
           };
 
         # Output all modules in ./modules to flake. Modules should be in

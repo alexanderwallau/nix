@@ -1,4 +1,4 @@
-{ lib, pkgs, config, nixpkgs, flake-self, ... }:
+{ lib, pkgs, config, nixpkgs, self, ... }:
 with lib;
 let cfg = config.awallau.nix-common;
 in
@@ -49,7 +49,7 @@ in
         fallback = true;
 
         # the timeout (in seconds) for establishing connections in the binary cache substituter. 
-        connect-timeout = 10;
+        connect-timeout = mkForce 10;
 
         warn-dirty = false;
 
@@ -113,7 +113,7 @@ in
     '';
 
     # Let 'nixos-version --json' know the Git revision of this flake.
-    system.configurationRevision = nixpkgs.lib.mkIf (flake-self ? rev) flake-self.rev;
+    system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
 
     # Before changing this value read the documentation for this option
     # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
