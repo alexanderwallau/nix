@@ -27,11 +27,11 @@
     "adblockStevenBlack": {
       "flake": false,
       "locked": {
-        "lastModified": 1784851520,
-        "narHash": "sha256-eMVXzz9gliBU1q0y6MQIwKSP34174PE4KR8xpV/3kfs=",
+        "lastModified": 1785954190,
+        "narHash": "sha256-B5mWsgN/k0cDJFK+xy7+/bM41k0WenfbwoyO7U/IVso=",
         "owner": "StevenBlack",
         "repo": "hosts",
-        "rev": "dc2660e079004db6c98765d7496d352990af086a",
+        "rev": "92a38fd106abe49f50ed6904ff0e867f4eb44f9f",
         "type": "github"
       },
       "original": {
@@ -170,11 +170,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1784913159,
-        "narHash": "sha256-JWq0BfjO4ktpH5USfQNQzdvHpIDT8fSKD5K7LvdMRFs=",
+        "lastModified": 1786031233,
+        "narHash": "sha256-TIDlLTLI1/pB7IqgjzcKQjpODQsZE2oII4XGG9B6KjI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "079a3b5d1aa6a719920a51316253b7d6dd22738d",
+        "rev": "7834e82588860aaf780cec1366524456a70898d7",
         "type": "github"
       },
       "original": {
@@ -244,11 +244,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1784723954,
-        "narHash": "sha256-1CfD8ZUjCkTgjsneLZ/lxCHhgDfqxxE7/GX0MmsgiqA=",
+        "lastModified": 1785232496,
+        "narHash": "sha256-65EQYIRRpTdpH8lUiB6Mvo5uBkG60aBIzAJuALfx+O0=",
         "owner": "nixos",
         "repo": "nixos-hardware",
-        "rev": "a017f5b72210026af5b3ac5949f08d94380a6fbd",
+        "rev": "2e790b0a6be8ec2b76174ac0931b8ff11919ec98",
         "type": "github"
       },
       "original": {
@@ -319,12 +319,11 @@
     },
     "nixpkgs_4": {
       "locked": {
-        "lastModified": 1768886240,
-        "narHash": "sha256-C2TjvwYZ2VDxYWeqvvJ5XPPp6U7H66zeJlRaErJKoEM=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "80e4adbcf8992d3fd27ad4964fbb84907f9478b0",
-        "type": "github"
+        "lastModified": 1785090369,
+        "narHash": "sha256-JmPsbx37jA7Qga36iij0jsbwV4PVRACnqoVroAt/cAc=",
+        "rev": "624af665418d3c65d544145b4d34ad696439570e",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1042126.624af665418d/nixexprs.tar.xz"
       },
       "original": {
         "id": "nixpkgs",
@@ -342,11 +341,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783574839,
-        "narHash": "sha256-ICof1tV4/9XheBLBGf7dhMhfMq4dOs1zwTHrr7zGFlA=",
+        "lastModified": 1785762349,
+        "narHash": "sha256-jZhZkzAwc7f3exzcTDJWP2WCAchCv0iNC3UF/QsahdQ=",
         "owner": "pjones",
         "repo": "plasma-manager",
-        "rev": "c551f0687658e4bb699cfff6015436ad7ee57a0d",
+        "rev": "a19a2a029fa180911bd89c554dca1616e10f4c1d",
         "type": "github"
       },
       "original": {
@@ -424,11 +423,11 @@
         "nixpkgs": "nixpkgs_4"
       },
       "locked": {
-        "lastModified": 1777977833,
-        "narHash": "sha256-bl+w2MtS/8SoXrxC5UG+/0dRCV1s6laSsIT/JFzfN3Y=",
+        "lastModified": 1785252445,
+        "narHash": "sha256-Bno8aq68MYRvxYVLYWLJsufZXMSk+DBMa2t61bsgyyk=",
         "owner": "alexanderwallau",
         "repo": "stwb-openmensa",
-        "rev": "245255f6f34163bc619b1fe51cf1bce32bfb08e3",
+        "rev": "7fc8a9a30d0cce99a1f9bf28964255f1a4691f84",
         "type": "github"
       },
       "original": {
