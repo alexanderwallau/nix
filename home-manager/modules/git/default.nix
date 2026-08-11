@@ -12,6 +12,7 @@ in
         enable = true;
         lfs.enable = true;
         settings = {
+          init.defaultBranch = "main";
           extraConfig = { pull.rebase = false; };
           user = {
             email = "alexander.wallau@gmx.net";
@@ -22,11 +23,31 @@ in
             key = "AF68C38D2E1A5BDB63812D3545DBFBC91D9CF0BB";
             signByDefault = true;
           };
+          pull = {
+            rebase = true;
+            autostash = true;
+            twohead = "ort";
+          };
+          push = {
+            default = "simple";
+            autoSetupRemote = true;
+          };
+          branch = {
+            autoSetupRebase = "always";
+            autoSetupMerge = "always";
+          };
           aliases = {
+            a = "add";
+            c = "commit -m";
+            clean = "clean -xdn";
             co = "checkout";
+            d = "diff --output-indicator-new=" " --output-indicator-old=" "";
+            l = "log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n"";
             p = "pull";
             ps = "push";
-            s = "status";
+            s = "status --short";
+            undo = "reset --soft HEAD~1";
+            unstage = "reset HEAD --";
           };
         };
 
@@ -64,14 +85,26 @@ in
           "env/"
           "venv/"
           "#.idea/"
+          "tags"
+          "*.swp"
+          "result"
+          ".claude"
         ];
 
       };
 
       diff-so-fancy.enable = true;
-
+      programs.delta = {
+        enable = true;
+        enableGitIntegration = true;
+      };
     };
-    home.packages = [ pkgs.pre-commit ];
+    home.packages = [ 
+      gh 
+      glab
+      tea
+      pkgs.pre-commit 
+      ];
 
   };
 }
