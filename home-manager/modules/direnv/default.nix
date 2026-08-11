@@ -14,13 +14,19 @@ in
       direnv = {
         enable = true;
         enableBashIntegration = true;
-        enableZshIntegration = true;
+        enableZshIntegration = false; # instant does this
         nix-direnv.enable = true;
       };
+      zsh.initContent = ''
+        eval "$(${direnv-instant-package}/bin/direnv-instant hook zsh)"
+        '';
       git = { ignores = [ ".direnv/" ]; };
       vscode.profiles.default = { extensions = with pkgs.vscode-extensions; [ mkhl.direnv ]; };
     };
-
+    # Makes things better
+    home.packages = [
+      direnv-instant-package
+    ];
   };
 
 }
