@@ -108,7 +108,8 @@ in
           {
             ENABLED = true;
             FILE_EXTENSIONS = ".tex,.latex";
-            RENDER_COMMAND = "timeout 30s ${pkgs.pandoc}/bin/pandoc --pdf-engine=${pkgs.texlive.combined.scheme-full}/bin/pdflatex -f latex -t html --embed-resources --standalone --template ${template-config}";
+            # Using TexLive Full here may be complete overkill but the server has the storage space and this ensures no "couldnt because the package was missing" errors
+            RENDER_COMMAND = "timeout 30s ${pkgs.pandoc}/bin/pandoc --pdf-engine=${pkgs.texliveFull}/bin/pdflatex -f latex -t html --embed-resources --standalone --template ${template-config}";
           };
       };
 
