@@ -1,6 +1,8 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, lib, config, direnv-instant, ... }:
 with lib;
-let cfg = config.awallau.programs.direnv;
+let 
+  cfg = config.awallau.programs.direnv;
+  direnv-instant-package = direnv-instant.packages.${pkgs.stdenv.hostPlatform.system}.default;
 in
 {
 

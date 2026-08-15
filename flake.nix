@@ -19,6 +19,8 @@
     clan-core.url = "https://git.clan.lol/clan/clan-core/archive/main.tar.gz";
     clan-core.inputs.nixpkgs.follows = "nixpkgs";
     clan-core.inputs.flake-parts.follows = "flake-parts";
+    direnv-instant.url = "github:Mic92/direnv-instant";
+    direnv-instant.inputs.nixpkgs.follows = "nixpkgs";
 
     # https://github.com/nix-community/home-manager
     # manage a user environment using Nix
@@ -96,7 +98,7 @@
   outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } ({ lib, withSystem, ... }:
       let
-        inherit (lib)
+        inherit (lib )
           hasPrefix
           filterAttrs
           attrValues
@@ -202,6 +204,9 @@
                 ./home-manager
                 inputs.home-manager.nixosModules.home-manager
               ];
+              home-manager.extraSpecialArgs = {
+                inherit (inputs) direnv-instant;
+              };
             };
           };
     });

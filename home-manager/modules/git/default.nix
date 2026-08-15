@@ -41,8 +41,8 @@ in
             c = "commit -m";
             clean = "clean -xdn";
             co = "checkout";
-            d = "diff --output-indicator-new=" " --output-indicator-old=" "";
-            l = "log --graph --all --pretty=format:"%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n"";
+            d = ''diff --output-indicator-new=" " --output-indicator-old=" "'';
+            l = "log --graph --all --pretty=format:'%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n'";
             p = "pull";
             ps = "push";
             s = "status --short";
@@ -94,17 +94,17 @@ in
       };
 
       diff-so-fancy.enable = true;
-      programs.delta = {
+      delta = {
         enable = true;
         enableGitIntegration = true;
       };
     };
-    home.packages = [ 
-      gh 
-      glab
-      tea
-      pkgs.pre-commit 
-      ];
+    home.packages = [
+      pkgs.gh
+      pkgs.glab
+      pkgs.tea
+      pkgs.pre-commit
+    ];
 
   };
 }
