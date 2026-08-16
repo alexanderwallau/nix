@@ -86,8 +86,6 @@ in
       ];
 
       shellAliases = rec {
-
-
         # eza ls replacement
         ls = "${pkgs.eza}/bin/eza --group-directories-first";
         l = "${ls} -lbF --git --icons";
@@ -100,20 +98,15 @@ in
         gpp = "${pkgs.git}/bin/git pull&& ${pkgs.git}/bin/git push";
 
         # nix
-
         # switching within a flake repository
         frb = "${pkgs.nixos-rebuild}/bin/nixos-rebuild --sudo switch --flake";
-
         # always execute nixos-rebuild with sudo for switching
         nixos-rebuild = "${pkgs.nixos-rebuild}/bin/nixos-rebuild --sudo";
-
         # list syslinks into nix-store
         nix-list = "${pkgs.nix}/bin/nix-store --gc --print-roots";
-
         # flake checks
         nfc = "${pkgs.nix}/bin/nix flake check";
         nfcs = "${pkgs.nix}/bin/nix flake check --show-trace";
-
         # nix shells overeasy
         ns = "nix-shell -p ";
         npaus = "export NIXPKGS_ALLOW_UNSUPPORTED_SYSTEM=1";
@@ -130,14 +123,20 @@ in
 
         # List system services
         services = "systemctl list-units --type service";
+        # show journalctl logs for a service
+        logs = "journalctl -fea -n 50 -u";
+        failed = "systemctl list-units --failed";
+
+        status = "sudo systemctl status";
+        start = "sudo systemctl start";
+        stop = "sudo systemctl stop";
+        restart = "sudo systemctl restart";
 
         # Basic shell aliases
-        c = "cd";
+        c = "code .";
         b = "bat";
         cls = "clear";
         du = "gdu";
-
-
       };
     };
 
