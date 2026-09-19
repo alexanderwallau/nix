@@ -107,10 +107,10 @@ in
       ];
 
     #Clean Journalctl logs oder than 7 days or if Larger than 1GB
-    services.journald.extraConfig = ''
-      SystemMaxUse=1G
-      MaxRetentionSec=7day
-    '';
+    services.journald.settings.Journal = {
+      SystemMaxUse = "1G";
+      MaxRetentionSec = "7day";
+    };
 
     # Let 'nixos-version --json' know the Git revision of this flake.
     system.configurationRevision = nixpkgs.lib.mkIf (self ? rev) self.rev;
