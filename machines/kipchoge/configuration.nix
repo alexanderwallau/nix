@@ -9,6 +9,7 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./disko.nix
       ./wg0.nix
       ./wg1.nix
       ./unbound.nix
@@ -112,10 +113,10 @@
     };
     monitoring = {
       grafana = {
-        enable = true;
+        enable = false;
         nginx = true;
       };
-      prometheus.enable = true;
+      prometheus.enable = false;
     };
     nginx.enable = true;
     # set up general nix stuff

@@ -9,30 +9,15 @@
 
   services.qemuGuest.enable = true;
 
-  boot = {
-    loader.grub = {
-      efiSupport = true;
-      efiInstallAsRemovable = true;
-      device = "nodev";
+ boot = {
+    growPartition = true;
+    kernelParams = [ "console=ttyS0" ];
+    loader.grub.device = "/dev/vda";
+    loader.timeout = 5;
+    tmp = {
+      useTmpfs = false;
+      tmp.cleanOnBoot = true;
     };
-    tmp.cleanOnBoot = true;
-    initrd.kernelModules = [ "nvme" "xhci_pci" "virtio_pci" "virtio_scsi" "usbhid" ];
   };
-
-  zramSwap.enable = true;
-
-  fileSystems."/boot" =
-    {
-      device = "/dev/disk/by-partlabel/ESP";
-      fsType = "vfat";
-    };
-
-  fileSystems."/" =
-    {
-      device = "/dev/disk/by-partlabel/nixos";
-      fsType = "ext4";
-    };
-
-  nixpkgs.hostPlatform = lib.mkDefault "aarch64-linux";
-
+  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 }
