@@ -16,7 +16,7 @@
     loader.timeout = 5;
     tmp = {
       useTmpfs = false;
-      tmp.cleanOnBoot = true;
+      cleanOnBoot = true;
     };
   };
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
