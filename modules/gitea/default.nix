@@ -26,7 +26,6 @@ in
       settings = {
         server = {
           ROOT_URL = "https://git.alexanderwallau.de";
-          DOMAIN = "git.alexanderwallau.de";
           HTTP_ADDR = "127.0.0.1";
           HTTP_PORT = 3000;
           SSH_PORT = 22;
