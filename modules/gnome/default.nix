@@ -47,7 +47,6 @@ in
         geary
         gnome-initial-setup
         gnome-music
-        gnome-photos
         gnome-tour
         hitori # sudoku game
         iagno # go game
