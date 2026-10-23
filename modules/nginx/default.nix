@@ -1,6 +1,33 @@
-{ lib, pkgs, config, ... }:
+{ lib, pkgs, config, self, ... }:
 with lib;
-let cfg = config.awallau.nginx;
+let 
+  cfg = config.awallau.nginx;
+  securityTxt = pkgs.runCommand "security.txt" {
+    ts = toString self.lastModified;   # unix time of last bild sorta somewhat elegant or so
+    } ''
+    expires=$(date -u -d "@$((ts + 365 * 86400))" +%Y-%m-%dT%H:%M:%SZ)
+    cat > $out <<EOF
+    Contact: mailto:kontakt@alexanderwallau.de
+    Expires: $expires
+    Encryption: https://keys.openpgp.org/vks/v1/by-fingerprint/25121E72847D5226FEF57BC09FAA4DA547D6AD70
+    Preferred-Languages: en, de
+    Canonical: https://alexanderwallau.de/.well-known/security.txt
+    EOF
+    '';
+  robotsTxt = pkgs.writeText "robots.txt" ''
+      User-agent: GPTBot
+      Disallow: /
+      User-agent: CCBot
+      Disallow: /
+      User-agent: Google-Extended
+      Disallow: /
+      User-agent: ClaudeBot
+      Disallow: /
+      User-agent: Bytespider
+      Disallow: /
+      User-agent: *
+      Allow: /
+      '';
 in
 {
 
@@ -13,6 +40,22 @@ in
         Sent exipry notifications to this email address.
       '';
     };
+  };
+
+
+  options.services.nginx.virtualHosts = mkOption {
+    type = types.attrsOf (types.submodule {
+      config.locations = {
+        "= /.well-known/security.txt" = mkDefault {
+          alias = "${securityTxt}";
+          extraConfig = "default_type text/plain;";
+        };
+        "= /robots.txt" = mkDefault {
+          alias = "${robotsTxt}";
+          extraConfig = "default_type text/plain;";
+        };
+      };
+    });
   };
 
   config = mkIf cfg.enable {
@@ -45,8 +88,6 @@ in
 
         access_log /var/log/nginx/access.log combined_anon buffer=32k flush=5m;
       '';
-      # RFC 9116
-     
 
       # both lines can help if errors occur
       # especially with using longer paths
