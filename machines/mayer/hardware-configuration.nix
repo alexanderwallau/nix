@@ -51,8 +51,8 @@
     max_parallel_workers = 8;
     max_parallel_maintenance_workers = 4;
   };
-  nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
+  nixpkgs.hostPlatform = "x86_64-linux";
 }
 
 
