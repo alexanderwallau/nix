@@ -67,7 +67,7 @@ in
         ms-vsliveshare.vsliveshare
         oderwat.indent-rainbow
         ritwickdey.liveserver
-        valentjn.vscode-ltex
+        ltex-plus.vscode-ltex-plus
         james-yu.latex-workshop
         ms-toolsai.jupyter
         ms-pyright.pyright
