@@ -163,6 +163,7 @@
             formatter = pkgs.nixpkgs-fmt;
             # Each ./pkgs/<name>/package.nix becomes .#packages.<system>.<name>
             pkgsDirectory = ./pkgs;
+            pkgsFilterByPlatforms = true;
             devShells.default = pkgs.mkShell {
               packages = [
                 inputs.clan-core.packages.${system}.clan-cli
